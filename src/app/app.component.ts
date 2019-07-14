@@ -538,10 +538,19 @@ export class AppComponent {
     else {
       console.log(this.canvas.toDataURL('png'))
       //window.open(this.canvas.toDataURL('png'));
+      // var image = new Image();
+      // image.src = this.canvas.toDataURL('png')
+      // var w = window.open("");
+      // w.document.write(image.outerHTML);
       var image = new Image();
-      image.src = this.canvas.toDataURL('png')
-      var w = window.open("");
-      w.document.write(image.outerHTML);
+      // image.src = this.canvas.toDataURL('png')
+      // var w = window.open("");
+      // w.document.write(image.outerHTML);
+      image.src = this.canvas.toDataURL("image/png", 1.0).replace("image/png", "image/octet-stream");
+      var link = document.createElement('a');
+      link.download = "my-image.png";
+      link.href= image.src;
+      link.click();
     }
   }
 
