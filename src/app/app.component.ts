@@ -31,7 +31,7 @@ export class AppComponent {
   private textString: string;
   private url: string = '';
   private size: any = {
-    width: 500,
+    width: 720,
     height: 800
   };
 
@@ -120,6 +120,14 @@ export class AppComponent {
   changeSize(event: any) {
     this.canvas.setWidth(this.size.width);
     this.canvas.setHeight(this.size.height);
+  }
+
+  openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
+
+  closeForm() {
+    document.getElementById("myForm").style.display = "none";
   }
 
   //Block "Add text"
