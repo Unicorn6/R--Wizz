@@ -1,8 +1,13 @@
 <div class="container">
+
   <div class="row">
+
+    <!-- Title -->
     <div class="col-xl-12 main-title">
       <h4>JarWiz</h4>
     </div>
+
+    <!-- Actions -->
     <div class="col-xl-12">
       <div class="row">
         <div class="col-xl-12 text-right">
@@ -24,10 +29,12 @@
         </div>
       </div>
     </div>
+
   </div>
   <hr>
+
   <div class="row">
-    <div class="col-xl-3">
+    <div class="col-lg-3">
       <!-- <div class="card">
                 <div class="card-header">Size</div>
                 <div class="card-body">
@@ -53,7 +60,8 @@
                     </div>
                 </div>
             </div> -->
-      <br />
+
+      <!-- Add Text -->
       <div class="card">
         <div class="card-header">Add text</div>
         <div class="card-body">
@@ -71,45 +79,58 @@
         </div>
       </div>
       <br />
+
+      <!-- Add Charts -->
       <div class="card">
-        <div class="card-header">Charts</div>
+        <div class="card-header">Add Charts</div>
         <div class="card-body">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-            Bar Chart
+          <button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#barChart">
+            Bar
           </button>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-            Line Chart
+          <button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#pieChart">
+            Pie
           </button>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-            Pie Chart
+          <button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#lineChart">
+            Line
+          </button>
+          <button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#doughnutChart">
+            Doughnut
           </button>
 
-          <!-- The Modal -->
-          <div class="modal" id="myModal">
+          <!-- Bar Chart Modal -->
+          <div class="modal" id="barChart">
             <div class="modal-dialog">
               <div class="modal-content">
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                  <h4 class="modal-title">Chart</h4>
+                  <h4 class="modal-title">Bar</h4>
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
                 <!-- Modal body -->
                 <div class="modal-body">
                   <div class="form-row">
-                    <div class="col-4 form-group px-4" style="border-right: 1px dotted lightgray;">
-                      Select attributes
+                    <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
+                      <h4>Select attributes</h4>
 
-                      <caption>X</caption>
+                      <label>x-axis</label>
                       <div class="input-group">
                         <input type="text" class="form-control">
                       </div>
-                      <caption>Y</caption>
+                      <label>y-axis</label>
                       <div class="input-group">
                         <input type="text" class="form-control">
                       </div>
-                      <caption>Name</caption>
+                      <label>Title</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <label>Values</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <label>Colors</label>
                       <div class="input-group">
                         <input type="text" class="form-control">
                       </div>
@@ -117,8 +138,168 @@
                         data-dismiss="modal">Preview</button>
                     </div>
 
-                    <div class="col-8 form-group">
-                      Preview
+                    <div class="col-8 form-group pl-2 pr-4">
+                      <h4>Preview</h4>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Save</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Pie Chart Modal -->
+          <div class="modal" id="pieChart">
+            <div class="modal-dialog">
+              <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Pie</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <div class="form-row">
+                    <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
+                      <h4>Select attributes</h4>
+
+                      <label>Title</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <label>Legends</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <label>Values</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <label>Colors</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <button type="button" class=" mt-4 btn btn-danger float-right"
+                        data-dismiss="modal">Preview</button>
+                    </div>
+
+                    <div class="col-8 form-group pl-2 pr-4">
+                      <h4>Preview</h4>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Save</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Line Chart Modal -->
+          <div class="modal" id="lineChart">
+            <div class="modal-dialog">
+              <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Line</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <div class="form-row">
+                    <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
+                      <h4>Select attributes</h4>
+
+                      <label>Title</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <label>x-axis</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <label>y-axis</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <label>Color</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <label>Values</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <button type="button" class=" mt-4 btn btn-danger float-right"
+                        data-dismiss="modal">Preview</button>
+                    </div>
+
+                    <div class="col-8 form-group pl-2 pr-4">
+                      <h4>Preview</h4>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Save</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Doughnut Chart Modal -->
+          <div class="modal" id="doughnutChart">
+            <div class="modal-dialog">
+              <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Doughnut</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <div class="form-row">
+                    <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
+                      <h4>Select attributes</h4>
+
+                      <label>Title</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <label>Legends</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <label>Values</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <label>Colors</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <button type="button" class=" mt-4 btn btn-danger float-right"
+                        data-dismiss="modal">Preview</button>
+                    </div>
+
+                    <div class="col-8 form-group pl-2 pr-4">
+                      <h4>Preview</h4>
                     </div>
                   </div>
                 </div>
@@ -135,8 +316,10 @@
         </div>
       </div>
       <br />
+
+      <!-- Add Images -->
       <div class="card">
-        <div class="card-header">Images</div>
+        <div class="card-header">Add Images</div>
         <div class="card-body max-height">
           <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/pikachu.svg">
           <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/squirtle.svg">
@@ -158,11 +341,13 @@
         </div>
       </div>
       <br />
+
+      <!-- Upload Image -->
       <div class="card">
         <div class="card-header">Upload image</div>
         <div class="card-body text-center">
           <img id="testImage" *ngIf="url" class="images-item-upload" [src]="url" (click)="addImageOnCanvas(url);">
-          <input type="file" (change)="readUrl($event);">
+          <input type="file" (change)="readUrl($event);" class="col-12">
           <br />
           <br />
           <div class="btn-group btn-group-justified" role="group" aria-label="...">
@@ -174,26 +359,36 @@
         </div>
       </div>
       <br />
+
+      <!-- Add shapes -->
       <div class="card">
         <div class="card-header">Add figure</div>
-        <div class="card-body text-center max-height">
-          <div class="btn-group btn-group-vertical" role="group" aria-label="...">
-            <button type="button" class="btn btn-primary" (click)="addFigure('rectangle');">Rectangle</button>
-            <button type="button" class="btn btn-primary" (click)="addFigure('square');">Square</button>
-            <button type="button" class="btn btn-primary" (click)="addFigure('triangle');">Triangle</button>
-            <button type="button" class="btn btn-primary" (click)="addFigure('circle');">Circle</button>
-          </div>
+        <!-- <div class="card-body text-center max-height"> -->
+        <div class="card-body">
+          <!-- <div class="btn-group btn-group-vertical" role="group" aria-label="..."> -->
+          <button type="button" class="btn btn-primary m-1" (click)="addFigure('rectangle');">Rectangle</button>
+          <button type="button" class="btn btn-primary m-1" (click)="addFigure('square');">Square</button>
+          <button type="button" class="btn btn-primary m-1" (click)="addFigure('triangle');">Triangle</button>
+          <button type="button" class="btn btn-primary m-1" (click)="addFigure('circle');">Circle</button>
+          <!-- </div> -->
         </div>
       </div>
+
     </div>
-    <div class="col-xl-6">
+
+    <!-- Canvas -->
+    <div class="col-lg-6">
       <canvas id="canvas"></canvas>
     </div>
-    <div class="col-xl-3">
+
+    <div class="col-lg-3">
+
+      <!-- Options -->
       <div class="card">
         <div class="card-header">Options</div>
         <div class="card-body text-center">
-          <div class="btn-group" role="group" aria-label="...">
+          <!-- <div class="btn-group" role="group" aria-label="..."> -->
+          <div class="" role="group" aria-label="...">
             <button data-toggle="tooltip" data-placement="bottom" title="Delete element" type="button"
               class="btn btn-outline-danger" [disabled]="!selected" (click)="removeSelected();">
               <i class="fa fa-trash" aria-hidden="true"></i>
@@ -218,6 +413,8 @@
         </div>
       </div>
       <br />
+
+      <!-- Bg Color Set -->
       <!-- <div class="card" *ngIf="!selected">
         <div class="card-header">Canvas</div>
         <div class="card-body">
@@ -238,6 +435,8 @@
         </div>
       </div> -->
       <!-- <br /> -->
+
+      <!-- Custom -->
       <div class="card">
         <div class="card-header">Custom</div>
         <div class="card-body">
@@ -356,22 +555,24 @@
           </div>
         </div>
       </div>
+
     </div>
   </div>
-  <div class="row">
+
+  <!-- Render to JSON -->
+  <!-- <div class="row">
     <div class="col-xl-12">
       <br />
-      <!-- <div class="card">
-                <div class="card-header">
-                    <button type="button" class="btn btn-primary btn-sm" (click)="rasterizeJSON()">
-                        <i class="fa fa-refresh" aria-hidden="true"></i> Render to json</button>
-                </div>
-                <div class="card-body">
-                    <pre>{{json}}</pre>
-                </div>
-            </div> -->
+      <div class="card">
+        <div class="card-header">
+          <button type="button" class="btn btn-primary btn-sm" (click)="rasterizeJSON()">
+            <i class="fa fa-refresh" aria-hidden="true"></i> Render to json</button>
+        </div>
+        <div class="card-body">
+          <pre>{{json}}</pre>
+        </div>
+      </div>
     </div>
-  </div>
-  <br>
-  <br>
+  </div> -->
+
 </div>
