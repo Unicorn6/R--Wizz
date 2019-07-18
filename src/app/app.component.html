@@ -122,15 +122,15 @@
           <!-- <button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#pieChart"> -->
 
           <!-- </button> -->
-          <a data-toggle="modal" data-target="#barChart" class="btn"> <i class="fa fa-bar-chart zoomImg"
+          <a data-toggle="modal" data-target="#barChart" class="btn"> <i class="fa fa-area-chart zoomImg"
               aria-hidden="true"></i><span class="m-2">Area</span></a>
           <a data-toggle="modal" data-target="#barChart" class="btn"> <i class="fa fa-bar-chart zoomImg"
               aria-hidden="true"></i><span class="m-2">Mixed</span></a>
-          <a data-toggle="modal" data-target="#barChart" class="btn"> <i class="fa fa-bar-chart zoomImg"
+          <a data-toggle="modal" data-target="#table" class="btn"> <i class="fa fa-table zoomImg"
               aria-hidden="true"></i><span class="m-2">Table</span></a>
-          <a data-toggle="modal" data-target="#barChart" class="btn"> <i class="fa fa-bar-chart zoomImg"
+          <a data-toggle="modal" data-target="#filter" class="btn"> <i class="fa fa-bar-chart zoomImg"
               aria-hidden="true"></i><span class="m-2">Filter</span></a>
-          <a data-toggle="modal" data-target="#barChart" class="btn"> <i class="fa fa-bar-chart zoomImg"
+          <a data-toggle="modal" data-target="#barChart" class="btn"> <i class="fa fa-calendar zoomImg"
               aria-hidden="true"></i><span class="m-2">Date Filter</span></a>
           <a data-toggle="modal" data-target="#pieChart" class="btn"> <i class="fa fa-pie-chart zoomImg"
               aria-hidden="true"></i><span class="m-2">Pie</span></a>
@@ -162,15 +162,15 @@
 
                       <label>Title</label>
                       <div class="input-group">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" [(ngModel)]="barTitle">
                       </div>
                       <label>x-axis label</label>
                       <div class="input-group">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" [(ngModel)]="barXlabel">
                       </div>
                       <label>y-axis label</label>
                       <div class="input-group">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control"[(ngModel)]="barYlabel">
                       </div>
                       <!-- <label>Values</label>
                       <div class="input-group">
@@ -179,8 +179,8 @@
                       <label>Colors</label>
                       <div class="input-group colorPickerClass">
                         <!-- <input type="text" class="form-control"> -->
-                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="props.fill"
-                          [style.background]="props.fill" [value]="props.fill" (colorPickerChange)="setFill()">
+                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="barColor"
+                          [style.background]="barColor" [value]="barColor" (colorPickerChange)="setFill()">
                       </div>
                       <button type="button" class=" mt-4 btn btn-danger float-right"
                         (click)="getBarChart()">Preview</button>
@@ -266,6 +266,59 @@
               </div>
             </div>
           </div>
+          <!-----Table      -->
+
+          <div class="modal" id="table">
+              <div class="modal-dialog">
+                <div class="modal-content">
+  
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">Pie</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+  
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                    <div class="form-row">
+                      <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
+                        <h4>Select attributes</h4>
+  
+                        <label>Title</label>
+                        <div class="input-group">
+                          <input type="text" class="form-control" [(ngModel)]="tableTitle">
+                        </div>
+                        <label>Dummy Data</label>
+                        <div class="input-group">
+                          <input type="text" class="form-control" [(ngModel)]="tableData">
+                        </div>
+                        
+                        <button type="button" class=" mt-4 btn btn-danger float-right"
+                          (click)="getTable()">Preview</button>
+                      </div>
+  
+                      <div class="col-8 form-group pl-2 pr-4">
+                        <h4>Preview</h4>
+                        <canvas id="previewCanvas-table" style="width:100%;height:85%"></canvas>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"
+                      (click)="getImage('previewCanvas-table')">Save</button>
+                  </div>
+  
+                </div>
+              </div>
+            </div>
+  
+
+
+
+
+          <!----------Table ENd-->
 
           <!-- Line Chart Modal -->
           <div class="modal" id="lineChart">
@@ -381,6 +434,49 @@
               </div>
             </div>
           </div>
+
+          <!-- Filter Modal -->
+          <div class="modal" id="filter">
+              <div class="modal-dialog">
+                <div class="modal-content">
+  
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">filter</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+  
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                    <div class="form-row">
+                      <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
+                        <h4>Select attributes</h4>
+  
+                        <label>Title</label>
+                        <div class="input-group">
+                          <input type="text" class="form-control" [(ngModel)]="filterName">
+                        </div>
+
+                        <button type="button" class=" mt-4 btn btn-danger float-right"
+                          (click)="getFilter()">Preview</button>
+                      </div>
+  
+                      <div class="col-8 form-group pl-2 pr-4">
+                        <h4>Preview</h4>
+                        <canvas id="previewCanvas-filter" style="width:100%;height:85%"></canvas>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"
+                      (click)="getImage('previewCanvas-filter')">Save</button>
+                  </div>
+  
+                </div>
+              </div>
+            </div>
 
         </div>
       </div>

@@ -48,6 +48,13 @@ export class AppComponent implements OnInit {
   private pieColor2;
   private pieLegend1;
   private pieLegend2;
+  private barTitle;
+  private barXlabel;
+  private barYlabel;
+  private barColor;
+  private filterName;
+  private tableTitle;
+  private tableData;
 
   private json: any;
   private globalEditor: boolean = false;
@@ -63,6 +70,19 @@ export class AppComponent implements OnInit {
     this.pieColor2 = "#fb4c55";
     this.pieLegend1 = "NNA";
     this.pieLegend2 = "NML";
+
+    this.barTitle ="Bar Chart";
+    this.barXlabel="Years";
+    this.barYlabel="sales";
+    this.barColor="#20f7f6";
+
+
+    this.filterName="Filter Name";
+
+    this.tableTitle = "Table Heading";
+    this.tableData = "xyz";
+
+
   }
 
   ngOnInit() {
@@ -164,6 +184,136 @@ export class AppComponent implements OnInit {
 
 
   }
+  /*----------------------------------Filters---------------------------------------------------*/
+//   resetCanvas(idName){
+//     var width = document.getElementById(idName).clientWidth;
+//     var height = document.getElementById(idName).clientHeight;
+//     document.getElementById(idName).remove();
+//     var canvas = document.createElement('canvas');
+
+//     canvas.id =idName;
+//     canvas.width = width;
+//     canvas.height = height;
+//     document.getElementById('col-8 form-group pl-2 pr-4').appendChild(canvas);
+//     // var canvas = document.getElementById('previewCanvas-filter') as HTMLCanvasElement;
+//     // var ctx = canvas.getContext("2d");
+//     // var i,j;
+//     // ctx.fillStyle = "white";
+//     // ctx.fillRect(0,0,canvas.width,canvas.height);
+//     // ctx.stroke();
+    
+// }
+
+
+getTable(){
+  
+  let rows=7;
+  let columns=4;
+  var canvas =<HTMLCanvasElement> document.getElementById('previewCanvas-table');
+  var ctx = canvas.getContext("2d");
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  var i,j;
+  var canvasWidth =canvas.width;
+  var canvasHeight =canvas.height;
+
+  var tableHeight = canvasHeight-(canvasHeight/8);
+  ctx.rect(0,canvasHeight-tableHeight,canvasWidth,tableHeight);
+  ctx.font = "18px Arial";
+  this.addTextFilter(ctx,this.tableTitle,0,0,canvasWidth,canvasHeight/9);
+  ctx.stroke();
+//   ctx.lineWidth="0";
+  ctx.font = "14px Arial";
+  for(i=0;i<columns;i++){
+    for(j=1;j<rows+1;j++){
+        ctx.rect(canvasWidth*i/columns,tableHeight*j/rows,canvasWidth/columns,tableHeight/rows);
+        this.addTextFilter(ctx,this.tableData,canvasWidth*i/columns,tableHeight*j/rows,canvasWidth/columns,tableHeight/rows);
+    }
+    
+  }
+
+  
+  ctx.stroke();
+  
+
+
+}
+
+
+
+
+
+
+
+  getFilter(){
+   //this.resetCanvas('previewCanvas-filter');
+    let rows=7;
+    let columns=4;
+    
+    var canvas = document.getElementById('previewCanvas-filter') as HTMLCanvasElement;
+    var ctx = canvas.getContext("2d");
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    var filterimg = new Image();
+    filterimg.width=100;
+    filterimg.height=60;
+    filterimg.src = "assets/img/filter(1).PNG";
+
+    ctx.font = "bold 35px sans-serif";
+    this.addTextFilter(ctx,this.filterName,10,30,100,60);
+    
+
+    ctx.drawImage(filterimg,5,70);
+    ctx.stroke();
+
+  //   var canvasWidth =canvas.width/2;
+  //   var canvasHeight =canvas.height/2;
+  //   var tableHeight = 100;
+  
+  //   ctx.moveTo(canvasWidth-85, canvasHeight-(canvasHeight/2)-10);
+  //   ctx.lineTo(canvasWidth-85, canvasHeight-(canvasHeight/2)+90);
+  
+  //   ctx.strokeStyle = '#00000';
+  //   ctx.stroke();
+  //   ctx.lineWidth = 3;
+  //   ctx.rect(0,canvasHeight-(canvasHeight/2)+20,canvasWidth,tableHeight-10);
+  //   ctx.stroke();
+  //   ctx.font = "bold 30px sans-serif";
+    
+  //   this.addTextFilter(ctx,this.filterName,10,10,canvasWidth-(canvasWidth/3),canvasHeight/1.5);
+  //   ctx.stroke();
+  
+  //   ctx.beginPath();
+  // ctx.moveTo(canvasWidth-60, canvasHeight-(canvasHeight/2)+30);
+  // ctx.lineTo(canvasWidth-45, canvasHeight-(canvasHeight/2)+50);
+  // ctx.lineTo(canvasWidth-30, canvasHeight-(canvasHeight/2)+30);
+  // ctx.closePath();
+   
+  // // the outline
+  // ctx.lineWidth = 1;
+  // ctx.strokeStyle = '#00000';
+  // ctx.stroke();
+   
+  // // the fill color
+  // ctx.fillStyle = "#00000";
+  // ctx.fill();
+  
+  // ctx.font = "bold 50px sans-serif";
+  // this.addTextFilter(ctx,"All",canvasWidth/9,canvasHeight/8,canvasWidth-(canvasWidth/6),canvasHeight);
+  //   ctx.stroke();
+    
+    
+  }
+  
+  addTextFilter(con,text,x,y,width,height){
+      
+    var size = text.length;
+    var sizeAdj=24/5;
+    var textX=x+width/2-(size*sizeAdj);
+    var textY=y+height/2+sizeAdj;
+    con.fillText(text,textX,textY);
+    
+  
+  }
+
 
   /*-------------------------------------Charts-------------------------------------------------*/
 
@@ -223,19 +373,19 @@ export class AppComponent implements OnInit {
 
   getBarChart() {
     console.log("Inside BarCHart()_");
-    var yname = "Population";
-    var xname = "Country";
-    var heading_name = "Bar Graph";
+    var yname = this.barYlabel;
+    var xname = this.barXlabel;
+    var heading_name =this.barTitle;
     new Chart(document.getElementById("previewCanvas-barchart"), {
       type: 'bar',
       data: {
-        labels: ["", "", "", "", "", "", "", ""],
+        labels: ["", "", "", "", ""],
 
         datasets: [
           {
             label: "Population (millions)",
-            backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", "#c64850", "#3e95cd", "#8e5ea2"],
-            data: [3078, 5267, 3734, 3484, 4433, 3567, 4673, 3692]
+            backgroundColor: [this.barColor,this.barColor, this.barColor,this.barColor],
+            data: [4078, 5267, 3734, 3484]
           }
         ]
       },
