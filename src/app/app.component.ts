@@ -291,6 +291,50 @@ export class AppComponent implements OnInit {
 
   /*-------------------------Charts End-----------------------------*/
 
+  chosenMod: string = "";
+
+  modo() {
+    switch (this.chosenMod) {
+      case "nml": {
+        var canvas = new fabric.Canvas('canvas');
+        console.log(canvas, "canvas name")
+        var imageurl = "assets/img/NML_template.png";
+        console.log(imageurl, "url")
+        canvas.setBackgroundImage(imageurl, canvas.renderAll.bind(canvas), {
+          scaleX: "1",
+          scaleY: "1"
+        });
+
+        //do something
+        break;
+      }
+      case "ne": {
+        var canvas = new fabric.Canvas('canvas');
+        console.log(canvas, "canvas name")
+        var imageurl = "assets/img/NE_template.png";
+        console.log(imageurl, "url")
+        canvas.setBackgroundImage(imageurl, canvas.renderAll.bind(canvas), {
+          scaleX: "1",
+          scaleY: "1"
+        });
+        //do something
+        break;
+      }
+      case "nna": {
+        var canvas = new fabric.Canvas('canvas');
+        console.log(canvas, "canvas name")
+        var imageurl = "assets/img/NNA_template.png";
+        console.log(imageurl, "url")
+        canvas.setBackgroundImage(imageurl, canvas.renderAll.bind(canvas), {
+          scaleX: "1",
+          scaleY: "1"
+        });
+        //do something
+        break;
+      }
+    }
+  }
+
   /*------------------------Block elements------------------------*/
 
   //Block "Size"

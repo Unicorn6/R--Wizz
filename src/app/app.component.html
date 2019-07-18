@@ -73,11 +73,11 @@
         <div class="card-header">Select Region</div>
         <div class="card-body">
           <div class="">
-            <select name="region" class="btn btn-primary">
-              <option class="">Any</option>
-              <option class="">Nissan Motor Limited</option>
-              <option class="">Nissan Europe</option>
-              <option class="">Nissan NNA</option>
+            <select [(ngModel)]="chosenMod" (ngModelChange)="modo()" id="selectid" class="btn btn-primary">
+              <option value="" selected disabled hidden>Choose here</option>
+              <option value="nml" class="btn btn-secondary">Nissan Motor Limited</option>
+              <option value="ne" class="btn btn-secondary">Nissan Europe</option>
+              <option value="nna" class="btn btn-secondary">Nissan NNA</option>
             </select>
           </div>
         </div>
@@ -113,10 +113,27 @@
           <a data-toggle="modal" data-target="#barChart" class="btn"> <i class="fa fa-bar-chart zoomImg"
               aria-hidden="true"></i><span class="m-2">Bar</span></a>
           <!-- </button> -->
+          <a data-toggle="modal" data-target="#barChart" class="btn"> <i class="fa fa-bar-chart zoomImg"
+              aria-hidden="true"></i><span class="m-2">Horizontal Bar</span></a>
+          <a data-toggle="modal" data-target="#barChart" class="btn"> <i class="fa fa-bar-chart zoomImg"
+              aria-hidden="true"></i><span class="m-2">Stacked Bar</span></a>
+          <a data-toggle="modal" data-target="#barChart" class="btn"> <i class="fa fa-bar-chart zoomImg"
+              aria-hidden="true"></i><span class="m-2">Grouped Bar</span></a>
           <!-- <button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#pieChart"> -->
+
+          <!-- </button> -->
+          <a data-toggle="modal" data-target="#barChart" class="btn"> <i class="fa fa-bar-chart zoomImg"
+              aria-hidden="true"></i><span class="m-2">Area</span></a>
+          <a data-toggle="modal" data-target="#barChart" class="btn"> <i class="fa fa-bar-chart zoomImg"
+              aria-hidden="true"></i><span class="m-2">Mixed</span></a>
+          <a data-toggle="modal" data-target="#barChart" class="btn"> <i class="fa fa-bar-chart zoomImg"
+              aria-hidden="true"></i><span class="m-2">Table</span></a>
+          <a data-toggle="modal" data-target="#barChart" class="btn"> <i class="fa fa-bar-chart zoomImg"
+              aria-hidden="true"></i><span class="m-2">Filter</span></a>
+          <a data-toggle="modal" data-target="#barChart" class="btn"> <i class="fa fa-bar-chart zoomImg"
+              aria-hidden="true"></i><span class="m-2">Date Filter</span></a>
           <a data-toggle="modal" data-target="#pieChart" class="btn"> <i class="fa fa-pie-chart zoomImg"
               aria-hidden="true"></i><span class="m-2">Pie</span></a>
-          <!-- </button> -->
           <!-- <button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#lineChart"> -->
           <a data-toggle="modal" data-target="#lineChart" class="btn"> <i class="fa fa-line-chart zoomImg"
               aria-hidden="true"></i><span class="m-2">Line</span></a>
