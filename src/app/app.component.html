@@ -109,18 +109,22 @@
       <div class="card">
         <div class="card-header">Add Charts</div>
         <div class="card-body">
-          <button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#barChart">
-            Bar
-          </button>
-          <button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#pieChart">
-            Pie
-          </button>
-          <button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#lineChart">
-            Line
-          </button>
-          <button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#doughnutChart">
-            Doughnut
-          </button>
+          <!-- <button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#barChart"> -->
+          <a data-toggle="modal" data-target="#barChart" class="btn"> <i class="fa fa-bar-chart zoomImg"
+              aria-hidden="true"></i><span class="m-2">Bar</span></a>
+          <!-- </button> -->
+          <!-- <button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#pieChart"> -->
+          <a data-toggle="modal" data-target="#pieChart" class="btn"> <i class="fa fa-pie-chart zoomImg"
+              aria-hidden="true"></i><span class="m-2">Pie</span></a>
+          <!-- </button> -->
+          <!-- <button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#lineChart"> -->
+          <a data-toggle="modal" data-target="#lineChart" class="btn"> <i class="fa fa-line-chart zoomImg"
+              aria-hidden="true"></i><span class="m-2">Line</span></a>
+          <!-- </button> -->
+          <!-- <button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#doughnutChart"> -->
+          <a data-toggle="modal" data-target="#doughnutChart" class="btn"> <img src="../assets/img/chart-donut.svg"
+              style="zoom:0.08;"><span class="m-2">Doughnut</span></a>
+          <!-- </button> -->
 
           <!-- Bar Chart Modal -->
           <div class="modal" id="barChart">
@@ -202,21 +206,28 @@
 
                       <label>Title</label>
                       <div class="input-group">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" [(ngModel)]="pieTitle">
                       </div>
-                      <label>Legends</label>
+                      <label>Legend 1</label>
                       <div class="input-group">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" [(ngModel)]="pieLegend1">
                       </div>
-                      <!-- <label>Values</label>
+                      <label>Legend 1</label>
                       <div class="input-group">
-                        <input type="text" class="form-control">
-                      </div> -->
-                      <label>Colors</label>
-                      <div class="input-group colorPickerClass">
-                        <!-- <input type="text" class="form-control"> -->
-                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="props.fill"
-                          [style.background]="props.fill" [value]="props.fill" (colorPickerChange)="setFill()">
+                        <input type="text" class="form-control" [(ngModel)]="pieLegend2">
+                      </div>
+
+                      <label>Color 1</label>
+                      <div class="input-group">
+
+                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="pieColor1"
+                          [style.background]="pieColor1" [(ngModel)]="pieColor1" (colorPickerChange)="setFill()">
+                      </div>
+                      <label>Color 2</label>
+                      <div class="input-group">
+
+                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="pieColor2"
+                          [style.background]="pieColor2" [(ngModel)]="pieColor2" (colorPickerChange)="setFill()">
                       </div>
                       <button type="button" class=" mt-4 btn btn-danger float-right"
                         (click)="getPieChart()">Preview</button>
@@ -420,7 +431,9 @@
 
     <!-- Canvas -->
     <div class="col-lg-6">
-      <canvas id="canvas"></canvas>
+      <!-- <div class="card" style="height: 100vh;"> -->
+      <canvas id="canvas" class=""></canvas>
+      <!-- </div> -->
     </div>
 
     <div class="col-lg-3">

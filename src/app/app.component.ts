@@ -43,6 +43,12 @@ export class AppComponent implements OnInit {
     height: 800
   };
 
+  private pieTitle;
+  private pieColor1;
+  private pieColor2;
+  private pieLegend1;
+  private pieLegend2;
+
   private json: any;
   private globalEditor: boolean = false;
   private textEditor: boolean = false;
@@ -51,7 +57,13 @@ export class AppComponent implements OnInit {
   private selected: any;
   private imageNumber;
 
-  constructor() { }
+  constructor() {
+    this.pieTitle = "Pie Chart";
+    this.pieColor1 = "#20f7f6";
+    this.pieColor2 = "#fb4c55";
+    this.pieLegend1 = "NNA";
+    this.pieLegend2 = "NML";
+  }
 
   ngOnInit() {
     this.imageNumber = 0;
@@ -156,22 +168,24 @@ export class AppComponent implements OnInit {
   /*-------------------------------------Charts-------------------------------------------------*/
 
   getPieChart() {
+    // let pieTitle=this.pieTitle;
 
 
     new Chart(document.getElementById("previewCanvas-piechart"), {
       type: 'pie',
       data: {
-        labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+        labels: [this.pieLegend1, this.pieLegend2],
         datasets: [{
           label: "Population (millions)",
-          backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
-          data: [2478, 5267, 734, 784, 433]
+          backgroundColor: [this.pieColor1, this.pieColor2],
+          data: [2478, 5267]
         }]
       },
       options: {
         title: {
           display: true,
-          text: 'Predicted world population (millions) in 2050'
+          //text: 'Predicted world population (millions) in 2050'
+          text: this.pieTitle
         }
       }
     });
