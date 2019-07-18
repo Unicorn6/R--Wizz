@@ -4,9 +4,13 @@
     height: 100%;
   }
 
-  ::ng-deep .canvas-container {
-    width: 100% !important;
+  .col-lg-3 {
+    max-width: 21%;
   }
+
+  /* ::ng-deep .canvas-container {
+    width: 100% !important;
+  } */
 
   .canvasContainer {
     width: 100% !important;

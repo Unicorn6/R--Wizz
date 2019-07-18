@@ -39,8 +39,8 @@ export class AppComponent implements OnInit {
   private textString: string;
   private url: string = '';
   private size: any = {
-    width: 720,
-    height: 800
+    width: 700,
+    height: 500
   };
 
   private pieTitle;
@@ -56,6 +56,9 @@ export class AppComponent implements OnInit {
   private tableTitle;
   private tableData;
 
+ private horizontalBarTitle;
+ private horizontalColor;
+
   private json: any;
   private globalEditor: boolean = false;
   private textEditor: boolean = false;
@@ -63,6 +66,8 @@ export class AppComponent implements OnInit {
   private figureEditor: boolean = false;
   private selected: any;
   private imageNumber;
+  private horizontalXAxis: any;
+  private horizontalYAxis: any;
 
   constructor() {
     this.pieTitle = "Pie Chart";
@@ -83,6 +88,10 @@ export class AppComponent implements OnInit {
     this.tableData = "xyz";
 
 
+    this.horizontalBarTitle = "Horizontal Chart";
+    this.horizontalXAxis="Years";
+    this.horizontalYAxis="Profit";
+    this.horizontalColor="#64566";
   }
 
   ngOnInit() {
@@ -439,47 +448,114 @@ getTable(){
     });
   }
 
+  getHorizontalBarChart() {
+    console.log("Inside BarCHart()_");
+    var yname = this.horizontalYAxis;
+    var xname = this.horizontalXAxis;
+    var heading_name = this.horizontalBarTitle;
+    new Chart(document.getElementById("previewCanvas-horizontalBarchart"), {
+      type: 'horizontalBar',
+      data: {
+        labels: [this.horizontalXAxis, this.horizontalYAxis],
+
+        datasets: [
+          {
+            label: "Population (millions)",
+            backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", "#c64850", "#3e95cd", "#8e5ea2"],
+            data: [3078, 5267, 3734, 3484, 4433, 3567, 4673, 3692]
+          }
+        ]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            scaleLabel: {
+              display: true,
+              fontSize: 14,
+              fontStyle: 'bold',
+              labelString: yname,
+            },
+            gridLines: {
+              display: false,
+              lineWidth: 1,
+              color: "#131c2b"
+            }
+          }],
+          xAxes: [{
+
+            categoryPercentage: 1.0,
+            barPercentage: 1.0,
+            barThickness: 36,
+            maxBarThickness: 40,
+            minBarLength: 1,
+            gridLines: {
+              display: false,
+              lineWidth: 1,
+              color: "#131c2b"
+            },
+            scaleLabel: {
+              fontSize: 14,
+              fontStyle: 'bold',
+              display: true,
+              labelString: xname
+
+            },
+
+          }]
+
+
+        },
+        legend: { display: false },
+        title: {
+          fontSize: 18,
+          fontStyle: 'bold',
+          display: true,
+          text: this.horizontalBarTitle
+        }
+      }
+    });
+  }
+
   /*-------------------------Charts End-----------------------------*/
+
+  addBackOnCanvas(url) {
+    if (url) {
+      fabric.Image.fromURL(url, (image) => {
+        image.set({
+          left: 10,
+          top: 10,
+          angle: 0,
+          padding: 10,
+          cornersize: 10,
+          hasRotatingPoint: true,
+          selectable: false
+        });
+        image.setWidth(this.canvas.width);
+        image.setHeight(this.canvas.height);
+        this.extend(image, this.randomId());
+        this.canvas.add(image);
+        this.selectItemAfterAdded(image);
+      });
+    }
+  }
 
   chosenMod: string = "";
 
   modo() {
     switch (this.chosenMod) {
       case "nml": {
-        var canvas = new fabric.Canvas('canvas');
-        console.log(canvas, "canvas name")
-        var imageurl = "assets/img/NML_template.png";
-        console.log(imageurl, "url")
-        canvas.setBackgroundImage(imageurl, canvas.renderAll.bind(canvas), {
-          scaleX: "1",
-          scaleY: "1"
-        });
-
-        //do something
+        this.url = "assets/img/NML_template.png"
+        this.addBackOnCanvas(this.url)
         break;
       }
       case "ne": {
-        var canvas = new fabric.Canvas('canvas');
-        console.log(canvas, "canvas name")
-        var imageurl = "assets/img/NE_template.png";
-        console.log(imageurl, "url")
-        canvas.setBackgroundImage(imageurl, canvas.renderAll.bind(canvas), {
-          scaleX: "1",
-          scaleY: "1"
-        });
-        //do something
+        this.url = "assets/img/NE_template.png"
+        this.addBackOnCanvas(this.url)
         break;
       }
       case "nna": {
-        var canvas = new fabric.Canvas('canvas');
-        console.log(canvas, "canvas name")
-        var imageurl = "assets/img/NNA_template.png";
-        console.log(imageurl, "url")
-        canvas.setBackgroundImage(imageurl, canvas.renderAll.bind(canvas), {
-          scaleX: "1",
-          scaleY: "1"
-        });
-        //do something
+        this.url = "assets/img/NNA_template.png"
+        this.addBackOnCanvas(this.url)
         break;
       }
     }

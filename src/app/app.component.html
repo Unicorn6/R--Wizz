@@ -41,8 +41,8 @@
 
   </div>
 
-  <div class="row">
-    <div class="col-lg-3">
+  <div class="row justify-content-between">
+    <div class="col-lg-3 p-0">
       <!-- <div class="card">
                 <div class="card-header">Size</div>
                 <div class="card-body">
@@ -89,7 +89,7 @@
         <div class="card-header">
           Add text
         </div>
-        <div class="card-body">
+        <div class="card-body p-0">
           <div class="input-group">
             <input type="text" class="form-control" [(ngModel)]="textString">
             <div class="input-group-append">
@@ -113,18 +113,18 @@
           <a data-toggle="modal" data-target="#barChart" class="btn"> <i class="fa fa-bar-chart zoomImg"
               aria-hidden="true"></i><span class="m-2">Bar</span></a>
           <!-- </button> -->
-          <a data-toggle="modal" data-target="#barChart" class="btn"> <i class="fa fa-bar-chart zoomImg"
+          <a data-toggle="modal" data-target="#horizontalBarChart" class="btn"> <i class="fa fa-bar-chart zoomImg"
               aria-hidden="true"></i><span class="m-2">Horizontal Bar</span></a>
-          <a data-toggle="modal" data-target="#barChart" class="btn"> <i class="fa fa-bar-chart zoomImg"
+          <a data-toggle="modal" data-target="#stackedBarChart" class="btn"> <i class="fa fa-bar-chart zoomImg"
               aria-hidden="true"></i><span class="m-2">Stacked Bar</span></a>
-          <a data-toggle="modal" data-target="#barChart" class="btn"> <i class="fa fa-bar-chart zoomImg"
+          <a data-toggle="modal" data-target="#groupedBarChart" class="btn"> <i class="fa fa-bar-chart zoomImg"
               aria-hidden="true"></i><span class="m-2">Grouped Bar</span></a>
           <!-- <button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#pieChart"> -->
 
           <!-- </button> -->
-          <a data-toggle="modal" data-target="#barChart" class="btn"> <i class="fa fa-area-chart zoomImg"
+          <a data-toggle="modal" data-target="#areaChart" class="btn"> <i class="fa fa-bar-chart zoomImg"
               aria-hidden="true"></i><span class="m-2">Area</span></a>
-          <a data-toggle="modal" data-target="#barChart" class="btn"> <i class="fa fa-bar-chart zoomImg"
+          <a data-toggle="modal" data-target="#mixedChart" class="btn"> <i class="fa fa-bar-chart zoomImg"
               aria-hidden="true"></i><span class="m-2">Mixed</span></a>
           <a data-toggle="modal" data-target="#table" class="btn"> <i class="fa fa-table zoomImg"
               aria-hidden="true"></i><span class="m-2">Table</span></a>
@@ -170,7 +170,7 @@
                       </div>
                       <label>y-axis label</label>
                       <div class="input-group">
-                        <input type="text" class="form-control"[(ngModel)]="barYlabel">
+                        <input type="text" class="form-control" [(ngModel)]="barYlabel">
                       </div>
                       <!-- <label>Values</label>
                       <div class="input-group">
@@ -204,6 +204,312 @@
             </div>
           </div>
 
+          <!-- Horizontal Bar Chart Modal -->
+          <div class="modal" id="horizontalBarChart">
+            <div class="modal-dialog">
+              <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Horizontal Bar</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <div class="form-row">
+                    <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
+                      <h4>Select attributes</h4>
+
+                      <label>Title</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" [(ngModel)]="horizontalBarTitle">
+                      </div>
+                      <label>x-axis label</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" [(ngModel)]="horizontalXAxis">
+                      </div>
+                      <label>y-axis label</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" [(ngModel)]="horizontalYAxis">
+                      </div>
+                      <!-- <label>Values</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div> -->
+                      <label>Colors</label>
+                      <div class="input-group colorPickerClass">
+                        <!-- <input type="text" class="form-control"> -->
+                        <input type="text" class="form-control" [cpPosition]="'bottom'"
+                          [(colorPicker)]="horizontalColor" [style.background]="horizontalColor"
+                          [value]="horizontalColor" (colorPickerChange)="setFill()">
+                      </div>
+                      <button type="button" class=" mt-4 btn btn-danger float-right"
+                        (click)="getHorizontalBarChart()">Preview</button>
+                    </div>
+
+                    <div class="col-8 form-group pl-2 pr-4">
+                      <h4>Preview</h4>
+                      <canvas id="previewCanvas-horizontalBarChart" style="width:100%;height:85%"></canvas>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+
+                  <button type="button" class="btn btn-danger" data-dismiss="modal"
+                    (click)="getImage('previewCanvas-horizontalBarChart')">Save</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Stacked Bar Chart Modal -->
+          <div class="modal" id="stackedBarChart">
+            <div class="modal-dialog">
+              <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Stacked Bar</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <div class="form-row">
+                    <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
+                      <h4>Select attributes</h4>
+
+                      <label>Title</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <label>x-axis label</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <label>y-axis label</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <!-- <label>Values</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div> -->
+                      <label>Colors</label>
+                      <div class="input-group colorPickerClass">
+                        <!-- <input type="text" class="form-control"> -->
+                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="props.fill"
+                          [style.background]="props.fill" [value]="props.fill" (colorPickerChange)="setFill()">
+                      </div>
+                      <button type="button" class=" mt-4 btn btn-danger float-right"
+                        (click)="getBarChart()">Preview</button>
+                    </div>
+
+                    <div class="col-8 form-group pl-2 pr-4">
+                      <h4>Preview</h4>
+                      <canvas id="previewCanvas-stackedBarChart" style="width:100%;height:85%"></canvas>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+
+                  <button type="button" class="btn btn-danger" data-dismiss="modal"
+                    (click)="getImage('previewCanvas-stackedBarChart')">Save</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Grouped Bar Chart Modal -->
+          <div class="modal" id="groupedBarChart">
+            <div class="modal-dialog">
+              <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Grouped Bar</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <div class="form-row">
+                    <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
+                      <h4>Select attributes</h4>
+
+                      <label>Title</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <label>x-axis label</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <label>y-axis label</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <!-- <label>Values</label>
+                                  <div class="input-group">
+                                    <input type="text" class="form-control">
+                                  </div> -->
+                      <label>Colors</label>
+                      <div class="input-group colorPickerClass">
+                        <!-- <input type="text" class="form-control"> -->
+                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="props.fill"
+                          [style.background]="props.fill" [value]="props.fill" (colorPickerChange)="setFill()">
+                      </div>
+                      <button type="button" class=" mt-4 btn btn-danger float-right"
+                        (click)="getBarChart()">Preview</button>
+                    </div>
+
+                    <div class="col-8 form-group pl-2 pr-4">
+                      <h4>Preview</h4>
+                      <canvas id="previewCanvas-groupedBarChart" style="width:100%;height:85%"></canvas>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+
+                  <button type="button" class="btn btn-danger" data-dismiss="modal"
+                    (click)="getImage('previewCanvas-groupedBarChart')">Save</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Area Chart Modal -->
+          <div class="modal" id="areaChart">
+            <div class="modal-dialog">
+              <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Area Chart</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <div class="form-row">
+                    <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
+                      <h4>Select attributes</h4>
+
+                      <label>Title</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <label>x-axis label</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <label>y-axis label</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <!-- <label>Values</label>
+                                              <div class="input-group">
+                                                <input type="text" class="form-control">
+                                              </div> -->
+                      <label>Colors</label>
+                      <div class="input-group colorPickerClass">
+                        <!-- <input type="text" class="form-control"> -->
+                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="props.fill"
+                          [style.background]="props.fill" [value]="props.fill" (colorPickerChange)="setFill()">
+                      </div>
+                      <button type="button" class=" mt-4 btn btn-danger float-right"
+                        (click)="getBarChart()">Preview</button>
+                    </div>
+
+                    <div class="col-8 form-group pl-2 pr-4">
+                      <h4>Preview</h4>
+                      <canvas id="previewCanvas-areaChart" style="width:100%;height:85%"></canvas>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+
+                  <button type="button" class="btn btn-danger" data-dismiss="modal"
+                    (click)="getImage('previewCanvas-areaChart')">Save</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Mixed Chart Modal -->
+          <div class="modal" id="mixedChart">
+            <div class="modal-dialog">
+              <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Mixed Chart</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <div class="form-row">
+                    <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
+                      <h4>Select attributes</h4>
+
+                      <label>Title</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <label>x-axis label</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <label>y-axis label</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <!-- <label>Values</label>
+                                    <div class="input-group">
+                                      <input type="text" class="form-control">
+                                    </div> -->
+                      <label>Colors</label>
+                      <div class="input-group colorPickerClass">
+                        <!-- <input type="text" class="form-control"> -->
+                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="props.fill"
+                          [style.background]="props.fill" [value]="props.fill" (colorPickerChange)="setFill()">
+                      </div>
+                      <button type="button" class=" mt-4 btn btn-danger float-right"
+                        (click)="getBarChart()">Preview</button>
+                    </div>
+
+                    <div class="col-8 form-group pl-2 pr-4">
+                      <h4>Preview</h4>
+                      <canvas id="previewCanvas-mixedChart" style="width:100%;height:85%"></canvas>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+
+                  <button type="button" class="btn btn-danger" data-dismiss="modal"
+                    (click)="getImage('previewCanvas-mixedChart')">Save</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
           <!-- Pie Chart Modal -->
           <div class="modal" id="pieChart">
             <div class="modal-dialog">
@@ -211,7 +517,7 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                  <h4 class="modal-title">Pie</h4>
+                  <h4 class="modal-title">Pie Chart</h4>
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
@@ -269,51 +575,51 @@
           <!-----Table      -->
 
           <div class="modal" id="table">
-              <div class="modal-dialog">
-                <div class="modal-content">
-  
-                  <!-- Modal Header -->
-                  <div class="modal-header">
-                    <h4 class="modal-title">Pie</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  </div>
-  
-                  <!-- Modal body -->
-                  <div class="modal-body">
-                    <div class="form-row">
-                      <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
-                        <h4>Select attributes</h4>
-  
-                        <label>Title</label>
-                        <div class="input-group">
-                          <input type="text" class="form-control" [(ngModel)]="tableTitle">
-                        </div>
-                        <label>Dummy Data</label>
-                        <div class="input-group">
-                          <input type="text" class="form-control" [(ngModel)]="tableData">
-                        </div>
-                        
-                        <button type="button" class=" mt-4 btn btn-danger float-right"
-                          (click)="getTable()">Preview</button>
+            <div class="modal-dialog">
+              <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Pie</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <div class="form-row">
+                    <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
+                      <h4>Select attributes</h4>
+
+                      <label>Title</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" [(ngModel)]="tableTitle">
                       </div>
-  
-                      <div class="col-8 form-group pl-2 pr-4">
-                        <h4>Preview</h4>
-                        <canvas id="previewCanvas-table" style="width:100%;height:85%"></canvas>
+                      <label>Dummy Data</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" [(ngModel)]="tableData">
                       </div>
+
+                      <button type="button" class=" mt-4 btn btn-danger float-right"
+                        (click)="getTable()">Preview</button>
+                    </div>
+
+                    <div class="col-8 form-group pl-2 pr-4">
+                      <h4>Preview</h4>
+                      <canvas id="previewCanvas-table" style="width:100%;height:85%"></canvas>
                     </div>
                   </div>
-  
-                  <!-- Modal footer -->
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal"
-                      (click)="getImage('previewCanvas-table')">Save</button>
-                  </div>
-  
                 </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal"
+                    (click)="getImage('previewCanvas-table')">Save</button>
+                </div>
+
               </div>
             </div>
-  
+          </div>
+
 
 
 
@@ -327,7 +633,7 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                  <h4 class="modal-title">Line</h4>
+                  <h4 class="modal-title">Line </h4>
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
@@ -379,6 +685,183 @@
             </div>
           </div>
 
+          <!-- Table Chart Modal -->
+          <div class="modal" id="tableChart">
+            <div class="modal-dialog">
+              <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Table</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <div class="form-row">
+                    <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
+                      <h4>Select attributes</h4>
+
+                      <label>Title</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <label>x-axis label</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <label>y-axis label</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <label>Color</label>
+                      <div class="input-group colorPickerClass">
+                        <!-- <input type="text" class="form-control"> -->
+                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="props.fill"
+                          [style.background]="props.fill" [value]="props.fill" (colorPickerChange)="setFill()">
+                      </div>
+                      <!-- <label>Values</label>
+                        <div class="input-group">
+                          <input type="text" class="form-control">
+                        </div> -->
+                      <button type="button" class=" mt-4 btn btn-danger float-right"
+                        (click)="getBarChart()">Preview</button>
+                    </div>
+
+                    <div class="col-8 form-group pl-2 pr-4">
+                      <h4>Preview</h4>
+                      <canvas id="previewCanvas-linechart" style="width:100%;height:85%"></canvas>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Save</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Filter Modal -->
+          <div class="modal" id="filterChart">
+            <div class="modal-dialog">
+              <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Filter</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <div class="form-row">
+                    <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
+                      <h4>Select attributes</h4>
+
+                      <label>Title</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <label>x-axis label</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <label>y-axis label</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <label>Color</label>
+                      <div class="input-group colorPickerClass">
+                        <!-- <input type="text" class="form-control"> -->
+                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="props.fill"
+                          [style.background]="props.fill" [value]="props.fill" (colorPickerChange)="setFill()">
+                      </div>
+                      <!-- <label>Values</label>
+                        <div class="input-group">
+                          <input type="text" class="form-control">
+                        </div> -->
+                      <button type="button" class=" mt-4 btn btn-danger float-right"
+                        (click)="getBarChart()">Preview</button>
+                    </div>
+
+                    <div class="col-8 form-group pl-2 pr-4">
+                      <h4>Preview</h4>
+                      <canvas id="previewCanvas-linechart" style="width:100%;height:85%"></canvas>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Save</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Date Filter Modal -->
+          <div class="modal" id="dateChart">
+            <div class="modal-dialog">
+              <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Date Filter</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <div class="form-row">
+                    <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
+                      <h4>Select attributes</h4>
+
+                      <label>Title</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <label>x-axis label</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <label>y-axis label</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div>
+                      <label>Color</label>
+                      <div class="input-group colorPickerClass">
+                        <!-- <input type="text" class="form-control"> -->
+                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="props.fill"
+                          [style.background]="props.fill" [value]="props.fill" (colorPickerChange)="setFill()">
+                      </div>
+                      <!-- <label>Values</label>
+                        <div class="input-group">
+                          <input type="text" class="form-control">
+                        </div> -->
+                      <button type="button" class=" mt-4 btn btn-danger float-right"
+                        (click)="getBarChart()">Preview</button>
+                    </div>
+
+                    <div class="col-8 form-group pl-2 pr-4">
+                      <h4>Preview</h4>
+                      <canvas id="previewCanvas-linechart" style="width:100%;height:85%"></canvas>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Save</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
           <!-- Doughnut Chart Modal -->
           <div class="modal" id="doughnutChart">
             <div class="modal-dialog">
@@ -386,7 +869,7 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                  <h4 class="modal-title">Doughnut</h4>
+                  <h4 class="modal-title">Doughnut </h4>
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
@@ -437,46 +920,46 @@
 
           <!-- Filter Modal -->
           <div class="modal" id="filter">
-              <div class="modal-dialog">
-                <div class="modal-content">
-  
-                  <!-- Modal Header -->
-                  <div class="modal-header">
-                    <h4 class="modal-title">filter</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  </div>
-  
-                  <!-- Modal body -->
-                  <div class="modal-body">
-                    <div class="form-row">
-                      <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
-                        <h4>Select attributes</h4>
-  
-                        <label>Title</label>
-                        <div class="input-group">
-                          <input type="text" class="form-control" [(ngModel)]="filterName">
-                        </div>
+            <div class="modal-dialog">
+              <div class="modal-content">
 
-                        <button type="button" class=" mt-4 btn btn-danger float-right"
-                          (click)="getFilter()">Preview</button>
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">filter</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <div class="form-row">
+                    <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
+                      <h4>Select attributes</h4>
+
+                      <label>Title</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" [(ngModel)]="filterName">
                       </div>
-  
-                      <div class="col-8 form-group pl-2 pr-4">
-                        <h4>Preview</h4>
-                        <canvas id="previewCanvas-filter" style="width:100%;height:85%"></canvas>
-                      </div>
+
+                      <button type="button" class=" mt-4 btn btn-danger float-right"
+                        (click)="getFilter()">Preview</button>
+                    </div>
+
+                    <div class="col-8 form-group pl-2 pr-4">
+                      <h4>Preview</h4>
+                      <canvas id="previewCanvas-filter" style="width:100%;height:85%"></canvas>
                     </div>
                   </div>
-  
-                  <!-- Modal footer -->
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal"
-                      (click)="getImage('previewCanvas-filter')">Save</button>
-                  </div>
-  
                 </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal"
+                    (click)="getImage('previewCanvas-filter')">Save</button>
+                </div>
+
               </div>
             </div>
+          </div>
 
         </div>
       </div>
@@ -486,7 +969,7 @@
       <div class="card">
         <div class="card-header">Add Images</div>
         <div class="card-body max-height" id="imagePreview">
-          <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/pikachu.svg">
+          <!-- <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/pikachu.svg">
           <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/squirtle.svg">
           <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/bullbasaur.svg">
           <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/charmander.svg">
@@ -503,7 +986,7 @@
           <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/abra.svg">
           <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/snorlax.svg">
           <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/zubat.svg">
-          <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/test.jpg">
+          <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/test.jpg"> -->
         </div>
       </div>
       <br />
@@ -543,13 +1026,13 @@
     </div>
 
     <!-- Canvas -->
-    <div class="col-lg-6">
+    <div class="">
       <!-- <div class="card" style="height: 100vh;"> -->
       <canvas id="canvas" class=""></canvas>
       <!-- </div> -->
     </div>
 
-    <div class="col-lg-3">
+    <div class="col-lg-3 p-0">
 
       <!-- Options -->
       <div class="card">
