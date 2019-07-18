@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Chart} from 'chart.js';
+import { Chart } from 'chart.js';
 
 import 'fabric';
+import { Labels } from '../models/label';
 declare const fabric: any;
 
 @Component({
@@ -10,7 +11,13 @@ declare const fabric: any;
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  // selectedLanguage = 1;
+  // google: any;
+  // languageContents: any;
+  // endPoint: String = "lang.json";
+  label: any;
 
   private canvas: any;
   private props: any = {
@@ -28,7 +35,7 @@ export class AppComponent {
     fontFamily: null,
     TextDecoration: ''
   };
-  
+
   private textString: string;
   private url: string = '';
   private size: any = {
@@ -47,7 +54,9 @@ export class AppComponent {
   constructor() { }
 
   ngOnInit() {
-    this.imageNumber=0;
+    this.imageNumber = 0;
+    // this.getContents();
+    this.label = new Labels();
     //setup front side canvas
     this.canvas = new fabric.Canvas('canvas', {
       hoverCursor: 'pointer',
@@ -114,84 +123,84 @@ export class AppComponent {
 
   }
 
-  getImage(idname : any){
+  getImage(idname: any) {
     this.imageNumber++;
-    var imageId='myImage'+this.imageNumber;
-    
-    
+    var imageId = 'myImage' + this.imageNumber;
+
+
     var canvasPreview = document.getElementById(idname) as HTMLCanvasElement;
-    
+
     var newImg = document.createElement('img');
     newImg.id = imageId;
     //var newImg = new Image();
-    newImg.width=150;
-    newImg.height=150;
-    newImg.className="images-item";
+    newImg.width = 150;
+    newImg.height = 150;
+    newImg.className = "images-item";
     // imageId.addEventListener("click", (e:Event) => this.getImgPolaroid(newImg));
     //newImg.onclick=this.getImgPolaroid;
-    newImg.draggable=true;
-    newImg.src=canvasPreview.toDataURL("image/png", 1.0).replace("image/png", "image/octet-stream");
-    
+    newImg.draggable = true;
+    newImg.src = canvasPreview.toDataURL("image/png", 1.0).replace("image/png", "image/octet-stream");
+
     console.log(newImg.src);
-  //  this.getImgPolaroid(newImg);
+    //  this.getImgPolaroid(newImg);
 
     var temp2 = document.getElementById("imagePreview").appendChild(newImg);
     var temp = document.getElementById(imageId);
-    temp2.addEventListener("click", (e:Event) => this.getImgPolaroid(newImg));
-   
-  
+    temp2.addEventListener("click", (e: Event) => this.getImgPolaroid(newImg));
 
 
-}
-
-/*-------------------------------------Charts-------------------------------------------------*/
-
-getPieChart(){
-  
- 
-  new Chart(document.getElementById("previewCanvas-piechart"), {
-     type: 'pie',
-     data: {
-       labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
-       datasets: [{
-         label: "Population (millions)",
-         backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-         data: [2478,5267,734,784,433]
-       }]
-     },
-     options: {
-       title: {
-         display: true,
-         text: 'Predicted world population (millions) in 2050'
-       }
-     }
- });
- }
 
 
-getDoughnutChart(){
-	
-	new Chart(document.getElementById("previewCanvas-doughnutchart"), {
-    type: 'doughnut',
-    data: {
-      labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
-      datasets: [
-        {
+  }
+
+  /*-------------------------------------Charts-------------------------------------------------*/
+
+  getPieChart() {
+
+
+    new Chart(document.getElementById("previewCanvas-piechart"), {
+      type: 'pie',
+      data: {
+        labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+        datasets: [{
           label: "Population (millions)",
-          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-          data: [2478,5267,734,784,433]
+          backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+          data: [2478, 5267, 734, 784, 433]
+        }]
+      },
+      options: {
+        title: {
+          display: true,
+          text: 'Predicted world population (millions) in 2050'
         }
-      ]
-    },
-    options: {
-      title: {
-        display: true,
-        text: 'Predicted world population (millions) in 2050'
       }
-    }
-});
-}
-  
+    });
+  }
+
+
+  getDoughnutChart() {
+
+    new Chart(document.getElementById("previewCanvas-doughnutchart"), {
+      type: 'doughnut',
+      data: {
+        labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+        datasets: [
+          {
+            label: "Population (millions)",
+            backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+            data: [2478, 5267, 734, 784, 433]
+          }
+        ]
+      },
+      options: {
+        title: {
+          display: true,
+          text: 'Predicted world population (millions) in 2050'
+        }
+      }
+    });
+  }
+
 
 
 
@@ -200,73 +209,73 @@ getDoughnutChart(){
 
   getBarChart() {
     console.log("Inside BarCHart()_");
-    var yname="Population";
-    var xname="Country";
-    var heading_name="Bar Graph";
+    var yname = "Population";
+    var xname = "Country";
+    var heading_name = "Bar Graph";
     new Chart(document.getElementById("previewCanvas-barchart"), {
-        type: 'bar',
-        data: {
-          labels: ["", "", "", "", "","","",""],
-          
-          datasets: [
-            {
-              label: "Population (millions)",
-              backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#c64850","#3e95cd", "#8e5ea2"],
-              data: [3078,5267,3734,3484,4433,3567,4673,3692]
-            }
-          ]
-        },
-        options: {
-          scales: {
-        yAxes: [{
-          scaleLabel: {
-            display: true,
-            fontSize:14,
-            fontStyle: 'bold',
-            labelString: yname,
-          },
-          gridLines: {
-                    display:false,
-                    lineWidth: 1,
-                    color: "#131c2b"
-                }   
-        }],
-        xAxes: [{
-                
-                categoryPercentage: 1.0,
-                barPercentage: 1.0,
-                barThickness: 36,
-                maxBarThickness: 40,
-                minBarLength:1,
-                gridLines: {
-                    display: false,
-                    lineWidth: 1,
-                    color: "#131c2b"
-                },
-                scaleLabel:{
-                    fontSize:14,
-                    fontStyle: 'bold',
-                    display:true,
-                    labelString: xname
-    
-                },
-                
-            }]
-        
-    
-      }     ,
-          legend: { display: false },
-          title: {
-            fontSize: 18,
-            fontStyle: 'bold',
-            display: true,
-            text:heading_name
-          }
-        }
-    });
-}
+      type: 'bar',
+      data: {
+        labels: ["", "", "", "", "", "", "", ""],
 
-/*-------------------------Charts End-----------------------------*/
+        datasets: [
+          {
+            label: "Population (millions)",
+            backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", "#c64850", "#3e95cd", "#8e5ea2"],
+            data: [3078, 5267, 3734, 3484, 4433, 3567, 4673, 3692]
+          }
+        ]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            scaleLabel: {
+              display: true,
+              fontSize: 14,
+              fontStyle: 'bold',
+              labelString: yname,
+            },
+            gridLines: {
+              display: false,
+              lineWidth: 1,
+              color: "#131c2b"
+            }
+          }],
+          xAxes: [{
+
+            categoryPercentage: 1.0,
+            barPercentage: 1.0,
+            barThickness: 36,
+            maxBarThickness: 40,
+            minBarLength: 1,
+            gridLines: {
+              display: false,
+              lineWidth: 1,
+              color: "#131c2b"
+            },
+            scaleLabel: {
+              fontSize: 14,
+              fontStyle: 'bold',
+              display: true,
+              labelString: xname
+
+            },
+
+          }]
+
+
+        },
+        legend: { display: false },
+        title: {
+          fontSize: 18,
+          fontStyle: 'bold',
+          display: true,
+          text: heading_name
+        }
+      }
+    });
+  }
+
+  /*-------------------------Charts End-----------------------------*/
 
   /*------------------------Block elements------------------------*/
 
@@ -289,6 +298,7 @@ getDoughnutChart(){
 
   addText() {
     let textString = this.textString;
+    console.log(textString);
     let text = new fabric.IText(textString, {
       left: 10,
       top: 10,
@@ -310,7 +320,7 @@ getDoughnutChart(){
 
   getImgPolaroid(el) {
     console.log(event);
-   // let el = event.target;
+    // let el = event.target;
     fabric.Image.fromURL(el.getAttribute("src"), (image) => {
       image.set({
         left: 10,
@@ -325,7 +335,7 @@ getDoughnutChart(){
       image.setHeight(150);
       image.set
       console.log(this);
-      this.extend(image,Math.floor(Math.random() * 999999) + 1);
+      this.extend(image, Math.floor(Math.random() * 999999) + 1);
       this.canvas.add(image);
       this.selectItemAfterAdded(image);
     });
@@ -707,7 +717,7 @@ getDoughnutChart(){
       image.src = this.canvas.toDataURL("image/png", 1.0).replace("image/png", "image/octet-stream");
       var link = document.createElement('a');
       link.download = "my-image.png";
-      link.href= image.src;
+      link.href = image.src;
       link.click();
     }
   }

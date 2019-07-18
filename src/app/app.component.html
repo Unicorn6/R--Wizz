@@ -3,14 +3,23 @@
   <div class="row">
 
     <!-- Title -->
-    <div class="col-xl-12 main-title">
+    <!-- <div class="col-xl-12 main-title">
       <h4>JarWiz</h4>
-    </div>
+    </div> -->
 
     <!-- Actions -->
-    <div class="col-xl-12">
+    <div class="col-xl-12 my-2">
       <div class="row">
-        <div class="col-xl-12 text-right">
+
+        <!-- Title -->
+        <div class="col-xl-6">
+          <h4>JarWiz</h4>
+          <!-- <select [(value)]="selectedLanguage">
+            <option value="1">English</option>
+            <option value="2">Japan</option>
+          </select> -->
+        </div>
+        <div class="col-xl-6 text-right">
           <button data-toggle="tooltip" data-placement="bottom" title="Export to image" type="button"
             class="btn btn-primary" (click)="rasterize();">
             <i class="fa fa-download" aria-hidden="true"></i> Export to image</button>
@@ -31,7 +40,6 @@
     </div>
 
   </div>
-  <hr>
 
   <div class="row">
     <div class="col-lg-3">
@@ -61,9 +69,26 @@
                 </div>
             </div> -->
 
+      <div class="card">
+        <div class="card-header">Select Region</div>
+        <div class="card-body">
+          <div class="">
+            <select name="region" class="btn btn-primary">
+              <option class="">Any</option>
+              <option class="">Nissan Motor Limited</option>
+              <option class="">Nissan Europe</option>
+              <option class="">Nissan NNA</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <br />
+
       <!-- Add Text -->
       <div class="card">
-        <div class="card-header">Add text</div>
+        <div class="card-header">
+          Add text
+        </div>
         <div class="card-body">
           <div class="input-group">
             <input type="text" class="form-control" [(ngModel)]="textString">
@@ -114,28 +139,30 @@
                     <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
                       <h4>Select attributes</h4>
 
-                      <label>x-axis</label>
-                      <div class="input-group">
-                        <input type="text" class="form-control">
-                      </div>
-                      <label>y-axis</label>
-                      <div class="input-group">
-                        <input type="text" class="form-control">
-                      </div>
                       <label>Title</label>
                       <div class="input-group">
                         <input type="text" class="form-control">
                       </div>
-                      <label>Values</label>
+                      <label>x-axis label</label>
                       <div class="input-group">
                         <input type="text" class="form-control">
                       </div>
-                      <label>Colors</label>
+                      <label>y-axis label</label>
                       <div class="input-group">
                         <input type="text" class="form-control">
+                      </div>
+                      <!-- <label>Values</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control">
+                      </div> -->
+                      <label>Colors</label>
+                      <div class="input-group colorPickerClass">
+                        <!-- <input type="text" class="form-control"> -->
+                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="props.fill"
+                          [style.background]="props.fill" [value]="props.fill" (colorPickerChange)="setFill()">
                       </div>
                       <button type="button" class=" mt-4 btn btn-danger float-right"
-                       (click)="getBarChart()">Preview</button>
+                        (click)="getBarChart()">Preview</button>
                     </div>
 
                     <div class="col-8 form-group pl-2 pr-4">
@@ -147,8 +174,9 @@
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-             
-                  <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="getImage('previewCanvas-barchart')">Save</button>
+
+                  <button type="button" class="btn btn-danger" data-dismiss="modal"
+                    (click)="getImage('previewCanvas-barchart')">Save</button>
                 </div>
 
               </div>
@@ -180,16 +208,18 @@
                       <div class="input-group">
                         <input type="text" class="form-control">
                       </div>
-                      <label>Values</label>
+                      <!-- <label>Values</label>
                       <div class="input-group">
                         <input type="text" class="form-control">
-                      </div>
+                      </div> -->
                       <label>Colors</label>
-                      <div class="input-group">
-                        <input type="text" class="form-control">
+                      <div class="input-group colorPickerClass">
+                        <!-- <input type="text" class="form-control"> -->
+                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="props.fill"
+                          [style.background]="props.fill" [value]="props.fill" (colorPickerChange)="setFill()">
                       </div>
                       <button type="button" class=" mt-4 btn btn-danger float-right"
-                       (click)="getPieChart()">Preview</button>
+                        (click)="getPieChart()">Preview</button>
                     </div>
 
                     <div class="col-8 form-group pl-2 pr-4">
@@ -201,7 +231,8 @@
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="getImage('previewCanvas-piechart')">Save</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal"
+                    (click)="getImage('previewCanvas-piechart')">Save</button>
                 </div>
 
               </div>
@@ -229,24 +260,26 @@
                       <div class="input-group">
                         <input type="text" class="form-control">
                       </div>
-                      <label>x-axis</label>
+                      <label>x-axis label</label>
                       <div class="input-group">
                         <input type="text" class="form-control">
                       </div>
-                      <label>y-axis</label>
+                      <label>y-axis label</label>
                       <div class="input-group">
                         <input type="text" class="form-control">
                       </div>
                       <label>Color</label>
+                      <div class="input-group colorPickerClass">
+                        <!-- <input type="text" class="form-control"> -->
+                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="props.fill"
+                          [style.background]="props.fill" [value]="props.fill" (colorPickerChange)="setFill()">
+                      </div>
+                      <!-- <label>Values</label>
                       <div class="input-group">
                         <input type="text" class="form-control">
-                      </div>
-                      <label>Values</label>
-                      <div class="input-group">
-                        <input type="text" class="form-control">
-                      </div>
+                      </div> -->
                       <button type="button" class=" mt-4 btn btn-danger float-right"
-                       (click)="getBarChart()">Preview</button>
+                        (click)="getBarChart()">Preview</button>
                     </div>
 
                     <div class="col-8 form-group pl-2 pr-4">
@@ -290,16 +323,18 @@
                       <div class="input-group">
                         <input type="text" class="form-control">
                       </div>
-                      <label>Values</label>
+                      <!-- <label>Values</label>
                       <div class="input-group">
                         <input type="text" class="form-control">
-                      </div>
+                      </div> -->
                       <label>Colors</label>
-                      <div class="input-group">
-                        <input type="text" class="form-control">
+                      <div class="input-group colorPickerClass">
+                        <!-- <input type="text" class="form-control"> -->
+                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="props.fill"
+                          [style.background]="props.fill" [value]="props.fill" (colorPickerChange)="setFill()">
                       </div>
                       <button type="button" class=" mt-4 btn btn-danger float-right"
-                       (click)="getDoughnutChart()">Preview</button>
+                        (click)="getDoughnutChart()">Preview</button>
                     </div>
 
                     <div class="col-8 form-group pl-2 pr-4">
@@ -311,7 +346,8 @@
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="getImage('previewCanvas-doughnutchart')">Save</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal"
+                    (click)="getImage('previewCanvas-doughnutchart')">Save</button>
                 </div>
 
               </div>

@@ -2,6 +2,41 @@
     border: 2px dashed #cccccc;
   }
 
+  .colorPickerClass {
+    width: 50%;
+  }
+
+  .btn-danger {
+    background-color: #C3002F;
+    border-color: #C3002F;
+  }
+
+  .btn-primary {
+    background-color: steelblue;
+    border-color: steelblue;
+  }
+
+  .btn-primary:hover {
+    background-color: steelblue !important;
+    border-color: steelblue !important;
+  }
+
+  .btn-outline-danger:hover {
+    background-color: #FF7851;
+  }
+
+  .btn-outline-primary {
+    border-color: steelblue;
+  }
+
+  .btn-outline-primary:hover {
+    background-color: steelblue;
+  }
+
+  .btn-outline-primary:disabled {
+    color: #78C2AD;
+  }
+
   .container {
     max-width: 100vw;
   }

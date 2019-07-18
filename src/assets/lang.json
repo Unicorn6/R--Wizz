@@ -1,0 +1,33 @@
+{
+  "languageContent": [{
+      "type": "english",
+      "id": "1",
+      "message": "Aravind1"
+    },
+    {
+      "type": "Japan",
+      "id": "2",
+      "message": "Nihar1"
+    },
+    {
+      "type": "english",
+      "id": "1",
+      "message": "Aravind2"
+    },
+    {
+      "type": "Japan",
+      "id": "2",
+      "message": "Nihar2"
+    },
+    {
+      "type": "english",
+      "id": "1",
+      "message": "Aravind3"
+    },
+    {
+      "type": "Japan",
+      "id": "2",
+      "message": "Nihar3"
+    }
+  ]
+}
