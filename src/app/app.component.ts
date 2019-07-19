@@ -310,6 +310,9 @@ getDate(){
     filterimg.width=100;
     filterimg.height=60;
      filterimg.src = "assets/img/filter(1).PNG";
+
+
+     
     //filterimg.src = "assets/img/date2.png";
 
     ctx.font = "bold 35px sans-serif";
