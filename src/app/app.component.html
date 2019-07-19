@@ -130,7 +130,7 @@
               aria-hidden="true"></i><span class="m-2">Table</span></a>
           <a data-toggle="modal" data-target="#filter" class="btn"> <i class="fa fa-bar-chart zoomImg"
               aria-hidden="true"></i><span class="m-2">Filter</span></a>
-          <a data-toggle="modal" data-target="#barChart" class="btn"> <i class="fa fa-calendar zoomImg"
+          <a data-toggle="modal" data-target="#dateChart" class="btn"> <i class="fa fa-calendar zoomImg"
               aria-hidden="true"></i><span class="m-2">Date Filter</span></a>
           <a data-toggle="modal" data-target="#pieChart" class="btn"> <i class="fa fa-pie-chart zoomImg"
               aria-hidden="true"></i><span class="m-2">Pie</span></a>
@@ -285,33 +285,44 @@
 
                       <label>Title</label>
                       <div class="input-group">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" [(ngModel)]="stackTitle">
                       </div>
-                      <label>x-axis label</label>
+                      <label>X Label</label>
                       <div class="input-group">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" [(ngModel)]="stackXAxis">
                       </div>
-                      <label>y-axis label</label>
+                      <label>Y Label</label>
                       <div class="input-group">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" [(ngModel)]="stackYAxis">
                       </div>
-                      <!-- <label>Values</label>
+                      <label>Legend 1</label>
                       <div class="input-group">
-                        <input type="text" class="form-control">
-                      </div> -->
-                      <label>Colors</label>
-                      <div class="input-group colorPickerClass">
-                        <!-- <input type="text" class="form-control"> -->
-                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="props.fill"
-                          [style.background]="props.fill" [value]="props.fill" (colorPickerChange)="setFill()">
+                        <input type="text" class="form-control" [(ngModel)]="stackLegend1">
+                      </div>
+                      <label>Legend 1</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" [(ngModel)]="stackLegend2">
+                      </div>
+
+                      <label>Color 1</label>
+                      <div class="input-group">
+
+                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="stackColor1"
+                          [style.background]="stackColor1" [(ngModel)]="stackColor1" (colorPickerChange)="setFill()">
+                      </div>
+                      <label>Color 2</label>
+                      <div class="input-group">
+
+                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="stackColor2"
+                          [style.background]="stackColor2" [(ngModel)]="stackColor2" (colorPickerChange)="setFill()">
                       </div>
                       <button type="button" class=" mt-4 btn btn-danger float-right"
-                        (click)="getBarChart()">Preview</button>
+                        (click)="getStackedBarChart()">Preview</button>
                     </div>
 
                     <div class="col-8 form-group pl-2 pr-4">
                       <h4>Preview</h4>
-                      <canvas id="previewCanvas-stackedBarChart" style="width:100%;height:85%"></canvas>
+                      <canvas id="previewCanvas-StackedBar" style="width:100%;height:85%"></canvas>
                     </div>
                   </div>
                 </div>
@@ -346,28 +357,39 @@
 
                       <label>Title</label>
                       <div class="input-group">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" [(ngModel)]="stackTitle">
                       </div>
-                      <label>x-axis label</label>
+                      <label>X Label</label>
                       <div class="input-group">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" [(ngModel)]="stackXAxis">
                       </div>
-                      <label>y-axis label</label>
+                      <label>Y Label</label>
                       <div class="input-group">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" [(ngModel)]="stackYAxis">
                       </div>
-                      <!-- <label>Values</label>
-                                  <div class="input-group">
-                                    <input type="text" class="form-control">
-                                  </div> -->
-                      <label>Colors</label>
-                      <div class="input-group colorPickerClass">
-                        <!-- <input type="text" class="form-control"> -->
-                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="props.fill"
-                          [style.background]="props.fill" [value]="props.fill" (colorPickerChange)="setFill()">
+                      <label>Legend 1</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" [(ngModel)]="stackLegend1">
+                      </div>
+                      <label>Legend 1</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" [(ngModel)]="stackLegend2">
+                      </div>
+
+                      <label>Color 1</label>
+                      <div class="input-group">
+
+                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="stackColor1"
+                          [style.background]="stackColor1" [(ngModel)]="stackColor1" (colorPickerChange)="setFill()">
+                      </div>
+                      <label>Color 2</label>
+                      <div class="input-group">
+
+                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="stackColor2"
+                          [style.background]="stackColor2" [(ngModel)]="stackColor2" (colorPickerChange)="setFill()">
                       </div>
                       <button type="button" class=" mt-4 btn btn-danger float-right"
-                        (click)="getBarChart()">Preview</button>
+                        (click)=" getGroupedBarChart()">Preview</button>
                     </div>
 
                     <div class="col-8 form-group pl-2 pr-4">
@@ -400,35 +422,46 @@
                 </div>
 
                 <!-- Modal body -->
-                <div class="modal-body">
+                 <div class="modal-body">
                   <div class="form-row">
                     <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
                       <h4>Select attributes</h4>
 
                       <label>Title</label>
                       <div class="input-group">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" [(ngModel)]="stackTitle">
                       </div>
-                      <label>x-axis label</label>
+                      <label>X Label</label>
                       <div class="input-group">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" [(ngModel)]="stackXAxis">
                       </div>
-                      <label>y-axis label</label>
+                      <label>Y Label</label>
                       <div class="input-group">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" [(ngModel)]="stackYAxis">
                       </div>
-                      <!-- <label>Values</label>
-                                              <div class="input-group">
-                                                <input type="text" class="form-control">
-                                              </div> -->
-                      <label>Colors</label>
-                      <div class="input-group colorPickerClass">
-                        <!-- <input type="text" class="form-control"> -->
-                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="props.fill"
-                          [style.background]="props.fill" [value]="props.fill" (colorPickerChange)="setFill()">
+                      <label>Legend 1</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" [(ngModel)]="stackLegend1">
+                      </div>
+                      <label>Legend 1</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" [(ngModel)]="stackLegend2">
+                      </div>
+
+                      <label>Color 1</label>
+                      <div class="input-group">
+
+                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="stackColor1"
+                          [style.background]="stackColor1" [(ngModel)]="stackColor1" (colorPickerChange)="setFill()">
+                      </div>
+                      <label>Color 2</label>
+                      <div class="input-group">
+
+                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="stackColor2"
+                          [style.background]="stackColor2" [(ngModel)]="stackColor2" (colorPickerChange)="setFill()">
                       </div>
                       <button type="button" class=" mt-4 btn btn-danger float-right"
-                        (click)="getBarChart()">Preview</button>
+                        (click)="getAreaChart()">Preview</button>
                     </div>
 
                     <div class="col-8 form-group pl-2 pr-4">
@@ -460,7 +493,6 @@
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
-                <!-- Modal body -->
                 <div class="modal-body">
                   <div class="form-row">
                     <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
@@ -468,28 +500,39 @@
 
                       <label>Title</label>
                       <div class="input-group">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" [(ngModel)]="stackTitle">
                       </div>
-                      <label>x-axis label</label>
+                      <label>X Label</label>
                       <div class="input-group">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" [(ngModel)]="stackXAxis">
                       </div>
-                      <label>y-axis label</label>
+                      <label>Y Label</label>
                       <div class="input-group">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" [(ngModel)]="stackYAxis">
                       </div>
-                      <!-- <label>Values</label>
-                                    <div class="input-group">
-                                      <input type="text" class="form-control">
-                                    </div> -->
-                      <label>Colors</label>
-                      <div class="input-group colorPickerClass">
-                        <!-- <input type="text" class="form-control"> -->
-                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="props.fill"
-                          [style.background]="props.fill" [value]="props.fill" (colorPickerChange)="setFill()">
+                      <label>Legend 1</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" [(ngModel)]="stackLegend1">
+                      </div>
+                      <label>Legend 1</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" [(ngModel)]="stackLegend2">
+                      </div>
+
+                      <label>Color 1</label>
+                      <div class="input-group">
+
+                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="stackColor1"
+                          [style.background]="stackColor1" [(ngModel)]="stackColor1" (colorPickerChange)="setFill()">
+                      </div>
+                      <label>Color 2</label>
+                      <div class="input-group">
+
+                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="stackColor2"
+                          [style.background]="stackColor2" [(ngModel)]="stackColor2" (colorPickerChange)="setFill()">
                       </div>
                       <button type="button" class=" mt-4 btn btn-danger float-right"
-                        (click)="getBarChart()">Preview</button>
+                        (click)="getMixedChart()">Preview</button>
                     </div>
 
                     <div class="col-8 form-group pl-2 pr-4">
@@ -645,28 +688,43 @@
 
                       <label>Title</label>
                       <div class="input-group">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" [(ngModel)]="stackTitle">
                       </div>
-                      <label>x-axis label</label>
+                      <label>X Label</label>
                       <div class="input-group">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" [(ngModel)]="stackXAxis">
                       </div>
-                      <label>y-axis label</label>
+                      <label>Y Label</label>
                       <div class="input-group">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" [(ngModel)]="stackYAxis">
                       </div>
-                      <label>Color</label>
-                      <div class="input-group colorPickerClass">
-                        <!-- <input type="text" class="form-control"> -->
-                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="props.fill"
-                          [style.background]="props.fill" [value]="props.fill" (colorPickerChange)="setFill()">
+                      <label>Legend 1</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" [(ngModel)]="stackLegend1">
+                      </div>
+                      <label>Legend 1</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" [(ngModel)]="stackLegend2">
+                      </div>
+
+                      <label>Color 1</label>
+                      <div class="input-group">
+
+                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="stackColor1"
+                          [style.background]="stackColor1" [(ngModel)]="stackColor1" (colorPickerChange)="setFill()">
+                      </div>
+                      <label>Color 2</label>
+                      <div class="input-group">
+
+                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="stackColor2"
+                          [style.background]="stackColor2" [(ngModel)]="stackColor2" (colorPickerChange)="setFill()">
                       </div>
                       <!-- <label>Values</label>
                       <div class="input-group">
                         <input type="text" class="form-control">
                       </div> -->
                       <button type="button" class=" mt-4 btn btn-danger float-right"
-                        (click)="getBarChart()">Preview</button>
+                        (click)="getLineChart()">Preview</button>
                     </div>
 
                     <div class="col-8 form-group pl-2 pr-4">
@@ -678,7 +736,7 @@
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Save</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="getImage('previewCanvas-linechart')">Save</button>
                 </div>
 
               </div>
@@ -818,44 +876,21 @@
                 <div class="modal-body">
                   <div class="form-row">
                     <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
-                      <h4>Select attributes</h4>
-
-                      <label>Title</label>
-                      <div class="input-group">
-                        <input type="text" class="form-control">
-                      </div>
-                      <label>x-axis label</label>
-                      <div class="input-group">
-                        <input type="text" class="form-control">
-                      </div>
-                      <label>y-axis label</label>
-                      <div class="input-group">
-                        <input type="text" class="form-control">
-                      </div>
-                      <label>Color</label>
-                      <div class="input-group colorPickerClass">
-                        <!-- <input type="text" class="form-control"> -->
-                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="props.fill"
-                          [style.background]="props.fill" [value]="props.fill" (colorPickerChange)="setFill()">
-                      </div>
-                      <!-- <label>Values</label>
-                        <div class="input-group">
-                          <input type="text" class="form-control">
-                        </div> -->
+                      
                       <button type="button" class=" mt-4 btn btn-danger float-right"
-                        (click)="getBarChart()">Preview</button>
+                        (click)="getDate()">Preview</button>
                     </div>
 
                     <div class="col-8 form-group pl-2 pr-4">
                       <h4>Preview</h4>
-                      <canvas id="previewCanvas-linechart" style="width:100%;height:85%"></canvas>
+                      <canvas id="previewCanvas-date" style="width:100%;height:85%"></canvas>
                     </div>
                   </div>
                 </div>
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Save</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal" (onclick)="getImage('previewCanvas-date')">Save</button>
                 </div>
 
               </div>
@@ -874,29 +909,39 @@
                 </div>
 
                 <!-- Modal body -->
-                <div class="modal-body">
+                 <div class="modal-body">
                   <div class="form-row">
                     <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
                       <h4>Select attributes</h4>
 
                       <label>Title</label>
                       <div class="input-group">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" [(ngModel)]="pieTitle">
                       </div>
-                      <label>Legends</label>
+                      <label>Legend 1</label>
                       <div class="input-group">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" [(ngModel)]="pieLegend1">
                       </div>
-                      <!-- <label>Values</label>
+                      <label>Legend 1</label>
                       <div class="input-group">
-                        <input type="text" class="form-control">
-                      </div> -->
-                      <label>Colors</label>
-                      <div class="input-group colorPickerClass">
-                        <!-- <input type="text" class="form-control"> -->
-                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="props.fill"
-                          [style.background]="props.fill" [value]="props.fill" (colorPickerChange)="setFill()">
+                        <input type="text" class="form-control" [(ngModel)]="pieLegend2">
                       </div>
+
+                      <label>Color 1</label>
+                      <div class="input-group">
+
+                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="pieColor1"
+                          [style.background]="pieColor1" [(ngModel)]="pieColor1" (colorPickerChange)="setFill()">
+                      </div>
+                      <label>Color 2</label>
+                      <div class="input-group">
+
+                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="pieColor2"
+                          [style.background]="pieColor2" [(ngModel)]="pieColor2" (colorPickerChange)="setFill()">
+                      </div>
+
+
+                      
                       <button type="button" class=" mt-4 btn btn-danger float-right"
                         (click)="getDoughnutChart()">Preview</button>
                     </div>

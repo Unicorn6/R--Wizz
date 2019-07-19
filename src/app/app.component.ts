@@ -48,6 +48,16 @@ export class AppComponent implements OnInit {
   private pieColor2;
   private pieLegend1;
   private pieLegend2;
+
+  private stackTitle;
+  private stackColor1;
+  private stackColor2;
+  private stackLegend1;
+  private stackLegend2;
+  private stackXAxis;
+  private stackYAxis;
+
+
   private barTitle;
   private barXlabel;
   private barYlabel;
@@ -66,8 +76,8 @@ export class AppComponent implements OnInit {
   private figureEditor: boolean = false;
   private selected: any;
   private imageNumber;
-  private horizontalXAxis: any;
-  private horizontalYAxis: any;
+  private horizontalXAxis;
+  private horizontalYAxis;
 
   constructor() {
     this.pieTitle = "Pie Chart";
@@ -75,6 +85,14 @@ export class AppComponent implements OnInit {
     this.pieColor2 = "#fb4c55";
     this.pieLegend1 = "NNA";
     this.pieLegend2 = "NML";
+
+    this.stackTitle = "Stack Bar";
+    this.stackColor1 = "#20f7f6";
+    this.stackColor2 = "#fb4c55";
+    this.stackLegend1 = "NNA";
+    this.stackLegend2 = "NML";
+    this.stackXAxis = "Years";
+    this.stackYAxis = "Sales";
 
     this.barTitle ="Bar Chart";
     this.barXlabel="Years";
@@ -91,7 +109,7 @@ export class AppComponent implements OnInit {
     this.horizontalBarTitle = "Horizontal Chart";
     this.horizontalXAxis="Years";
     this.horizontalYAxis="Profit";
-    this.horizontalColor="#64566";
+    this.horizontalColor="#20f7f6";
   }
 
   ngOnInit() {
@@ -249,6 +267,29 @@ getTable(){
 
 
 
+getDate(){
+  //this.resetCanvas('previewCanvas-filter');
+   
+   
+  var canvas = document.getElementById('previewCanvas-date') as HTMLCanvasElement;
+  var ctx = canvas.getContext("2d");
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  var filterimg = new Image();
+  filterimg.width=100;
+  filterimg.height=60;
+  filterimg.src = "assets/img/datefilter.PNG";
+
+  ctx.font = "bold 35px sans-serif";
+ // this.addTextFilter(ctx,this.filterName,10,30,100,60);
+  
+
+  ctx.drawImage(filterimg,5,40);
+  ctx.stroke();
+   
+ }
+
+
+
 
 
 
@@ -356,23 +397,102 @@ getTable(){
     new Chart(document.getElementById("previewCanvas-doughnutchart"), {
       type: 'doughnut',
       data: {
-        labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+        labels: [this.pieLegend1,this.pieLegend2],
         datasets: [
           {
             label: "Population (millions)",
-            backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
-            data: [2478, 5267, 734, 784, 433]
+            backgroundColor: [this.pieColor1,this.pieColor2],
+            data: [2478, 5267]
           }
         ]
       },
       options: {
         title: {
           display: true,
-          text: 'Predicted world population (millions) in 2050'
+          text: this.pieTitle
         }
       }
     });
   }
+
+
+  getLineChart(){
+  
+    var yname=this.stackYAxis;
+    var xname=this.stackXAxis;
+    var heading_name=this.stackTitle;
+    Chart.defaults.global.defaultFontColor = 'black';
+    new Chart(document.getElementById("previewCanvas-linechart"), {
+        type: 'line',
+        data: {
+          labels: ["","","","","","","","",""],
+          datasets: [{ 
+              lineTension: 0,
+              data: [2486,3114,3006,4506,3607,3111,4333,4221,5783,3478],
+              label: this.stackLegend1,
+              borderColor:this.stackColor1,
+              fill: false
+            }, {
+              lineTension: 0, 
+              data: [2282,2590,3411,4202,3235,3109,4000,4002,5000,3267],
+              label:this.stackLegend2,
+              borderColor: this.stackColor2,
+              fill: false
+            }
+          ]
+        },
+        options: {  
+          
+          scales: {
+            yAxes: [{
+              scaleLabel: {
+                display: true,
+                fontSize:14,
+                fontStyle: 'bold',
+                labelString: yname,
+              },
+              gridLines:{
+                display:false,
+                color:"#000000",
+              lineWidth:4,
+              
+              
+              }
+            }],
+            xAxes: [{
+                  
+                    gridLines:{
+                      display:false,
+                      color:"#000000",
+                    lineWidth:4,
+                    
+                    
+                    },
+                    scaleLabel:{
+                        fontSize:14,
+                        fontStyle: 'bold',
+                        display:true,
+                        labelString: xname
+        
+                    }
+                }]
+            
+        
+          }     ,
+         
+          title: {
+            display: true,
+            fontSize:18,
+            text:heading_name 
+          }
+        }
+      });
+    
+
+
+
+
+}
 
 
 
@@ -448,73 +568,417 @@ getTable(){
     });
   }
 
-  getHorizontalBarChart() {
-    console.log("Inside BarCHart()_");
-    var yname = this.horizontalYAxis;
-    var xname = this.horizontalXAxis;
-    var heading_name = this.horizontalBarTitle;
-    new Chart(document.getElementById("previewCanvas-horizontalBarchart"), {
+ 
+  getStackedBarChart(){
+    
+    var yname=this.stackYAxis;
+        var xname=this.stackXAxis;
+    Chart.defaults.global.defaultFontColor = 'black';
+    new Chart(document.getElementById("previewCanvas-StackedBar"), {
+      type: 'bar',
+      data: {
+        labels: ["", "", "", "", "", ""],
+        datasets: [{
+            label:this.stackLegend1,
+            data: [10, 19, 3, 5, 2, 3],
+            backgroundColor: [this.stackColor1,this.stackColor1,this.stackColor1,this.stackColor1,this.stackColor1,this.stackColor1],
+            
+          },
+          {
+            label: this.stackLegend2,
+            data: [15, 19, 3, 5, 2, 3],
+            backgroundColor: [this.stackColor2,this.stackColor2,this.stackColor2,this.stackColor2,this.stackColor2,this.stackColor2],
+            
+          }
+        ]
+      },
+      options: {
+    
+        scales: {
+          yAxes: [{
+            stacked: true,
+            ticks: {
+              beginAtZero: true
+            },
+            gridLines:{
+              display:false,
+              color:"#000000",
+            lineWidth:4,     
+            },
+            scaleLabel:{
+              fontSize:14,
+              fontStyle: 'bold',
+              display:true,
+              labelString: yname
+    
+          }
+           
+          }],
+          xAxes: [{
+            stacked: true,
+            ticks: {
+              beginAtZero: true
+            },
+            gridLines:{
+              display:false,
+              color:"#000000",
+            lineWidth:4,     
+            },
+            scaleLabel:{
+              fontSize:14,
+              fontStyle: 'bold',
+              display:true,
+              labelString: xname
+    
+          }
+          }]
+    
+        },
+        title: {
+          display: true,
+          text: this.stackTitle,
+          fontSize:18
+        }
+      }
+    });
+    
+    }
+    
+
+
+
+
+
+
+
+
+
+
+
+  getHorizontalBarChart(){
+    
+      var yname=this.horizontalYAxis;
+      var xname=this.horizontalXAxis;
+      var heading_name=this.horizontalBarTitle;
+      Chart.defaults.global.defaultFontColor = 'black';
+    new Chart(document.getElementById("previewCanvas-horizontalBarChart"), {
       type: 'horizontalBar',
       data: {
-        labels: [this.horizontalXAxis, this.horizontalYAxis],
-
+        labels: ["", "", "", "", ""],
         datasets: [
           {
             label: "Population (millions)",
-            backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", "#c64850", "#3e95cd", "#8e5ea2"],
-            data: [3078, 5267, 3734, 3484, 4433, 3567, 4673, 3692]
+            backgroundColor: [this.horizontalColor,this.horizontalColor,this.horizontalColor,this.horizontalColor,this.horizontalColor],
+            data: [2478,5267,734,784,433]
+            
           }
         ]
       },
       options: {
         scales: {
-          yAxes: [{
-            scaleLabel: {
-              display: true,
-              fontSize: 14,
-              fontStyle: 'bold',
-              labelString: yname,
-            },
-            gridLines: {
-              display: false,
-              lineWidth: 1,
-              color: "#131c2b"
-            }
-          }],
-          xAxes: [{
-
-            categoryPercentage: 1.0,
-            barPercentage: 1.0,
-            barThickness: 36,
-            maxBarThickness: 40,
-            minBarLength: 1,
-            gridLines: {
-              display: false,
-              lineWidth: 1,
-              color: "#131c2b"
-            },
-            scaleLabel: {
-              fontSize: 14,
-              fontStyle: 'bold',
-              display: true,
-              labelString: xname
-
-            },
-
-          }]
-
-
+      yAxes: [{
+        scaleLabel: {
+          display: true,
+          fontSize:14,
+          fontStyle: 'bold',
+          labelString: yname,
         },
+        gridLines:{
+          display:false,
+          color:"#000000",
+        lineWidth:4,
+        
+        
+        }
+      }],
+      xAxes: [{
+              categoryPercentage: 1.0,
+              barPercentage: 1.0,
+              barThickness: 36,
+              maxBarThickness: 40,
+              minBarLength:1,
+              gridLines:{
+                display:false,
+                color:"#000000",
+              lineWidth:4,
+              
+              
+              },
+              scaleLabel:{
+                  fontSize:14,
+                  fontStyle: 'bold',
+                  display:true,
+                  labelString: xname
+  
+              }
+          }]
+      
+  
+    }     ,
         legend: { display: false },
         title: {
           fontSize: 18,
           fontStyle: 'bold',
           display: true,
-          text: this.horizontalBarTitle
+          text:heading_name
+        }
+      }
+  });
+  }
+  
+  getGroupedBarChart(){
+    
+    var yname=this.stackYAxis;
+    var xname=this.stackXAxis;
+    Chart.defaults.global.defaultFontColor = 'black';
+    new Chart(document.getElementById("previewCanvas-groupedBarChart"), {
+      type: 'bar',
+      data: {
+        labels: ["", "", "", "", "", ""],
+        datasets: [{
+            label: this.stackLegend1,
+            data: [10, 19, 3, 5, 2, 3],
+            backgroundColor: [this.stackColor1,this.stackColor1,this.stackColor1,this.stackColor1,this.stackColor1,this.stackColor1],
+            
+          },
+          {
+            label: this.stackLegend2,
+            data: [15, 19, 2, 8, 7, 3],
+            backgroundColor: [this.stackColor2,this.stackColor2,this.stackColor2,this.stackColor2,this.stackColor2,this.stackColor2],
+            
+          }
+        ]
+      },
+      options: {
+    
+        scales: {
+          yAxes: [{
+            stacked: false,
+            ticks: {
+              beginAtZero: true
+            },
+            gridLines:{
+              display:false,
+              color:"#000000",
+            lineWidth:4,
+            
+            
+            },
+          
+            scaleLabel:{
+              fontSize:14,
+              fontStyle: 'bold',
+              display:true,
+              labelString: yname
+    
+          }
+          }],
+          xAxes: [{
+            stacked: false,
+            ticks: {
+              beginAtZero: true
+            },
+            gridLines:{
+              display:false,
+              color:"#000000",
+            lineWidth:4,
+            
+            
+            },
+          
+            scaleLabel:{
+              fontSize:14,
+              fontStyle: 'bold',
+              display:true,
+              labelString: xname
+    
+          }
+          }]
+    
+        },
+        title: {
+          display: true,
+          fontSize:18,
+          text:this.stackTitle
         }
       }
     });
-  }
+    
+    }
+    
+    getAreaChart(){
+      
+      var yname=this.stackYAxis;
+      var xname=this.stackXAxis;
+      var heading_name=this.stackTitle;
+      Chart.defaults.global.defaultFontColor = 'black';
+      new Chart(document.getElementById("previewCanvas-areaChart"), {
+          type: 'line',
+          data: {
+            labels: [,,,,,,,,,],
+            datasets: [{ 
+                lineTension: 0,
+                data: [1200,1000,1006,1006,1207,1311,1333,1221,3700],
+                label: this.stackLegend1,
+                borderColor: this.stackColor1,
+                backgroundColor:this.stackColor1,
+                fill: true
+              }, {
+                lineTension: 0, 
+                data: [1500,2350,2350,2350,2335,2369,2347,2002,4700],
+                label: this.stackLegend2,
+                borderColor:this.stackColor2,
+                backgroundColor:this.stackColor2,
+                fill: true
+              }
+            ]
+          },
+          options: {
+    
+            scales: {
+              yAxes: [{
+    
+                gridLines:{
+                  display:false,
+                  color:"#000000",
+                lineWidth:4,
+                
+                
+                },
+              
+                scaleLabel:{
+                  fontSize:14,
+                  fontStyle: 'bold',
+                  display:true,
+                  labelString: yname
+        
+              },
+              ticks:{
+                beginAtZero:true
+              }
+               
+              }],
+              xAxes: [{
+                
+                gridLines:{
+                  display:false,
+                  color:"#000000",
+                lineWidth:4,
+                
+                
+                },
+              
+                scaleLabel:{
+                  fontSize:14,
+                  fontStyle: 'bold',
+                  display:true,
+                  labelString: xname
+        
+              }
+              }]
+            },
+            title: {
+              display: true,
+              fontSize:18,
+              text:heading_name 
+            }
+          }
+        });
+      
+    
+    
+    
+    
+    }
+
+  
+    getMixedChart(){
+      
+      var yname=this.stackYAxis;
+      var xname=this.stackXAxis;
+      var heading_name=this.stackTitle;
+      Chart.defaults.global.defaultFontColor = 'black';
+      new Chart(document.getElementById("previewCanvas-mixedChart"), {
+        type: 'bar',
+        data: {
+          labels: ["", "", "", ""],
+          datasets: [{
+            
+              label: this.stackLegend1,
+              type: "line",
+              lineTension: 0,
+              borderColor: this.stackColor1,
+              data: [308,447,375,734],
+              fill: false
+            },  {
+              label:this.stackLegend2,
+              type: "bar",
+              backgroundColor:this.stackColor2,
+              data: [408,547,675,734],
+            }
+          ]
+        },
+        options: {
+      
+          scales: {
+            yAxes: [{
+      
+              gridLines:{
+                display:false,
+                color:"#000000",
+              lineWidth:4,
+              
+              
+              },
+            
+              scaleLabel:{
+                fontSize:14,
+                fontStyle: 'bold',
+                display:true,
+                labelString: yname
+      
+            },
+            ticks:{
+              beginAtZero:true
+            }
+             
+            }],
+            xAxes: [{
+              
+              gridLines:{
+                display:false,
+                color:"#000000",
+              lineWidth:4,
+              
+              
+              },
+            
+              scaleLabel:{
+                fontSize:14,
+                fontStyle: 'bold',
+                display:true,
+                labelString: xname
+      
+            }
+            }]
+          },
+      
+          title: {
+            display: true,
+            fontSize:18,
+            text:heading_name
+          },
+          legend: { display: false }
+        }
+        
+      });
+      
+      
+      }
+
+      
+
+
 
   /*-------------------------Charts End-----------------------------*/
 
