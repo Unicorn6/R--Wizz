@@ -271,20 +271,24 @@ getDate(){
   //this.resetCanvas('previewCanvas-filter');
    
    
-  var canvas = document.getElementById('previewCanvas-date') as HTMLCanvasElement;
-  var ctx = canvas.getContext("2d");
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  var filterimg = new Image();
-  filterimg.width=100;
-  filterimg.height=60;
-  filterimg.src = "assets/img/datefilter.PNG";
+  let rows=7;
+    let columns=4;
+    
+    var canvas = document.getElementById('previewCanvas-date') as HTMLCanvasElement;
+    var ctx = canvas.getContext("2d");
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    var filterimg = new Image();
+    filterimg.width=100;
+    filterimg.height=60;
+    filterimg.src = "assets/img/date2.png";
 
-  ctx.font = "bold 35px sans-serif";
- // this.addTextFilter(ctx,this.filterName,10,30,100,60);
-  
+    //ctx.font = "bold 35px sans-serif";
+    //this.addTextFilter(ctx,this.filterName,10,30,100,60);
+    
 
-  ctx.drawImage(filterimg,5,40);
-  ctx.stroke();
+    ctx.drawImage(filterimg,5,30);
+    ctx.stroke();
+
    
  }
 
@@ -305,7 +309,8 @@ getDate(){
     var filterimg = new Image();
     filterimg.width=100;
     filterimg.height=60;
-    filterimg.src = "assets/img/filter(1).PNG";
+     filterimg.src = "assets/img/filter(1).PNG";
+    //filterimg.src = "assets/img/date2.png";
 
     ctx.font = "bold 35px sans-serif";
     this.addTextFilter(ctx,this.filterName,10,30,100,60);
