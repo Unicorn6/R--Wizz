@@ -37,6 +37,9 @@ export class LabelJap {
     color: string;
     save: string;
     titleText: string;
+    nml: string;
+    nna: string;
+    ne: string;
 
     constructor() {
         this.title = "テキストを追加";
@@ -75,6 +78,9 @@ export class LabelJap {
         this.yAxisTitle = "y軸ラベル";
         this.color = "色";
         this.save = "保存する";
-        this.titleText = "titleText"
+        this.titleText = "タイトル";
+        this.nml = "日産自動車株式会社";
+        this.nna = "日産北米";
+        this.ne = "日産ヨーロッパ";
     }
 }

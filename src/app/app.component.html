@@ -27,9 +27,9 @@
             <div class="form-group col-4">
               <select [(ngModel)]="chosenMod" (ngModelChange)="modo()" id="selectid" class="w-100 btn btn-primary">
                 <option value="" selected disabled hidden>{{label.choose}}</option>
-                <option value="nml" class="btn btn-secondary">Nissan Motor Limited</option>
-                <option value="ne" class="btn btn-secondary">Nissan Europe</option>
-                <option value="nna" class="btn btn-secondary">Nissan NNA</option>
+                <option value="nml" class="btn btn-secondary">{{label.nml}}</option>
+                <option value="ne" class="btn btn-secondary">{{label.ne}}</option>
+                <option value="nna" class="btn btn-secondary">{{label.nna}}</option>
               </select>
             </div>
 
@@ -121,7 +121,7 @@
       <!-- <br /> -->
 
       <!-- Add Charts -->
-      <div class="card mb-2" style="overflow: scroll; max-height: calc(100vh - 300px);">
+      <div class="card mb-2" style="overflow: scroll; max-height: calc(100vh - 365px);">
         <div class="card-header">{{label.chart}}</div>
         <div class="card-body py-0">
           <!-- <button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#barChart"> -->
@@ -147,7 +147,7 @@
               class="m-2">{{label.mixed}}</span></a>
           <a data-toggle="modal" data-target="#table" class="btn"> <i class="fa fa-table zoomImg"
               aria-hidden="true"></i><span class="m-2">{{label.table}}</span></a>
-          <a data-toggle="modal" data-target="#filter" class="btn"> <i class="icon-filter zoomImg"
+          <a data-toggle="modal" data-target="#filter" class="btn"> <i class="fa fa-filter zoomImg"
               aria-hidden="true"></i><span class="m-2">{{label.filter}}</span></a>
           <a data-toggle="modal" data-target="#dateChart" class="btn"> <i class="fa fa-calendar zoomImg"
               aria-hidden="true"></i><span class="m-2">{{label.date}}</span></a>
@@ -174,7 +174,7 @@
                 </div>
 
                 <!-- Modal body -->
-                <div class="modal-body">
+                <div class="modal-body pt-0">
                   <div class="form-row">
                     <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
                       <h4>{{label.select}}</h4>
@@ -235,7 +235,7 @@
                 </div>
 
                 <!-- Modal body -->
-                <div class="modal-body">
+                <div class="modal-body pt-0">
                   <div class="form-row">
                     <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
                       <h4>{{label.select}}</h4>
@@ -292,12 +292,12 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                  <h4 class="modal-title">Stacked Bar</h4>
+                  <h4 class="modal-title">{{label.stacked}}</h4>
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
                 <!-- Modal body -->
-                <div class="modal-body">
+                <div class="modal-body pt-0">
                   <div class="form-row">
                     <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
                       <h4>{{label.select}}</h4>
@@ -306,11 +306,11 @@
                       <div class="input-group">
                         <input type="text" class="form-control" [(ngModel)]="stackTitle">
                       </div>
-                      <label>X Label</label>
+                      <label>{{label.xAxisTitle}}</label>
                       <div class="input-group">
                         <input type="text" class="form-control" [(ngModel)]="stackXAxis">
                       </div>
-                      <label>Y Label</label>
+                      <label>{{label.yAxisTitle}}</label>
                       <div class="input-group">
                         <input type="text" class="form-control" [(ngModel)]="stackYAxis">
                       </div>
@@ -350,7 +350,7 @@
                 <div class="modal-footer">
 
                   <button type="button" class="btn btn-danger" data-dismiss="modal"
-                    (click)="getImage('previewCanvas-stackedBarChart')">{{label.save}}</button>
+                    (click)="getImage('previewCanvas-StackedBar')">{{label.save}}</button>
                 </div>
 
               </div>
@@ -364,12 +364,12 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                  <h4 class="modal-title">Grouped Bar</h4>
+                  <h4 class="modal-title">{{label.grouped}}</h4>
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
                 <!-- Modal body -->
-                <div class="modal-body">
+                <div class="modal-body pt-0">
                   <div class="form-row">
                     <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
                       <h4>{{label.select}}</h4>
@@ -378,11 +378,11 @@
                       <div class="input-group">
                         <input type="text" class="form-control" [(ngModel)]="stackTitle">
                       </div>
-                      <label>X Label</label>
+                      <label>{{label.xAxisTitle}}</label>
                       <div class="input-group">
                         <input type="text" class="form-control" [(ngModel)]="stackXAxis">
                       </div>
-                      <label>Y Label</label>
+                      <label>{{label.yAxisTitle}}</label>
                       <div class="input-group">
                         <input type="text" class="form-control" [(ngModel)]="stackYAxis">
                       </div>
@@ -436,12 +436,12 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                  <h4 class="modal-title">Area Chart</h4>
+                  <h4 class="modal-title">{{label.area}}</h4>
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
                 <!-- Modal body -->
-                <div class="modal-body">
+                <div class="modal-body pt-0">
                   <div class="form-row">
                     <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
                       <h4>{{label.select}}</h4>
@@ -450,11 +450,11 @@
                       <div class="input-group">
                         <input type="text" class="form-control" [(ngModel)]="stackTitle">
                       </div>
-                      <label>X Label</label>
+                      <label>{{label.xAxisTitle}}</label>
                       <div class="input-group">
                         <input type="text" class="form-control" [(ngModel)]="stackXAxis">
                       </div>
-                      <label>Y Label</label>
+                      <label>{{label.yAxisTitle}}</label>
                       <div class="input-group">
                         <input type="text" class="form-control" [(ngModel)]="stackYAxis">
                       </div>
@@ -508,11 +508,11 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                  <h4 class="modal-title">Mixed Chart</h4>
+                  <h4 class="modal-title">{{label.mixed}}</h4>
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
-                <div class="modal-body">
+                <div class="modal-body pt-0">
                   <div class="form-row">
                     <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
                       <h4>{{label.select}}</h4>
@@ -521,11 +521,11 @@
                       <div class="input-group">
                         <input type="text" class="form-control" [(ngModel)]="stackTitle">
                       </div>
-                      <label>X Label</label>
+                      <label>{{label.xAxisTitle}}</label>
                       <div class="input-group">
                         <input type="text" class="form-control" [(ngModel)]="stackXAxis">
                       </div>
-                      <label>Y Label</label>
+                      <label>{{label.yAxisTitle}}</label>
                       <div class="input-group">
                         <input type="text" class="form-control" [(ngModel)]="stackYAxis">
                       </div>
@@ -579,12 +579,12 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                  <h4 class="modal-title">Pie Chart</h4>
+                  <h4 class="modal-title">{{label.pie}}</h4>
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
                 <!-- Modal body -->
-                <div class="modal-body">
+                <div class="modal-body pt-0">
                   <div class="form-row">
                     <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
                       <h4>{{label.select}}</h4>
@@ -642,12 +642,12 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                  <h4 class="modal-title">Table</h4>
+                  <h4 class="modal-title">{{label.table}}</h4>
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
                 <!-- Modal body -->
-                <div class="modal-body">
+                <div class="modal-body pt-0">
                   <div class="form-row">
                     <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
                       <h4>{{label.select}}</h4>
@@ -690,12 +690,12 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                  <h4 class="modal-title">Line </h4>
+                  <h4 class="modal-title">{{label.line}}</h4>
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
                 <!-- Modal body -->
-                <div class="modal-body">
+                <div class="modal-body pt-0">
                   <div class="form-row">
                     <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
                       <h4>{{label.select}}</h4>
@@ -704,11 +704,11 @@
                       <div class="input-group">
                         <input type="text" class="form-control" [(ngModel)]="stackTitle">
                       </div>
-                      <label>X Label</label>
+                      <label>{{label.xAxisTitle}}</label>
                       <div class="input-group">
                         <input type="text" class="form-control" [(ngModel)]="stackXAxis">
                       </div>
-                      <label>Y Label</label>
+                      <label>{{label.yAxisTitle}}</label>
                       <div class="input-group">
                         <input type="text" class="form-control" [(ngModel)]="stackYAxis">
                       </div>
@@ -751,73 +751,12 @@
                 <!-- Modal footer -->
                 <div class="modal-footer">
                   <button type="button" class="btn btn-danger" data-dismiss="modal"
-                    (click)="getImage('previewCanvas-linechart')">{{label.titleText}}</button>
+                    (click)="getImage('previewCanvas-linechart')">{{label.save}}</button>
                 </div>
 
               </div>
             </div>
           </div>
-
-          <!-- Table Chart Modal -->
-          <div class="modal" id="tableChart">
-            <div class="modal-dialog">
-              <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                  <h4 class="modal-title">Table</h4>
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                  <div class="form-row">
-                    <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
-                      <h4>{{label.select}}</h4>
-
-                      <label>{{label.titleText}}</label>
-                      <div class="input-group">
-                        <input type="text" class="form-control">
-                      </div>
-                      <label>{{label.xAxisTitle}}</label>
-                      <div class="input-group">
-                        <input type="text" class="form-control">
-                      </div>
-                      <label>{{label.yAxisTitle}}</label>
-                      <div class="input-group">
-                        <input type="text" class="form-control">
-                      </div>
-                      <label>{{label.color}}</label>
-                      <div class="input-group colorPickerClass">
-                        <!-- <input type="text" class="form-control"> -->
-                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="props.fill"
-                          [style.background]="props.fill" [value]="props.fill" (colorPickerChange)="setFill()">
-                      </div>
-                      <!-- <label>Values</label>
-                        <div class="input-group">
-                          <input type="text" class="form-control">
-                        </div> -->
-                      <button type="button" class=" mt-4 btn btn-danger float-right"
-                        (click)="getBarChart()">{{label.previewTitle}}</button>
-                    </div>
-
-                    <div class="col-8 form-group pl-2 pr-4">
-                      <h4>{{label.previewTitle}}</h4>
-                      <canvas id="previewCanvas-linechart" style="width:100%;height:85%"></canvas>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">{{label.save}}</button>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-
 
           <!-- Date Filter Modal -->
           <div class="modal" id="dateChart">
@@ -826,12 +765,12 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                  <h4 class="modal-title">Date Filter</h4>
+                  <h4 class="modal-title">{{label.date}}</h4>
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
                 <!-- Modal body -->
-                <div class="modal-body">
+                <div class="modal-body pt-0">
                   <div class="form-row">
                     <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
 
@@ -862,12 +801,12 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                  <h4 class="modal-title">Doughnut </h4>
+                  <h4 class="modal-title">{{label.doughnut}} </h4>
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
                 <!-- Modal body -->
-                <div class="modal-body">
+                <div class="modal-body pt-0">
                   <div class="form-row">
                     <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
                       <h4>{{label.select}}</h4>
@@ -928,15 +867,15 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                  <h4 class="modal-title">filter</h4>
+                  <h4 class="modal-title">{{label.filter}}</h4>
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
                 <!-- Modal body -->
-                <div class="modal-body">
+                <div class="modal-body pt-0">
                   <div class="form-row">
                     <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
-                      <h4>Select attributes</h4>
+                      <h4>{{label.select}}</h4>
 
                       <label>{{label.titleText}}</label>
                       <div class="input-group">

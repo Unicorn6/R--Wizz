@@ -37,6 +37,9 @@ export class Labels {
     color: string;
     save: string;
     titleText: string;
+    nml: string;
+    ne: string;
+    nna: string;
 
     constructor() {
         this.title = "JarWiz";
@@ -76,5 +79,8 @@ export class Labels {
         this.color = "Color";
         this.save = "Save";
         this.titleText = "Title";
+        this.nml = "Nissan Motor Limited";
+        this.nna = "Nissan North America";
+        this.ne = "Nissan Europe";
     }
 }

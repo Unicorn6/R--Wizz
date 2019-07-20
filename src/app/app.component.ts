@@ -297,7 +297,7 @@ export class AppComponent implements OnInit {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     var filterimg = new Image();
     filterimg.onload = function () {
-      ctx.drawImage(filterimg, 10,30);
+      ctx.drawImage(filterimg, 10, 30);
     }
     // filterimg.width = 100;
     // filterimg.height = 60;
@@ -333,13 +333,17 @@ export class AppComponent implements OnInit {
     filterimg.width = 100;
     filterimg.height = 60;
     filterimg.src = "assets/img/filter(1).PNG";
+    filterimg.onload = function () {
+      ctx.drawImage(filterimg, 10, 70);
+
+    }
     //filterimg.src = "assets/img/date2.png";
 
     ctx.font = "bold 35px sans-serif";
     this.addTextFilter(ctx, this.filterName, 10, 30, 100, 60);
 
 
-    ctx.drawImage(filterimg, 5, 70);
+    // ctx.drawImage(filterimg, 5, 70);
     ctx.stroke();
 
     //   var canvasWidth =canvas.width/2;
@@ -1495,13 +1499,13 @@ export class AppComponent implements OnInit {
       // w.document.write(image.outerHTML);
       image.src = this.canvas.toDataURL("image/png", 1.0).replace("image/png", "image/octet-stream");
       var link = document.createElement('a');
-      link.download = "my-image.png";
+      link.download = "jarwiz.png";
       link.href = image.src;
       link.click();
     }
   }
 
-  rasterizeSVG() {
+  rasterizetoSVG() {
     console.log(this.canvas.toSVG())
     // window.open(
     //   'data:image/svg+xml;utf8,' +
@@ -1509,8 +1513,14 @@ export class AppComponent implements OnInit {
     // console.log(this.canvas.toSVG())
     // var image = new Image();
     // image.src = this.canvas.toSVG()
-    var w = window.open("");
-    w.document.write(this.canvas.toSVG());
+    //var w = window.open("");
+    //w.document.write(this.canvas.toSVG());
+    var image = new Image();
+    image.src = this.canvas.toSVG();
+    var link = document.createElement('a');
+    link.download = "my-image.svg";
+    link.href = image.src;
+    link.click();
   };
 
 
