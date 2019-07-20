@@ -1,0 +1,80 @@
+export class LabelJap {
+
+    title: string;
+    export: string;
+    clean: string;
+    region: string;
+    choose: string;
+    text: string;
+    chart: string;
+    image: string;
+    upload: string;
+    remove: string;
+    figure: string;
+    options: string;
+    custom: string;
+    items: string;
+    rectangle: string;
+    square: string;
+    triangle: string;
+    circle: string;
+    bar: string;
+    horizontal: string;
+    stacked: string;
+    grouped: string;
+    area: string;
+    mixed: string;
+    table: string;
+    filter: string;
+    date: string;
+    pie: string;
+    line: string;
+    doughnut: string;
+    select: string;
+    previewTitle: string;
+    xAxisTitle: string;
+    yAxisTitle: string;
+    color: string;
+    save: string;
+    titleText: string;
+
+    constructor() {
+        this.title = "テキストを追加";
+        this.export = "画像にエクスポート";
+        this.clean = "クリーン";
+        this.region = "領域";
+        this.choose = "こちらを選択";
+        this.text = "テキストを追加";
+        this.chart = "グラフを追加する";
+        this.image = "画像を追加";
+        this.upload = "画像をアップロードする";
+        this.remove = "削除する";
+        this.figure = "図を追加";
+        this.options = "オプション";
+        this.custom = "カスタム";
+        this.items = "アイテムが選択されていません";
+        this.rectangle = "矩形";
+        this.square = "平方";
+        this.triangle = "三角形";
+        this.circle = "サークル";
+        this.bar = "バー";
+        this.horizontal = "水平バー";
+        this.stacked = "積み上げ バー";
+        this.grouped = "グループ化されたバー";
+        this.area = "エリア";
+        this.mixed = "混在";
+        this.table = "表";
+        this.filter = "フィルタ";
+        this.date = "日付フィルター";
+        this.pie = "パイ";
+        this.line = "ライン";
+        this.doughnut = "ドーナツ";
+        this.select = "属性を選択";
+        this.previewTitle = "タイトル";
+        this.xAxisTitle = "x軸ラベル";
+        this.yAxisTitle = "y軸ラベル";
+        this.color = "色";
+        this.save = "保存する";
+        this.titleText = "titleText"
+    }
+}

@@ -8,21 +8,41 @@
     </div> -->
 
     <!-- Actions -->
-    <div class="col-xl-12 my-2">
+    <div class="col-xl-12 mt-2">
       <div class="row">
 
         <!-- Title -->
-        <div class="col-xl-6">
-          <h4>JarWiz</h4>
+        <div class="col-xl-9">
+          <div class="form-row">
+            <div class="form-group col-4">
+              <h4>{{label.title}}</h4>
+            </div>
+            <div class="form-group col-4">
+              <button (click)="onTranslate()" class="rounded-circle btn btn-primary p-1"><img
+                  src="../assets/img/japan.svg" style="width: 35px;height: 35px;padding: 3px;"></button>
+              <!-- <button onclick="history.go(0)" class="btn btn-primary">English</button> -->
+              <button (click)="onEnglish()" class="rounded-circle btn btn-primary p-1"><img
+                  src="../assets/img/united-kingdom.svg" style="width: 35px;height: 35px;padding: 3px;"></button>
+            </div>
+            <div class="form-group col-4">
+              <select [(ngModel)]="chosenMod" (ngModelChange)="modo()" id="selectid" class="w-100 btn btn-primary">
+                <option value="" selected disabled hidden>{{label.choose}}</option>
+                <option value="nml" class="btn btn-secondary">Nissan Motor Limited</option>
+                <option value="ne" class="btn btn-secondary">Nissan Europe</option>
+                <option value="nna" class="btn btn-secondary">Nissan NNA</option>
+              </select>
+            </div>
+
+          </div>
           <!-- <select [(value)]="selectedLanguage">
             <option value="1">English</option>
             <option value="2">Japan</option>
           </select> -->
         </div>
-        <div class="col-xl-6 text-right">
+        <div class="col-xl-3 text-right px-0">
           <button data-toggle="tooltip" data-placement="bottom" title="Export to image" type="button"
             class="btn btn-primary" (click)="rasterize();">
-            <i class="fa fa-download" aria-hidden="true"></i> Export to image</button>
+            <i class="fa fa-download" aria-hidden="true"></i> {{label.export}}</button>
           <!-- <button data-toggle="tooltip" data-placement="bottom" title="Export to SVG" type="button"
             class="btn btn-primary" (click)="rasterizeSVG();">
             <i class="fa fa-download" aria-hidden="true"></i> Export to SVG</button>
@@ -34,7 +54,7 @@
             <i class="fa fa-save" aria-hidden="true"></i> Load local</button> -->
           <button data-toggle="tooltip" data-placement="bottom" title="Clean Canvas" type="button"
             class="btn btn-danger" (click)="confirmClear();">
-            <i class="fa fa-ban" aria-hidden="true"></i> Clean</button>
+            <i class="fa fa-ban" aria-hidden="true"></i> {{label.clean}}</button>
         </div>
       </div>
     </div>
@@ -69,25 +89,20 @@
                 </div>
             </div> -->
 
-      <div class="card">
-        <div class="card-header">Select Region</div>
-        <div class="card-body">
-          <div class="">
-            <select [(ngModel)]="chosenMod" (ngModelChange)="modo()" id="selectid" class="btn btn-primary">
-              <option value="" selected disabled hidden>Choose here</option>
-              <option value="nml" class="btn btn-secondary">Nissan Motor Limited</option>
-              <option value="ne" class="btn btn-secondary">Nissan Europe</option>
-              <option value="nna" class="btn btn-secondary">Nissan NNA</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <br />
+      <!-- <div class="card mb-2">
+        <div class="card-header">{{label.region}}</div>
+        <div class="card-body"> -->
+      <!-- <div class=""> -->
+
+      <!-- </div> -->
+      <!-- </div>
+      </div> -->
+      <!-- <br /> -->
 
       <!-- Add Text -->
-      <div class="card">
+      <div class="card mb-2">
         <div class="card-header">
-          Add text
+          {{label.text}}
         </div>
         <div class="card-body p-0">
           <div class="input-group">
@@ -103,44 +118,48 @@
           </div>
         </div>
       </div>
-      <br />
+      <!-- <br /> -->
 
       <!-- Add Charts -->
-      <div class="card">
-        <div class="card-header">Add Charts</div>
-        <div class="card-body">
+      <div class="card mb-2" style="overflow: scroll; max-height: calc(100vh - 300px);">
+        <div class="card-header">{{label.chart}}</div>
+        <div class="card-body py-0">
           <!-- <button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#barChart"> -->
           <a data-toggle="modal" data-target="#barChart" class="btn"> <i class="fa fa-bar-chart zoomImg"
-              aria-hidden="true"></i><span class="m-2">Bar</span></a>
+              aria-hidden="true"></i><span class="m-2">{{label.bar}}</span></a>
           <!-- </button> -->
-          <a data-toggle="modal" data-target="#horizontalBarChart" class="btn"> <i class="fa fa-bar-chart zoomImg"
-              aria-hidden="true"></i><span class="m-2">Horizontal Bar</span></a>
-          <a data-toggle="modal" data-target="#stackedBarChart" class="btn"> <i class="fa fa-bar-chart zoomImg"
-              aria-hidden="true"></i><span class="m-2">Stacked Bar</span></a>
-          <a data-toggle="modal" data-target="#groupedBarChart" class="btn"> <i class="fa fa-bar-chart zoomImg"
-              aria-hidden="true"></i><span class="m-2">Grouped Bar</span></a>
+          <a data-toggle="modal" data-target="#horizontalBarChart" class="btn"> <img
+              src="../assets/img/horizontal-bars-chart-svgrepo-com.svg" style="width: 44px;"><span
+              class="m-2">{{label.horizontal}}</span></a>
+          <a data-toggle="modal" data-target="#stackedBarChart" class="btn"> <img
+              src="../assets/img/chart-column-stacked-icon-iconexperience-professional-icons-o-pertaining-to-stacked-bar-chart-icon.png"
+              style="width: 44px;"><span class="m-2">{{label.stacked}}</span></a>
+          <a data-toggle="modal" data-target="#groupedBarChart" class="btn"> <img style="width: 44px;"
+              src="../assets/img/stock-vector-vector-illustration-of-statistics-grouped-bar-chart-icon-premium-quality-web-icon-453734359.jpg"><span
+              class="m-2">{{label.grouped}}</span></a>
           <!-- <button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#pieChart"> -->
 
           <!-- </button> -->
-          <a data-toggle="modal" data-target="#areaChart" class="btn"> <i class="fa fa-bar-chart zoomImg"
-              aria-hidden="true"></i><span class="m-2">Area</span></a>
-          <a data-toggle="modal" data-target="#mixedChart" class="btn"> <i class="fa fa-bar-chart zoomImg"
-              aria-hidden="true"></i><span class="m-2">Mixed</span></a>
+          <a data-toggle="modal" data-target="#areaChart" class="btn"> <i class="fa fa-area-chart zoomImg"
+              aria-hidden="true"></i><span class="m-2">{{label.area}}</span></a>
+          <a data-toggle="modal" data-target="#mixedChart" class="btn"><img
+              src="../assets/img/icons8-combo-chart-50.png" style="width:44px;"><span
+              class="m-2">{{label.mixed}}</span></a>
           <a data-toggle="modal" data-target="#table" class="btn"> <i class="fa fa-table zoomImg"
-              aria-hidden="true"></i><span class="m-2">Table</span></a>
-          <a data-toggle="modal" data-target="#filter" class="btn"> <i class="fa fa-bar-chart zoomImg"
-              aria-hidden="true"></i><span class="m-2">Filter</span></a>
+              aria-hidden="true"></i><span class="m-2">{{label.table}}</span></a>
+          <a data-toggle="modal" data-target="#filter" class="btn"> <i class="icon-filter zoomImg"
+              aria-hidden="true"></i><span class="m-2">{{label.filter}}</span></a>
           <a data-toggle="modal" data-target="#dateChart" class="btn"> <i class="fa fa-calendar zoomImg"
-              aria-hidden="true"></i><span class="m-2">Date Filter</span></a>
+              aria-hidden="true"></i><span class="m-2">{{label.date}}</span></a>
           <a data-toggle="modal" data-target="#pieChart" class="btn"> <i class="fa fa-pie-chart zoomImg"
-              aria-hidden="true"></i><span class="m-2">Pie</span></a>
+              aria-hidden="true"></i><span class="m-2">{{label.pie}}</span></a>
           <!-- <button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#lineChart"> -->
           <a data-toggle="modal" data-target="#lineChart" class="btn"> <i class="fa fa-line-chart zoomImg"
-              aria-hidden="true"></i><span class="m-2">Line</span></a>
+              aria-hidden="true"></i><span class="m-2">{{label.line}}</span></a>
           <!-- </button> -->
           <!-- <button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#doughnutChart"> -->
           <a data-toggle="modal" data-target="#doughnutChart" class="btn"> <img src="../assets/img/chart-donut.svg"
-              style="zoom:0.08;"><span class="m-2">Doughnut</span></a>
+              style="zoom:0.08;"><span class="m-2">{{label.doughnut}}</span></a>
           <!-- </button> -->
 
           <!-- Bar Chart Modal -->
@@ -150,7 +169,7 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                  <h4 class="modal-title">Bar</h4>
+                  <h4 class="modal-title">{{label.bar}}</h4>
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
@@ -158,17 +177,17 @@
                 <div class="modal-body">
                   <div class="form-row">
                     <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
-                      <h4>Select attributes</h4>
+                      <h4>{{label.select}}</h4>
 
-                      <label>Title</label>
+                      <label>{{label.previewTitle}}</label>
                       <div class="input-group">
                         <input type="text" class="form-control" [(ngModel)]="barTitle">
                       </div>
-                      <label>x-axis label</label>
+                      <label>{{label.xAxisTitle}}</label>
                       <div class="input-group">
                         <input type="text" class="form-control" [(ngModel)]="barXlabel">
                       </div>
-                      <label>y-axis label</label>
+                      <label>{{label.yAxisTitle}}</label>
                       <div class="input-group">
                         <input type="text" class="form-control" [(ngModel)]="barYlabel">
                       </div>
@@ -176,18 +195,18 @@
                       <div class="input-group">
                         <input type="text" class="form-control">
                       </div> -->
-                      <label>Colors</label>
+                      <label>{{label.color}}</label>
                       <div class="input-group colorPickerClass">
                         <!-- <input type="text" class="form-control"> -->
                         <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="barColor"
                           [style.background]="barColor" [value]="barColor" (colorPickerChange)="setFill()">
                       </div>
                       <button type="button" class=" mt-4 btn btn-danger float-right"
-                        (click)="getBarChart()">Preview</button>
+                        (click)="getBarChart()">{{label.previewTitle}}</button>
                     </div>
 
                     <div class="col-8 form-group pl-2 pr-4">
-                      <h4>Preview</h4>
+                      <h4>{{label.previewTitle}}</h4>
                       <canvas id="previewCanvas-barchart" style="width:100%;height:85%"></canvas>
                     </div>
                   </div>
@@ -197,7 +216,7 @@
                 <div class="modal-footer">
 
                   <button type="button" class="btn btn-danger" data-dismiss="modal"
-                    (click)="getImage('previewCanvas-barchart')">Save</button>
+                    (click)="getImage('previewCanvas-barchart')">{{label.save}}</button>
                 </div>
 
               </div>
@@ -211,7 +230,7 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                  <h4 class="modal-title">Horizontal Bar</h4>
+                  <h4 class="modal-title">{{label.horizontal}}</h4>
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
@@ -219,17 +238,17 @@
                 <div class="modal-body">
                   <div class="form-row">
                     <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
-                      <h4>Select attributes</h4>
+                      <h4>{{label.select}}</h4>
 
-                      <label>Title</label>
+                      <label>{{label.titleText}}</label>
                       <div class="input-group">
                         <input type="text" class="form-control" [(ngModel)]="horizontalBarTitle">
                       </div>
-                      <label>x-axis label</label>
+                      <label>{{label.xAxisTitle}}</label>
                       <div class="input-group">
                         <input type="text" class="form-control" [(ngModel)]="horizontalXAxis">
                       </div>
-                      <label>y-axis label</label>
+                      <label>{{label.yAxisTitle}}</label>
                       <div class="input-group">
                         <input type="text" class="form-control" [(ngModel)]="horizontalYAxis">
                       </div>
@@ -237,7 +256,7 @@
                       <div class="input-group">
                         <input type="text" class="form-control">
                       </div> -->
-                      <label>Colors</label>
+                      <label>{{label.color}}</label>
                       <div class="input-group colorPickerClass">
                         <!-- <input type="text" class="form-control"> -->
                         <input type="text" class="form-control" [cpPosition]="'bottom'"
@@ -245,11 +264,11 @@
                           [value]="horizontalColor" (colorPickerChange)="setFill()">
                       </div>
                       <button type="button" class=" mt-4 btn btn-danger float-right"
-                        (click)="getHorizontalBarChart()">Preview</button>
+                        (click)="getHorizontalBarChart()">{{label.previewTitle}}</button>
                     </div>
 
                     <div class="col-8 form-group pl-2 pr-4">
-                      <h4>Preview</h4>
+                      <h4>{{label.previewTitle}}</h4>
                       <canvas id="previewCanvas-horizontalBarChart" style="width:100%;height:85%"></canvas>
                     </div>
                   </div>
@@ -259,7 +278,7 @@
                 <div class="modal-footer">
 
                   <button type="button" class="btn btn-danger" data-dismiss="modal"
-                    (click)="getImage('previewCanvas-horizontalBarChart')">Save</button>
+                    (click)="getImage('previewCanvas-horizontalBarChart')">{{label.save}}</button>
                 </div>
 
               </div>
@@ -281,9 +300,9 @@
                 <div class="modal-body">
                   <div class="form-row">
                     <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
-                      <h4>Select attributes</h4>
+                      <h4>{{label.select}}</h4>
 
-                      <label>Title</label>
+                      <label>{{label.titleText}}</label>
                       <div class="input-group">
                         <input type="text" class="form-control" [(ngModel)]="stackTitle">
                       </div>
@@ -317,11 +336,11 @@
                           [style.background]="stackColor2" [(ngModel)]="stackColor2" (colorPickerChange)="setFill()">
                       </div>
                       <button type="button" class=" mt-4 btn btn-danger float-right"
-                        (click)="getStackedBarChart()">Preview</button>
+                        (click)="getStackedBarChart()">{{label.previewTitle}}</button>
                     </div>
 
                     <div class="col-8 form-group pl-2 pr-4">
-                      <h4>Preview</h4>
+                      <h4>{{label.previewTitle}}</h4>
                       <canvas id="previewCanvas-StackedBar" style="width:100%;height:85%"></canvas>
                     </div>
                   </div>
@@ -331,7 +350,7 @@
                 <div class="modal-footer">
 
                   <button type="button" class="btn btn-danger" data-dismiss="modal"
-                    (click)="getImage('previewCanvas-stackedBarChart')">Save</button>
+                    (click)="getImage('previewCanvas-stackedBarChart')">{{label.save}}</button>
                 </div>
 
               </div>
@@ -353,9 +372,9 @@
                 <div class="modal-body">
                   <div class="form-row">
                     <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
-                      <h4>Select attributes</h4>
+                      <h4>{{label.select}}</h4>
 
-                      <label>Title</label>
+                      <label>{{label.titleText}}</label>
                       <div class="input-group">
                         <input type="text" class="form-control" [(ngModel)]="stackTitle">
                       </div>
@@ -389,11 +408,11 @@
                           [style.background]="stackColor2" [(ngModel)]="stackColor2" (colorPickerChange)="setFill()">
                       </div>
                       <button type="button" class=" mt-4 btn btn-danger float-right"
-                        (click)=" getGroupedBarChart()">Preview</button>
+                        (click)=" getGroupedBarChart()">{{label.previewTitle}}</button>
                     </div>
 
                     <div class="col-8 form-group pl-2 pr-4">
-                      <h4>Preview</h4>
+                      <h4>{{label.previewTitle}}</h4>
                       <canvas id="previewCanvas-groupedBarChart" style="width:100%;height:85%"></canvas>
                     </div>
                   </div>
@@ -403,7 +422,7 @@
                 <div class="modal-footer">
 
                   <button type="button" class="btn btn-danger" data-dismiss="modal"
-                    (click)="getImage('previewCanvas-groupedBarChart')">Save</button>
+                    (click)="getImage('previewCanvas-groupedBarChart')">{{label.save}}</button>
                 </div>
 
               </div>
@@ -422,12 +441,12 @@
                 </div>
 
                 <!-- Modal body -->
-                 <div class="modal-body">
+                <div class="modal-body">
                   <div class="form-row">
                     <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
-                      <h4>Select attributes</h4>
+                      <h4>{{label.select}}</h4>
 
-                      <label>Title</label>
+                      <label>{{label.titleText}}</label>
                       <div class="input-group">
                         <input type="text" class="form-control" [(ngModel)]="stackTitle">
                       </div>
@@ -461,11 +480,11 @@
                           [style.background]="stackColor2" [(ngModel)]="stackColor2" (colorPickerChange)="setFill()">
                       </div>
                       <button type="button" class=" mt-4 btn btn-danger float-right"
-                        (click)="getAreaChart()">Preview</button>
+                        (click)="getAreaChart()">{{label.previewTitle}}</button>
                     </div>
 
                     <div class="col-8 form-group pl-2 pr-4">
-                      <h4>Preview</h4>
+                      <h4>{{label.previewTitle}}</h4>
                       <canvas id="previewCanvas-areaChart" style="width:100%;height:85%"></canvas>
                     </div>
                   </div>
@@ -475,7 +494,7 @@
                 <div class="modal-footer">
 
                   <button type="button" class="btn btn-danger" data-dismiss="modal"
-                    (click)="getImage('previewCanvas-areaChart')">Save</button>
+                    (click)="getImage('previewCanvas-areaChart')">{{label.save}}</button>
                 </div>
 
               </div>
@@ -496,9 +515,9 @@
                 <div class="modal-body">
                   <div class="form-row">
                     <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
-                      <h4>Select attributes</h4>
+                      <h4>{{label.select}}</h4>
 
-                      <label>Title</label>
+                      <label>{{label.titleText}}</label>
                       <div class="input-group">
                         <input type="text" class="form-control" [(ngModel)]="stackTitle">
                       </div>
@@ -532,11 +551,11 @@
                           [style.background]="stackColor2" [(ngModel)]="stackColor2" (colorPickerChange)="setFill()">
                       </div>
                       <button type="button" class=" mt-4 btn btn-danger float-right"
-                        (click)="getMixedChart()">Preview</button>
+                        (click)="getMixedChart()">{{label.previewTitle}}</button>
                     </div>
 
                     <div class="col-8 form-group pl-2 pr-4">
-                      <h4>Preview</h4>
+                      <h4>{{label.previewTitle}}</h4>
                       <canvas id="previewCanvas-mixedChart" style="width:100%;height:85%"></canvas>
                     </div>
                   </div>
@@ -546,7 +565,7 @@
                 <div class="modal-footer">
 
                   <button type="button" class="btn btn-danger" data-dismiss="modal"
-                    (click)="getImage('previewCanvas-mixedChart')">Save</button>
+                    (click)="getImage('previewCanvas-mixedChart')">{{label.save}}</button>
                 </div>
 
               </div>
@@ -568,9 +587,9 @@
                 <div class="modal-body">
                   <div class="form-row">
                     <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
-                      <h4>Select attributes</h4>
+                      <h4>{{label.select}}</h4>
 
-                      <label>Title</label>
+                      <label>{{label.titleText}}</label>
                       <div class="input-group">
                         <input type="text" class="form-control" [(ngModel)]="pieTitle">
                       </div>
@@ -596,11 +615,11 @@
                           [style.background]="pieColor2" [(ngModel)]="pieColor2" (colorPickerChange)="setFill()">
                       </div>
                       <button type="button" class=" mt-4 btn btn-danger float-right"
-                        (click)="getPieChart()">Preview</button>
+                        (click)="getPieChart()">{{label.previewTitle}}</button>
                     </div>
 
                     <div class="col-8 form-group pl-2 pr-4">
-                      <h4>Preview</h4>
+                      <h4>{{label.previewTitle}}</h4>
                       <canvas id="previewCanvas-piechart" style="width:100%;height:85%"></canvas>
                     </div>
                   </div>
@@ -609,21 +628,21 @@
                 <!-- Modal footer -->
                 <div class="modal-footer">
                   <button type="button" class="btn btn-danger" data-dismiss="modal"
-                    (click)="getImage('previewCanvas-piechart')">Save</button>
+                    (click)="getImage('previewCanvas-piechart')">{{label.save}}</button>
                 </div>
 
               </div>
             </div>
           </div>
-          <!-----Table      -->
 
+          <!-----Table -->
           <div class="modal" id="table">
             <div class="modal-dialog">
               <div class="modal-content">
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                  <h4 class="modal-title">Pie</h4>
+                  <h4 class="modal-title">Table</h4>
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
@@ -631,9 +650,9 @@
                 <div class="modal-body">
                   <div class="form-row">
                     <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
-                      <h4>Select attributes</h4>
+                      <h4>{{label.select}}</h4>
 
-                      <label>Title</label>
+                      <label>{{label.titleText}}</label>
                       <div class="input-group">
                         <input type="text" class="form-control" [(ngModel)]="tableTitle">
                       </div>
@@ -643,11 +662,11 @@
                       </div>
 
                       <button type="button" class=" mt-4 btn btn-danger float-right"
-                        (click)="getTable()">Preview</button>
+                        (click)="getTable()">{{label.previewTitle}}</button>
                     </div>
 
                     <div class="col-8 form-group pl-2 pr-4">
-                      <h4>Preview</h4>
+                      <h4>{{label.previewTitle}}</h4>
                       <canvas id="previewCanvas-table" style="width:100%;height:85%"></canvas>
                     </div>
                   </div>
@@ -656,17 +675,12 @@
                 <!-- Modal footer -->
                 <div class="modal-footer">
                   <button type="button" class="btn btn-danger" data-dismiss="modal"
-                    (click)="getImage('previewCanvas-table')">Save</button>
+                    (click)="getImage('previewCanvas-table')">{{label.save}}</button>
                 </div>
 
               </div>
             </div>
           </div>
-
-
-
-
-
           <!----------Table ENd-->
 
           <!-- Line Chart Modal -->
@@ -684,9 +698,9 @@
                 <div class="modal-body">
                   <div class="form-row">
                     <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
-                      <h4>Select attributes</h4>
+                      <h4>{{label.select}}</h4>
 
-                      <label>Title</label>
+                      <label>{{label.titleText}}</label>
                       <div class="input-group">
                         <input type="text" class="form-control" [(ngModel)]="stackTitle">
                       </div>
@@ -724,11 +738,11 @@
                         <input type="text" class="form-control">
                       </div> -->
                       <button type="button" class=" mt-4 btn btn-danger float-right"
-                        (click)="getLineChart()">Preview</button>
+                        (click)="getLineChart()">{{label.previewTitle}}</button>
                     </div>
 
                     <div class="col-8 form-group pl-2 pr-4">
-                      <h4>Preview</h4>
+                      <h4>{{label.previewTitle}}</h4>
                       <canvas id="previewCanvas-linechart" style="width:100%;height:85%"></canvas>
                     </div>
                   </div>
@@ -736,7 +750,8 @@
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="getImage('previewCanvas-linechart')">Save</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal"
+                    (click)="getImage('previewCanvas-linechart')">{{label.titleText}}</button>
                 </div>
 
               </div>
@@ -758,21 +773,21 @@
                 <div class="modal-body">
                   <div class="form-row">
                     <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
-                      <h4>Select attributes</h4>
+                      <h4>{{label.select}}</h4>
 
-                      <label>Title</label>
+                      <label>{{label.titleText}}</label>
                       <div class="input-group">
                         <input type="text" class="form-control">
                       </div>
-                      <label>x-axis label</label>
+                      <label>{{label.xAxisTitle}}</label>
                       <div class="input-group">
                         <input type="text" class="form-control">
                       </div>
-                      <label>y-axis label</label>
+                      <label>{{label.yAxisTitle}}</label>
                       <div class="input-group">
                         <input type="text" class="form-control">
                       </div>
-                      <label>Color</label>
+                      <label>{{label.color}}</label>
                       <div class="input-group colorPickerClass">
                         <!-- <input type="text" class="form-control"> -->
                         <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="props.fill"
@@ -783,11 +798,11 @@
                           <input type="text" class="form-control">
                         </div> -->
                       <button type="button" class=" mt-4 btn btn-danger float-right"
-                        (click)="getBarChart()">Preview</button>
+                        (click)="getBarChart()">{{label.previewTitle}}</button>
                     </div>
 
                     <div class="col-8 form-group pl-2 pr-4">
-                      <h4>Preview</h4>
+                      <h4>{{label.previewTitle}}</h4>
                       <canvas id="previewCanvas-linechart" style="width:100%;height:85%"></canvas>
                     </div>
                   </div>
@@ -795,71 +810,14 @@
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Save</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">{{label.save}}</button>
                 </div>
 
               </div>
             </div>
           </div>
 
-          <!-- Filter Modal -->
-          <div class="modal" id="filterChart">
-            <div class="modal-dialog">
-              <div class="modal-content">
 
-                <!-- Modal Header -->
-                <div class="modal-header">
-                  <h4 class="modal-title">Filter</h4>
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                  <div class="form-row">
-                    <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
-                      <h4>Select attributes</h4>
-
-                      <label>Title</label>
-                      <div class="input-group">
-                        <input type="text" class="form-control">
-                      </div>
-                      <label>x-axis label</label>
-                      <div class="input-group">
-                        <input type="text" class="form-control">
-                      </div>
-                      <label>y-axis label</label>
-                      <div class="input-group">
-                        <input type="text" class="form-control">
-                      </div>
-                      <label>Color</label>
-                      <div class="input-group colorPickerClass">
-                        <!-- <input type="text" class="form-control"> -->
-                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="props.fill"
-                          [style.background]="props.fill" [value]="props.fill" (colorPickerChange)="setFill()">
-                      </div>
-                      <!-- <label>Values</label>
-                        <div class="input-group">
-                          <input type="text" class="form-control">
-                        </div> -->
-                      <button type="button" class=" mt-4 btn btn-danger float-right"
-                        (click)="getBarChart()">Preview</button>
-                    </div>
-
-                    <div class="col-8 form-group pl-2 pr-4">
-                      <h4>Preview</h4>
-                      <canvas id="previewCanvas-linechart" style="width:100%;height:85%"></canvas>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Save</button>
-                </div>
-
-              </div>
-            </div>
-          </div>
 
           <!-- Date Filter Modal -->
           <div class="modal" id="dateChart">
@@ -876,13 +834,13 @@
                 <div class="modal-body">
                   <div class="form-row">
                     <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
-                      
+
                       <button type="button" class=" mt-4 btn btn-danger float-right"
-                        (click)="getDate()">Preview</button>
+                        (click)="getDate()">{{label.previewTitle}}</button>
                     </div>
 
                     <div class="col-8 form-group pl-2 pr-4">
-                      <h4>Preview</h4>
+                      <h4>{{label.previewTitle}}</h4>
                       <canvas id="previewCanvas-date" style="width:100%;height:85%"></canvas>
                     </div>
                   </div>
@@ -891,7 +849,7 @@
                 <!-- Modal footer -->
                 <div class="modal-footer">
                   <button type="button" class="btn btn-danger" data-dismiss="modal"
-                    (click)="getImage('previewCanvas-date')">Save</button>
+                    (click)="getImage('previewCanvas-date')">{{label.save}}</button>
                 </div>
               </div>
             </div>
@@ -909,12 +867,12 @@
                 </div>
 
                 <!-- Modal body -->
-                 <div class="modal-body">
+                <div class="modal-body">
                   <div class="form-row">
                     <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
-                      <h4>Select attributes</h4>
+                      <h4>{{label.select}}</h4>
 
-                      <label>Title</label>
+                      <label>{{label.titleText}}</label>
                       <div class="input-group">
                         <input type="text" class="form-control" [(ngModel)]="pieTitle">
                       </div>
@@ -941,13 +899,13 @@
                       </div>
 
 
-                      
+
                       <button type="button" class=" mt-4 btn btn-danger float-right"
-                        (click)="getDoughnutChart()">Preview</button>
+                        (click)="getDoughnutChart()">{{label.previewTitle}}</button>
                     </div>
 
                     <div class="col-8 form-group pl-2 pr-4">
-                      <h4>Preview</h4>
+                      <h4>{{label.previewTitle}}</h4>
                       <canvas id="previewCanvas-doughnutchart" style="width:100%;height:85%"></canvas>
                     </div>
                   </div>
@@ -956,7 +914,7 @@
                 <!-- Modal footer -->
                 <div class="modal-footer">
                   <button type="button" class="btn btn-danger" data-dismiss="modal"
-                    (click)="getImage('previewCanvas-doughnutchart')">Save</button>
+                    (click)="getImage('previewCanvas-doughnutchart')">{{label.save}}</button>
                 </div>
 
               </div>
@@ -980,17 +938,17 @@
                     <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
                       <h4>Select attributes</h4>
 
-                      <label>Title</label>
+                      <label>{{label.titleText}}</label>
                       <div class="input-group">
                         <input type="text" class="form-control" [(ngModel)]="filterName">
                       </div>
 
                       <button type="button" class=" mt-4 btn btn-danger float-right"
-                        (click)="getFilter()">Preview</button>
+                        (click)="getFilter()">{{label.previewTitle}}</button>
                     </div>
 
                     <div class="col-8 form-group pl-2 pr-4">
-                      <h4>Preview</h4>
+                      <h4>{{label.previewTitle}}</h4>
                       <canvas id="previewCanvas-filter" style="width:100%;height:85%"></canvas>
                     </div>
                   </div>
@@ -999,7 +957,7 @@
                 <!-- Modal footer -->
                 <div class="modal-footer">
                   <button type="button" class="btn btn-danger" data-dismiss="modal"
-                    (click)="getImage('previewCanvas-filter')">Save</button>
+                    (click)="getImage('previewCanvas-filter')">{{label.save}}</button>
                 </div>
 
               </div>
@@ -1008,37 +966,13 @@
 
         </div>
       </div>
-      <br />
+      <!-- <br /> -->
 
-      <!-- Add Images -->
-      <div class="card">
-        <div class="card-header">Add Images</div>
-        <div class="card-body max-height" id="imagePreview">
-          <!-- <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/pikachu.svg">
-          <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/squirtle.svg">
-          <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/bullbasaur.svg">
-          <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/charmander.svg">
-          <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/bellsprout.svg">
-          <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/caterpie.svg">
-          <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/dratini.svg">
-          <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/eevee.svg">
-          <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/jigglypuff.svg">
-          <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/mankey.svg">
-          <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/meowth.svg">
-          <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/pidgey.svg">
-          <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/psyduck.svg">
-          <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/rattata.svg">
-          <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/abra.svg">
-          <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/snorlax.svg">
-          <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/zubat.svg">
-          <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/test.jpg"> -->
-        </div>
-      </div>
-      <br />
+
 
       <!-- Upload Image -->
-      <div class="card">
-        <div class="card-header">Upload image</div>
+      <div class="card mb-2">
+        <div class="card-header">{{label.upload}}</div>
         <div class="card-body text-center">
           <img id="testImage" *ngIf="url" class="images-item-upload" [src]="url" (click)="addImageOnCanvas(url);">
           <input type="file" (change)="readUrl($event);" class="col-12">
@@ -1047,23 +981,24 @@
           <div class="btn-group btn-group-justified" role="group" aria-label="...">
             <div class="btn-group" role="group">
               <button type="button" class="btn btn-outline-danger btn-sm" (click)="removeWhite(url);">
-                <i class="fa fa-times" aria-hidden="true"></i> Remove</button>
+                <i class="fa fa-times mr-1" aria-hidden="true"></i>{{label.remove}}</button>
             </div>
           </div>
         </div>
       </div>
-      <br />
+      <!-- <br /> -->
 
       <!-- Add shapes -->
-      <div class="card">
-        <div class="card-header">Add figure</div>
+      <div class="card mb-1">
+        <div class="card-header">{{label.figure}}</div>
         <!-- <div class="card-body text-center max-height"> -->
         <div class="card-body">
           <!-- <div class="btn-group btn-group-vertical" role="group" aria-label="..."> -->
-          <button type="button" class="btn btn-primary m-1" (click)="addFigure('rectangle');">Rectangle</button>
-          <button type="button" class="btn btn-primary m-1" (click)="addFigure('square');">Square</button>
-          <button type="button" class="btn btn-primary m-1" (click)="addFigure('triangle');">Triangle</button>
-          <button type="button" class="btn btn-primary m-1" (click)="addFigure('circle');">Circle</button>
+          <button type="button" class="btn btn-primary m-1"
+            (click)="addFigure('rectangle');">{{label.rectangle}}</button>
+          <button type="button" class="btn btn-primary m-1" (click)="addFigure('square');">{{label.square}}</button>
+          <button type="button" class="btn btn-primary m-1" (click)="addFigure('triangle');">{{label.triangle}}</button>
+          <button type="button" class="btn btn-primary m-1" (click)="addFigure('circle');">{{label.circle}}</button>
           <!-- </div> -->
         </div>
       </div>
@@ -1072,16 +1007,16 @@
 
     <!-- Canvas -->
     <div class="">
-      <!-- <div class="card" style="height: 100vh;"> -->
-      <canvas id="canvas" class=""></canvas>
-      <!-- </div> -->
+      <div class="">
+        <canvas id="canvas" class=""></canvas>
+      </div>
     </div>
 
     <div class="col-lg-3 p-0">
 
       <!-- Options -->
-      <div class="card">
-        <div class="card-header">Options</div>
+      <div class="card mb-2">
+        <div class="card-header">{{label.options}}</div>
         <div class="card-body text-center">
           <!-- <div class="btn-group" role="group" aria-label="..."> -->
           <div class="" role="group" aria-label="...">
@@ -1108,36 +1043,14 @@
           </div>
         </div>
       </div>
-      <br />
-
-      <!-- Bg Color Set -->
-      <!-- <div class="card" *ngIf="!selected">
-        <div class="card-header">Canvas</div>
-        <div class="card-body">
-          <div class="custom-item" *ngIf="!props.canvasImage">
-            <div class="custom-item-title">Background Color</div>
-            <div class="custom-item-body">
-              <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="props.canvasFill"
-                [style.background]="props.canvasFill" [value]="props.canvasFill" (colorPickerChange)="setCanvasFill()">
-            </div>
-          </div>
-          <div class="custom-item">
-            <div class="custom-item-title">Background Image (url)</div>
-            <div class="custom-item-body">
-              <input type="text" class="form-control" placeholder="http://example.jpg" [(ngModel)]="props.canvasImage"
-                (keyup)="setCanvasImage()">
-            </div>
-          </div>
-        </div>
-      </div> -->
       <!-- <br /> -->
 
       <!-- Custom -->
-      <div class="card">
-        <div class="card-header">Custom</div>
+      <div class="card mb-2">
+        <div class="card-header">{{label.custom}}</div>
         <div class="card-body">
           <div class="custom-item" *ngIf="selected  && selected.type == 'group'">Group Selected</div>
-          <div class="custom-item" *ngIf="!selected">No items selected</div>
+          <div class="custom-item" *ngIf="!selected">{{label.items}}</div>
           <div class="custom-item" *ngIf="selected && selected.type != 'group'">
             <div class="custom-item-title">ID</div>
             <div class="custom-item-body">
@@ -1251,6 +1164,58 @@
           </div>
         </div>
       </div>
+
+      <!-- Add Images -->
+      <div class="card mb-2">
+        <div class="card-header">{{label.image}}</div>
+        <div class="card-body max-height" id="imagePreview" style="cursor: pointer">
+          <!-- <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/pikachu.svg">
+                  <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/squirtle.svg">
+                  <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/bullbasaur.svg">
+                  <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/charmander.svg">
+                  <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/bellsprout.svg">
+                  <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/caterpie.svg">
+                  <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/dratini.svg">
+                  <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/eevee.svg">
+                  <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/jigglypuff.svg">
+                  <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/mankey.svg">
+                  <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/meowth.svg">
+                  <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/pidgey.svg">
+                  <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/psyduck.svg">
+                  <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/rattata.svg">
+                  <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/abra.svg">
+                  <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/snorlax.svg">
+                  <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/zubat.svg">
+                  <img class="images-item" (click)="getImgPolaroid($event)" src="assets/img/test.jpg"> -->
+        </div>
+      </div>
+      <!-- <br /> -->
+
+
+
+      <!-- Bg Color Set -->
+      <!-- <div class="card" *ngIf="!selected">
+        <div class="card-header">Canvas</div>
+        <div class="card-body">
+          <div class="custom-item" *ngIf="!props.canvasImage">
+            <div class="custom-item-title">Background Color</div>
+            <div class="custom-item-body">
+              <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="props.canvasFill"
+                [style.background]="props.canvasFill" [value]="props.canvasFill" (colorPickerChange)="setCanvasFill()">
+            </div>
+          </div>
+          <div class="custom-item">
+            <div class="custom-item-title">Background Image (url)</div>
+            <div class="custom-item-body">
+              <input type="text" class="form-control" placeholder="http://example.jpg" [(ngModel)]="props.canvasImage"
+                (keyup)="setCanvasImage()">
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <!-- <br /> -->
+
+
 
     </div>
   </div>
