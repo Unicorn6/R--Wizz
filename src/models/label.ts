@@ -41,6 +41,22 @@ export class Labels {
     nml: string;
     ne: string;
     nna: string;
+    legend1: string;
+    legend2: string;
+    color1: string;
+    color2: string;
+    dummy: string;
+    start: string;
+    end: string;
+    id: string;
+    opacity: string;
+    fill: string;
+    fontFamily: string;
+    textAlign: string;
+    fontSize: string;
+    char: string;
+    lineHeight: string;
+    style: string;
 
     constructor() {
         this.title = "JarWiz";
@@ -62,7 +78,7 @@ export class Labels {
         this.triangle = "Triangle";
         this.circle = "Circle";
         this.bar = "Bar";
-        this.map="Map";
+        this.map = "Map";
         this.horizontal = "Horizontal Bar";
         this.stacked = "Stacked Bar";
         this.grouped = "Grouped Bar";
@@ -84,5 +100,20 @@ export class Labels {
         this.nml = "Nissan Motor Limited";
         this.nna = "Nissan North America";
         this.ne = "Nissan Europe";
+        this.legend1 = "Legend 1";
+        this.legend2 = "Legend 2";
+        this.color1 = "Color 1";
+        this.color2 = "Color 2";
+        this.dummy = "Dummy Data";
+        this.start = "Start Date";
+        this.id = "ID";
+        this.opacity = "Opacity";
+        this.fill = "Fill";
+        this.fontFamily = "Font Family";
+        this.textAlign = "Text Align";
+        this.fontSize = "Font Size";
+        this.char = "Char Spacing";
+        this.lineHeight = "Line Height";
+        this.style = "Style";
     }
 }

@@ -40,6 +40,23 @@ export class LabelJap {
     nml: string;
     nna: string;
     ne: string;
+    legend1: string;
+    legend2: string;
+    color1: string;
+    color2: string;
+    dummy: string;
+    start: string;
+    end: string;
+    map: string;
+    id: string;
+    opacity: string;
+    fill: string;
+    fontFamily: string;
+    textAlign: string;
+    fontSize: string;
+    char: string;
+    lineHeight: string;
+    style: string;
 
     constructor() {
         this.title = "テキストを追加";
@@ -82,5 +99,22 @@ export class LabelJap {
         this.nml = "日産自動車株式会社";
         this.nna = "日産北米";
         this.ne = "日産ヨーロッパ";
+        this.legend1 = "伝説1";
+        this.legend2 = "伝説2";
+        this.color1 = "カラー1";
+        this.color2 = "カラー2";
+        this.dummy = "ダミーデータ";
+        this.start = "開始日";
+        this.end = "終了日";
+        this.map = "ヒートマップ";
+        this.id = "私日";
+        this.opacity = "不透明度";
+        this.fill = "塗りつぶし";
+        this.fontFamily = "フォントファミリー";
+        this.textAlign = "テキスト整列";
+        this.fontSize = "フォントサイズ";
+        this.char = "文字間隔";
+        this.lineHeight = "行の高さ";
+        this.style = "スタイル";
     }
 }
