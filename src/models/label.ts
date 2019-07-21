@@ -19,6 +19,7 @@ export class Labels {
     triangle: string;
     circle: string;
     bar: string;
+    map: string;
     horizontal: string;
     stacked: string;
     grouped: string;
@@ -61,6 +62,7 @@ export class Labels {
         this.triangle = "Triangle";
         this.circle = "Circle";
         this.bar = "Bar";
+        this.map="Map";
         this.horizontal = "Horizontal Bar";
         this.stacked = "Stacked Bar";
         this.grouped = "Grouped Bar";
