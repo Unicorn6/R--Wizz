@@ -106,6 +106,7 @@ export class Labels {
         this.color2 = "Color 2";
         this.dummy = "Dummy Data";
         this.start = "Start Date";
+        this.end = "End Date";
         this.id = "ID";
         this.opacity = "Opacity";
         this.fill = "Fill";
