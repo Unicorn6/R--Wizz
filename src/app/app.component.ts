@@ -51,6 +51,12 @@ export class AppComponent implements OnInit {
   private pieLegend1;
   private pieLegend2;
 
+  private areaTitle;
+  private groupedTitle;
+  private mixedTitle;
+  private lineTitle;
+  private doughnutTitle;
+
   private stackTitle;
   private stackColor1;
   private stackColor2;
@@ -86,10 +92,16 @@ export class AppComponent implements OnInit {
 
   constructor() {
     this.pieTitle = "Pie Chart";
-    this.pieColor1 = "#1fe2ef";
+    this.pieColor1 = "#5daae7";
     this.pieColor2 = "#f77206";
     this.pieLegend1 = "NNA";
     this.pieLegend2 = "NML";
+
+    this.areaTitle = "Area Chart";
+    this.groupedTitle = "Grouped Chart";
+    this.mixedTitle = "Mixed Chart";
+    this.lineTitle = "Line Graph";
+    this.doughnutTitle = "Doughnut Chart";
 
     this.stackTitle = "Stack Bar";
     this.stackColor1 = "#5daae7";
@@ -99,23 +111,23 @@ export class AppComponent implements OnInit {
     this.stackXAxis = "Years";
     this.stackYAxis = "Sales";
 
-    this.barTitle ="Bar Chart";
-    this.barXlabel="Years";
-    this.barYlabel="sales";
-    this.barColor="#6fc6c6";
+    this.barTitle = "Bar Chart";
+    this.barXlabel = "Years";
+    this.barYlabel = "sales";
+    this.barColor = "#6fc6c6";
 
 
-    this.filterName="Filter Name";
+    this.filterName = "Filter Name";
 
     this.tableTitle = "Table Heading";
     this.tableData = "xyz";
-    this.startDate="2014";
-    this.endDate="2019"
+    this.startDate = "2014";
+    this.endDate = "2019"
 
     this.horizontalBarTitle = "Horizontal Chart";
-    this.horizontalXAxis="Years";
-    this.horizontalYAxis="Profit";
-    this.horizontalColor="#889cfb";
+    this.horizontalXAxis = "Years";
+    this.horizontalYAxis = "Profit";
+    this.horizontalColor = "#889cfb";
   }
 
   ngOnInit() {
@@ -288,38 +300,38 @@ export class AppComponent implements OnInit {
 
 
 
-  getDate(){
+  getDate() {
     var canvas = document.getElementById('previewCanvas-date') as HTMLCanvasElement;
     //canvas.style.background="url('assets/img/map.jpg')";
     var sdate = this.startDate;
     var edate = this.endDate;
     var ctx = canvas.getContext("2d");
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle="black";
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "black";
     ctx.beginPath();
-    ctx.arc(70, 100, 12,Math.PI/2, 3 * Math.PI/2);
-    ctx.rect(70,99,190,2);
-    ctx.rect(110,97,2,6);
-    ctx.rect(150,97,2,6);
-    ctx.rect(180,97,2,6);
-    ctx.rect(220,97,2,6);
-  
+    ctx.arc(70, 100, 12, Math.PI / 2, 3 * Math.PI / 2);
+    ctx.rect(70, 99, 190, 2);
+    ctx.rect(110, 97, 2, 6);
+    ctx.rect(150, 97, 2, 6);
+    ctx.rect(180, 97, 2, 6);
+    ctx.rect(220, 97, 2, 6);
+
     ctx.fill();
     ctx.stroke();
     ctx.beginPath();
-    ctx.arc(260,100,12,3 * Math.PI/2,Math.PI/2);
-    ctx.font ="bold 25pt Calibri";
+    ctx.arc(260, 100, 12, 3 * Math.PI / 2, Math.PI / 2);
+    ctx.font = "bold 25pt Calibri";
     ctx.fill();
-    ctx.fillText(sdate,45,75);
-    ctx.fillText(edate,230,75);
+    ctx.fillText(sdate, 45, 75);
+    ctx.fillText(edate, 230, 75);
     ctx.stroke();
     ctx.beginPath();
-    ctx.font ="bold 35pt Calibri";
-    ctx.fillText("Date ",120,30);
+    ctx.font = "bold 35pt Calibri";
+    ctx.fillText("Date ", 120, 30);
     ctx.stroke();
-    
-  
-  
+
+
+
   }
 
 
@@ -450,7 +462,7 @@ export class AppComponent implements OnInit {
       options: {
         title: {
           display: true,
-          text: this.pieTitle
+          text: this.doughnutTitle
         }
       }
     });
@@ -461,7 +473,7 @@ export class AppComponent implements OnInit {
 
     var yname = this.stackYAxis;
     var xname = this.stackXAxis;
-    var heading_name = this.stackTitle;
+    var heading_name = this.lineTitle;
     Chart.defaults.global.defaultFontColor = 'black';
     new Chart(document.getElementById("previewCanvas-linechart"), {
       type: 'line',
@@ -545,17 +557,17 @@ export class AppComponent implements OnInit {
     console.log("Inside BarCHart()_");
     var yname = this.barYlabel;
     var xname = this.barXlabel;
-    var heading_name =this.barTitle;
+    var heading_name = this.barTitle;
     new Chart(document.getElementById("previewCanvas-barchart"), {
       type: 'bar',
       data: {
-        labels: ["", "", "", "", "","",""],
+        labels: ["", "", "", "", "", "", ""],
 
         datasets: [
           {
             label: "Population (millions)",
-            backgroundColor: [this.barColor,this.barColor, this.barColor,this.barColor,this.barColor,this.barColor],
-            data: [4078, 5267, 4734, 3984,4309,4156]
+            backgroundColor: [this.barColor, this.barColor, this.barColor, this.barColor, this.barColor, this.barColor],
+            data: [4078, 5267, 4734, 3984, 4309, 4156]
           }
         ]
       },
@@ -840,7 +852,7 @@ export class AppComponent implements OnInit {
         title: {
           display: true,
           fontSize: 18,
-          text: this.stackTitle
+          text: this.groupedTitle
         }
       }
     });
@@ -851,7 +863,7 @@ export class AppComponent implements OnInit {
 
     var yname = this.stackYAxis;
     var xname = this.stackXAxis;
-    var heading_name = this.stackTitle;
+    var heading_name = this.areaTitle;
     Chart.defaults.global.defaultFontColor = 'black';
     new Chart(document.getElementById("previewCanvas-areaChart"), {
       type: 'line',
@@ -937,7 +949,7 @@ export class AppComponent implements OnInit {
 
     var yname = this.stackYAxis;
     var xname = this.stackXAxis;
-    var heading_name = this.stackTitle;
+    var heading_name = this.mixedTitle;
     Chart.defaults.global.defaultFontColor = 'black';
     new Chart(document.getElementById("previewCanvas-mixedChart"), {
       type: 'bar',
@@ -1017,60 +1029,59 @@ export class AppComponent implements OnInit {
 
   }
 
-  getMap()
-  {
+  getMap() {
     var canvas = document.getElementById('previewCanvas-map') as HTMLCanvasElement;
     //canvas.style.background="url('assets/img/map.jpg')";
     console.log("Inside Map");
     var ctx = canvas.getContext("2d");
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle=this.pieColor1;
-    
-    
-    
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = this.pieColor1;
+
+
+
     //ctx.fill();
     //ctx.stroke();
     var filterimg = new Image();
-    filterimg.width=canvas.width;
-    filterimg.height=canvas.height;
+    filterimg.width = canvas.width;
+    filterimg.height = canvas.height;
     filterimg.src = "assets/img/map.jpg";
-  
+
     //ctx.font = "bold 35px sans-serif";
     //this.addTextFilter(ctx,this.filterName,10,30,100,60);
-    
-    filterimg.onload=function(){
-    ctx.drawImage(filterimg,0,0);
-    ctx.beginPath();
-    ctx.arc(110, 75, 3, 0, 2 * Math.PI);
-    ctx.fill();
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.arc(120, 95, 3, 0, 2 * Math.PI);
-    ctx.fill();
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.arc(100, 114, 3, 0, 2 * Math.PI);
-    ctx.fill();
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.arc(130, 86, 3, 0, 2 * Math.PI);
-    ctx.fill();
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.arc(170, 60, 3, 0, 2 * Math.PI);
-    ctx.fill();
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.arc(186, 54, 3, 0, 2 * Math.PI);
-    ctx.fill();
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.arc(210, 100, 3, 0, 2 * Math.PI);
-    ctx.fill();
-    ctx.stroke();
+
+    filterimg.onload = function () {
+      ctx.drawImage(filterimg, 0, 0);
+      ctx.beginPath();
+      ctx.arc(110, 75, 3, 0, 2 * Math.PI);
+      ctx.fill();
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(120, 95, 3, 0, 2 * Math.PI);
+      ctx.fill();
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(100, 114, 3, 0, 2 * Math.PI);
+      ctx.fill();
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(130, 86, 3, 0, 2 * Math.PI);
+      ctx.fill();
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(170, 60, 3, 0, 2 * Math.PI);
+      ctx.fill();
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(186, 54, 3, 0, 2 * Math.PI);
+      ctx.fill();
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(210, 100, 3, 0, 2 * Math.PI);
+      ctx.fill();
+      ctx.stroke();
     }
-  
-  
+
+
   }
 
 
