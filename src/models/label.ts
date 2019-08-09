@@ -57,10 +57,12 @@ export class Labels {
     char: string;
     lineHeight: string;
     style: string;
+    language: string;
 
     constructor() {
         this.title = "JarWiz";
-        this.export = "Export to image";
+        // this.export = "Export to image";
+        this.export = "Export";
         this.clean = "Clean";
         this.region = "Region";
         this.choose = "Choose Template";
@@ -116,5 +118,6 @@ export class Labels {
         this.char = "Char Spacing";
         this.lineHeight = "Line Height";
         this.style = "Style";
+        this.language = "Language";
     }
 }

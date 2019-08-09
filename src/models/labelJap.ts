@@ -57,10 +57,12 @@ export class LabelJap {
     char: string;
     lineHeight: string;
     style: string;
+    language: string;
 
     constructor() {
         this.title = "テキストを追加";
-        this.export = "画像にエクスポート";
+        // this.export = "画像にエクスポート";
+        this.export = "輸出する";
         this.clean = "クリーン";
         this.region = "領域";
         this.choose = "こちらを選択";
@@ -116,5 +118,6 @@ export class LabelJap {
         this.char = "文字間隔";
         this.lineHeight = "行の高さ";
         this.style = "スタイル";
+        this.language = "言語";
     }
 }

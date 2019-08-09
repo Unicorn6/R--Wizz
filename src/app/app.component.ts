@@ -21,8 +21,8 @@ export class AppComponent implements OnInit {
   // endPoint: String = "lang.json";
   label: any;
 
-  private canvas: any;
-  private props: any = {
+  canvas: any;
+  props: any = {
     canvasFill: '#ffffff',
     canvasImage: '',
     id: null,
@@ -38,56 +38,56 @@ export class AppComponent implements OnInit {
     TextDecoration: ''
   };
 
-  private textString: string;
-  private url: string = '';
-  private size: any = {
-    width: document.body.clientWidth / 2,
-    height: window.innerHeight
+  textString: string;
+  url: string = '';
+  size: any = {
+    width: window.innerWidth / 1.8,
+    height: window.innerHeight - 10
   };
 
-  private pieTitle;
-  private pieColor1;
-  private pieColor2;
-  private pieLegend1;
-  private pieLegend2;
+  pieTitle;
+  pieColor1;
+  pieColor2;
+  pieLegend1;
+  pieLegend2;
 
-  private areaTitle;
-  private groupedTitle;
-  private mixedTitle;
-  private lineTitle;
-  private doughnutTitle;
+  areaTitle;
+  groupedTitle;
+  mixedTitle;
+  lineTitle;
+  doughnutTitle;
 
-  private stackTitle;
-  private stackColor1;
-  private stackColor2;
-  private stackLegend1;
-  private stackLegend2;
-  private stackXAxis;
-  private stackYAxis;
+  stackTitle;
+  stackColor1;
+  stackColor2;
+  stackLegend1;
+  stackLegend2;
+  stackXAxis;
+  stackYAxis;
 
 
-  private barTitle;
-  private barXlabel;
-  private barYlabel;
-  private barColor;
-  private filterName;
-  private tableTitle;
-  private tableData;
-  private startDate;
-  private endDate;
+  barTitle;
+  barXlabel;
+  barYlabel;
+  barColor;
+  filterName;
+  tableTitle;
+  tableData;
+  startDate;
+  endDate;
 
-  private horizontalBarTitle;
-  private horizontalColor;
+  horizontalBarTitle;
+  horizontalColor;
 
-  private json: any;
-  private globalEditor: boolean = false;
-  private textEditor: boolean = false;
-  private imageEditor: boolean = false;
-  private figureEditor: boolean = false;
-  private selected: any;
-  private imageNumber;
-  private horizontalXAxis;
-  private horizontalYAxis;
+  json: any;
+  globalEditor: boolean = false;
+  textEditor: boolean = false;
+  imageEditor: boolean = false;
+  figureEditor: boolean = false;
+  selected: any;
+  imageNumber;
+  horizontalXAxis;
+  horizontalYAxis;
   translateText: boolean;
 
   constructor() {
@@ -131,6 +131,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.size);
+
     this.imageNumber = 0;
     // this.getContents();
     this.label = new Labels();
@@ -224,7 +226,7 @@ export class AppComponent implements OnInit {
     var newImg = document.createElement('img');
     newImg.id = imageId;
     //var newImg = new Image();
-    newImg.width = 150;
+    newImg.width = 263;
     newImg.height = 150;
     newImg.className = "images-item";
     // imageId.addEventListener("click", (e:Event) => this.getImgPolaroid(newImg));
@@ -1188,7 +1190,7 @@ export class AppComponent implements OnInit {
         hasRotatingPoint: true,
         peloas: 12
       });
-      image.setWidth(150);
+      image.setWidth(263);
       image.setHeight(150);
       image.set
       console.log(this);
