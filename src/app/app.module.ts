@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
+import { IpinfoService } from './ipinfo.service';
 
 @NgModule({
   declarations: [
@@ -12,12 +14,13 @@ import { AppComponent } from './app.component';
     BrowserModule,
     FormsModule,
     ColorPickerModule,
+    HttpClientModule
     // MatLabel,
     // MatSelectModule,
     // MatFormFieldModule,
     // BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [IpinfoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,6 +4,11 @@ import { Chart } from 'chart.js';
 import 'fabric';
 import { Labels } from '../models/label';
 import { LabelJap } from '../models/labelJap';
+import { IpinfoService } from './ipinfo.service';
+import { HttpHeaders } from '@angular/common/http';
+import { HttpClient } from 'selenium-webdriver/http';
+import { IP } from './ip';
+
 declare const fabric: any;
 
 @Component({
@@ -39,6 +44,7 @@ export class AppComponent implements OnInit {
 
   textString: string;
   url: string = '';
+
   size: any = {
     width: window.innerWidth / 1.8,
     height: window.innerHeight - 10,
@@ -88,7 +94,9 @@ export class AppComponent implements OnInit {
   horizontalYAxis;
   translateText: boolean;
 
-  constructor() {
+  clientIp: IP | null = null;
+
+  constructor(private userService: IpinfoService) {
     this.pieTitle = "Pie Chart";
     this.pieColor1 = "#5daae7";
     this.pieColor2 = "#f77206";
@@ -129,7 +137,16 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    // console.log(this.size);
+
+    // console.log("ip");
+    // this.userService.getIpAddress().subscribe(data => {
+    //   console.log(data);
+    // });
+
+    this.userService.getIpAddress().subscribe(data => {
+      this.clientIp = data;
+      console.log(data);
+    });
 
     this.imageNumber = 0;
     // this.getContents();
@@ -188,9 +205,13 @@ export class AppComponent implements OnInit {
         this.resetPanels();
       }
     });
+    // var width = document.getElementById("canvas").style.width = "100%";
+    // var height = document.getElementById("canvas").style.height = "100%";
+    // this.canvas.setWidth(width);
+    // this.canvas.setWidth(height);
 
-    this.canvas.setWidth(this.size.width);
-    this.canvas.setHeight(this.size.height);
+    this.canvas.setWidth(window.innerWidth / 1.8);
+    this.canvas.setHeight(window.innerHeight);
 
     // get references to the html canvas element & its context
     // this.canvas.on('mouse:down', (e) => {
@@ -237,8 +258,8 @@ export class AppComponent implements OnInit {
     var newImg = document.createElement('img');
     newImg.id = imageId;
     //var newImg = new Image();
-    newImg.width = 263;
-    newImg.height = 150;
+    newImg.width = window.innerWidth / 5.8;
+    newImg.height = window.innerHeight / 5;
     newImg.className = "images-item";
     // imageId.addEventListener("click", (e:Event) => this.getImgPolaroid(newImg));
     //newImg.onclick=this.getImgPolaroid;
@@ -1180,8 +1201,8 @@ export class AppComponent implements OnInit {
         hasRotatingPoint: true,
         peloas: 12
       });
-      image.setWidth(263);
-      image.setHeight(150);
+      image.setWidth(window.innerWidth / 5.3);
+      image.setHeight(window.innerHeight / 5);
       image.set
       // console.log(this);
       this.extend(image, Math.floor(Math.random() * 999999) + 1);
@@ -1538,7 +1559,7 @@ export class AppComponent implements OnInit {
   }
 
   confirmClear() {
-    if (confirm('Are you sure?')) {
+    if (confirm(this.label.confirm)) {
       this.canvas.clear();
     }
   }

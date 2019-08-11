@@ -58,6 +58,7 @@ export class LabelJap {
     lineHeight: string;
     style: string;
     language: string;
+    confirm: string;
 
     constructor() {
         this.title = "テキストを追加";
@@ -119,5 +120,6 @@ export class LabelJap {
         this.lineHeight = "行の高さ";
         this.style = "スタイル";
         this.language = "言語";
+        this.confirm = "本気ですか";
     }
 }

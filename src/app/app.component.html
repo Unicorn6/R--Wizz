@@ -90,7 +90,7 @@
               <option value="JP">日本人</option>
               <option value="AR">عربى</option>
               <option value="FR">Français</option>
-              <option value="ES">Español</option>
+              <option value="ES">spañol</option>
             </select>
 
           </div>
@@ -108,7 +108,7 @@
       </div>
 
       <!-- Add Text -->
-      <div class="card mb-1">
+      <div class="card mb-2">
         <div class="card-header p-1">
           {{label.text}}
         </div>
@@ -128,7 +128,7 @@
       </div>
 
       <!-- Add Charts -->
-      <div class="card mb-1" style="overflow: auto; max-height: calc(100vh - 500px);">
+      <div class="card mb-2" style="overflow: auto; max-height: calc(100vh - 500px);">
         <div class="card-header p-1">{{label.chart}}</div>
         <div class="card-body p-1">
           <a data-toggle="modal" data-target="#barChart" class="btn p-0 m-1"> <i class="fa fa-bar-chart zoomImg"
@@ -1083,10 +1083,10 @@
       </div>
 
       <!-- Upload Image -->
-      <div class="card mb-1">
+      <div class="card mb-2">
         <div class="card-header p-1">{{label.upload}}</div>
         <div class="card-body text-center py-2 px-0">
-          <img id="testImage" *ngIf="url" class="images-item-upload" [src]="url" (click)="addImageOnCanvas(url);">
+          <!-- <img id="testImage" *ngIf="url" class="images-item-upload" [src]="url" (click)="addImageOnCanvas(url);"> -->
           <input type="file" (change)="readUrl($event);" class="col-12 mb-2">
           <!-- <br />
           <br /> -->
@@ -1102,20 +1102,21 @@
       <!-- Add shapes -->
       <div class="card">
         <div class="card-header p-1">{{label.figure}}</div>
-        <div class="card-body py-2" style="font-size:12px; text-align-last: justify">
+        <div class="card-body py-2 px-0 px-xl-2" style="font-size:12px; text-align-last: justify">
           <!-- <button type="button" class="btn btn-primary m-1"> -->
           <!-- <i class="fa fa-square-o" style="zoom:4" (click)="addFigure('square');"></i> -->
-          <img src="../assets/img/square.png" style="width:44px; cursor:pointer;" (click)="addFigure('square');">
+          <img src="../assets/img/square.png" style="width:1.5rem; cursor:pointer;" (click)="addFigure('square');">
           <!-- </button> -->
           <!-- <button type="button" class="btn btn-primary m-1" (click)="addFigure('triangle');">{{label.triangle}}</button> -->
-          <img src="../assets/img/triangle.png" style="width:44px; cursor:pointer;" (click)="addFigure('triangle');">
+          <img src="../assets/img/triangle.png" style="width:1.5rem; cursor:pointer;" (click)="addFigure('triangle');">
           <!-- <button type="button" class="btn btn-primary m-1"> -->
           <!-- <i class="fa fa-circle-o" (click)="addFigure('circle');" style="zoom:4"></i> -->
-          <img src="../assets/img/circle.png" style="width:44px; cursor:pointer;" (click)="addFigure('circle');">
+          <img src="../assets/img/circle.png" style="width:1.5rem; cursor:pointer;" (click)="addFigure('circle');">
           <!-- </button> -->
           <!-- <button type="button" class="btn btn-primary m-1"
             (click)="addFigure('rectangle');">{{label.rectangle}}</button> -->
-          <img src="../assets/img/rectangle2.png" style="width:44px; cursor:pointer;" (click)="addFigure('rectangle');">
+          <img src="../assets/img/rectangle2.png" style="width:1.5rem; cursor:pointer;"
+            (click)="addFigure('rectangle');">
         </div>
       </div>
 
@@ -1123,11 +1124,11 @@
 
     <!-- Canvas -->
     <!-- <div class="col-lg-6 col-md-12 order-md-3 order-lg-2 my-1"> -->
-    <div class="col-lg-6 order-lg-2 order-md-2">
+    <div class="col-lg-6 order-lg-2 order-md-2 px-0">
       <canvas id="canvas"></canvas>
     </div>
 
-    <div class="col-lg-3 col-md-6 order-md-3 order-lg-3 pl-1 pr-0" style="max-width: 22%;">
+    <div class="col-lg-3 col-md-6 order-md-3 order-lg-3 pl-1 pr-0">
       <!-- Actions-->
       <div class="col-12 text-center py-2 px-0 pr-1">
         <button data-toggle="tooltip" data-placement="bottom" title="Export to image" type="button"
@@ -1288,9 +1289,10 @@
       </div>
 
       <!-- Add Images -->
-      <div class="card mb-1" style="max-height: 330px;">
+      <div class="card mb-1">
         <div class="card-header p-1">{{label.image}}</div>
-        <div class="card-body max-height" id="imagePreview" style="cursor: pointer">
+        <div class="card-body px-0 py-1" style="max-height: calc(100vh - 465px); overflow:auto;cursor: pointer;"
+          id="imagePreview">
         </div>
       </div>
 

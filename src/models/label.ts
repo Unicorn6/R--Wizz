@@ -58,6 +58,7 @@ export class Labels {
     lineHeight: string;
     style: string;
     language: string;
+    confirm: string;
 
     constructor() {
         this.title = "JarWiz";
@@ -119,5 +120,6 @@ export class Labels {
         this.lineHeight = "Line Height";
         this.style = "Style";
         this.language = "Language";
+        this.confirm = "Are you sure ?";
     }
 }
