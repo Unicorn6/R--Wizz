@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { Chart } from 'chart.js';
 
 import 'fabric';
 import { Labels } from '../models/label';
 import { LabelJap } from '../models/labelJap';
-import { $ } from 'protractor';
 declare const fabric: any;
 
 @Component({
@@ -42,7 +41,7 @@ export class AppComponent implements OnInit {
   url: string = '';
   size: any = {
     width: window.innerWidth / 1.8,
-    height: window.innerHeight - 10
+    height: window.innerHeight - 10,
   };
 
   pieTitle;
@@ -64,7 +63,6 @@ export class AppComponent implements OnInit {
   stackLegend2;
   stackXAxis;
   stackYAxis;
-
 
   barTitle;
   barXlabel;
@@ -131,7 +129,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.size);
+    // console.log(this.size);
 
     this.imageNumber = 0;
     // this.getContents();
@@ -180,7 +178,7 @@ export class AppComponent implements OnInit {
               this.getFontFamily();
               break;
             case 'image':
-              console.log('image');
+              // console.log('image');
               break;
           }
         }
@@ -202,24 +200,37 @@ export class AppComponent implements OnInit {
 
   }
 
-  onTranslate() {
-    this.translateText = true;
-    if (this.translateText) {
-      this.label = new LabelJap();
-    }
-  }
+  // onTranslate(val: any) {
+  //   if (val === 'EN') {
+  //     this.label = new Labels();
+  //   }
+  //   else if (val === 'JP') {
+  //     this.label = new LabelJap();
+  //   }
+  //   if (val === 'FR') {
+  //     this.label = new Labels();
+  //   }
+  //   if (val === 'AR') {
+  //     this.label = new Labels();
+  //   }
+  //   if (val === 'ESP') {
+  //     this.label = new Labels();
+  //   }
+  //   // if (this.translateText) {
+  //   //   this.label = new LabelJap();
+  //   // }
+  // }
 
-  onEnglish() {
-    this.translateText = false;
-    if (this.translateText === false) {
-      this.label = new Labels();
-    }
-  }
+  // onEnglish() {
+  //   this.translateText = false;
+  //   if (this.translateText === false) {
+  //     this.label = new Labels();
+  //   }
+  // }
 
   getImage(idname: any) {
     this.imageNumber++;
     var imageId = 'myImage' + this.imageNumber;
-
 
     var canvasPreview = document.getElementById(idname) as HTMLCanvasElement;
 
@@ -234,18 +245,12 @@ export class AppComponent implements OnInit {
     newImg.draggable = true;
     newImg.src = canvasPreview.toDataURL("image/png", 1.0).replace("image/png", "image/octet-stream");
 
-    console.log(newImg.src);
-    //  this.getImgPolaroid(newImg);
-
-    var temp2 = document.getElementById("imagePreview").appendChild(newImg);
-    var temp = document.getElementById(imageId);
+    var temp2 = document.getElementById("imagePreview").insertBefore(newImg, document.getElementById("imagePreview").childNodes[0]);
     temp2.addEventListener("click", (e: Event) => this.getImgPolaroid(newImg));
-
-
-
-
   }
+
   /*----------------------------------Filters---------------------------------------------------*/
+
   //   resetCanvas(idName){
   //     var width = document.getElementById(idName).clientWidth;
   //     var height = document.getElementById(idName).clientHeight;
@@ -264,7 +269,6 @@ export class AppComponent implements OnInit {
   //     // ctx.stroke();
 
   // }
-
 
   getTable() {
 
@@ -291,16 +295,8 @@ export class AppComponent implements OnInit {
       }
 
     }
-
-
     ctx.stroke();
-
-
-
   }
-
-
-
 
   getDate() {
     var canvas = document.getElementById('previewCanvas-date') as HTMLCanvasElement;
@@ -331,18 +327,7 @@ export class AppComponent implements OnInit {
     ctx.font = "bold 35pt Calibri";
     ctx.fillText("Date ", 120, 30);
     ctx.stroke();
-
-
-
   }
-
-
-
-
-
-
-
-
 
   getFilter() {
     //this.resetCanvas('previewCanvas-filter');
@@ -419,7 +404,6 @@ export class AppComponent implements OnInit {
 
   }
 
-
   /*-------------------------------------Charts-------------------------------------------------*/
 
   getPieChart() {
@@ -446,7 +430,6 @@ export class AppComponent implements OnInit {
     });
   }
 
-
   getDoughnutChart() {
 
     new Chart(document.getElementById("previewCanvas-doughnutchart"), {
@@ -469,7 +452,6 @@ export class AppComponent implements OnInit {
       }
     });
   }
-
 
   getLineChart() {
 
@@ -549,14 +531,8 @@ export class AppComponent implements OnInit {
 
   }
 
-
-
-
-
-
-
   getBarChart() {
-    console.log("Inside BarCHart()_");
+    // console.log("Inside BarCHart()_");
     var yname = this.barYlabel;
     var xname = this.barXlabel;
     var heading_name = this.barTitle;
@@ -622,7 +598,6 @@ export class AppComponent implements OnInit {
       }
     });
   }
-
 
   getStackedBarChart() {
 
@@ -698,17 +673,6 @@ export class AppComponent implements OnInit {
     });
 
   }
-
-
-
-
-
-
-
-
-
-
-
 
   getHorizontalBarChart() {
 
@@ -946,7 +910,6 @@ export class AppComponent implements OnInit {
 
   }
 
-
   getMixedChart() {
 
     var yname = this.stackYAxis;
@@ -1034,7 +997,7 @@ export class AppComponent implements OnInit {
   getMap() {
     var canvas = document.getElementById('previewCanvas-map') as HTMLCanvasElement;
     //canvas.style.background="url('assets/img/map.jpg')";
-    console.log("Inside Map");
+    // console.log("Inside Map");
     var ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = this.pieColor1;
@@ -1086,8 +1049,6 @@ export class AppComponent implements OnInit {
 
   }
 
-
-
   /*-------------------------Charts End-----------------------------*/
 
   addBackOnCanvas(url) {
@@ -1136,6 +1097,35 @@ export class AppComponent implements OnInit {
     }
   }
 
+  lang: string = "";
+
+  langChange() {
+    switch (this.lang) {
+      case "EN": {
+        this.label = new Labels();
+        document.getElementById("titleMain").className = "titleEng";
+        break;
+      }
+      case "JP": {
+        this.label = new LabelJap();
+        document.getElementById("titleMain").className = "titleJap";
+        break;
+      }
+      case "AR": {
+        this.label = new Labels();
+        break;
+      }
+      case "FR": {
+        this.label = new Labels();
+        break;
+      }
+      case "ESP": {
+        this.label = new Labels();
+        break;
+      }
+    }
+  }
+
   /*------------------------Block elements------------------------*/
 
   //Block "Size"
@@ -1157,7 +1147,7 @@ export class AppComponent implements OnInit {
 
   addText() {
     let textString = this.textString;
-    console.log(textString);
+    // console.log(textString);
     let text = new fabric.IText(textString, {
       left: 10,
       top: 10,
@@ -1178,7 +1168,7 @@ export class AppComponent implements OnInit {
   //Block "Add images"
 
   getImgPolaroid(el) {
-    console.log(event);
+    // console.log(event);
     // let el = event.target;
     fabric.Image.fromURL(el.getAttribute("src"), (image) => {
       image.set({
@@ -1193,7 +1183,7 @@ export class AppComponent implements OnInit {
       image.setWidth(263);
       image.setHeight(150);
       image.set
-      console.log(this);
+      // console.log(this);
       this.extend(image, Math.floor(Math.random() * 999999) + 1);
       this.canvas.add(image);
       this.selectItemAfterAdded(image);
@@ -1322,7 +1312,6 @@ export class AppComponent implements OnInit {
       : (object[styleName] || '');
   }
 
-
   setActiveStyle(styleName, value, object) {
     object = object || this.canvas.getActiveObject();
     if (!object) return;
@@ -1340,7 +1329,6 @@ export class AppComponent implements OnInit {
     object.setCoords();
     this.canvas.renderAll();
   }
-
 
   getActiveProp(name) {
     var object = this.canvas.getActiveObject();
@@ -1394,7 +1382,7 @@ export class AppComponent implements OnInit {
   setId() {
     let val = this.props.id;
     let complete = this.canvas.getActiveObject().toObject();
-    console.log(complete);
+    // console.log(complete);
     this.canvas.getActiveObject().toObject = () => {
       complete.id = val;
       return complete;
@@ -1459,7 +1447,6 @@ export class AppComponent implements OnInit {
     this.setActiveStyle('fontStyle', this.props.fontStyle ? 'italic' : '', null);
   }
 
-
   getTextDecoration() {
     this.props.TextDecoration = this.getActiveStyle('textDecoration', null);
   }
@@ -1479,7 +1466,6 @@ export class AppComponent implements OnInit {
     return this.props.TextDecoration.includes(value);
   }
 
-
   getTextAlign() {
     this.props.textAlign = this.getActiveProp('textAlign');
   }
@@ -1498,7 +1484,6 @@ export class AppComponent implements OnInit {
   }
 
   /*System*/
-
 
   removeSelected() {
     let activeObject = this.canvas.getActiveObject(),
@@ -1563,7 +1548,7 @@ export class AppComponent implements OnInit {
       alert('This browser doesn\'t provide means to serialize canvas to an image');
     }
     else {
-      console.log(this.canvas.toDataURL('png'))
+      // console.log(this.canvas.toDataURL('png'))
       //window.open(this.canvas.toDataURL('png'));
       // var image = new Image();
       // image.src = this.canvas.toDataURL('png')
@@ -1582,7 +1567,7 @@ export class AppComponent implements OnInit {
   }
 
   rasterizetoSVG() {
-    console.log(this.canvas.toSVG())
+    // console.log(this.canvas.toSVG())
     // window.open(
     //   'data:image/svg+xml;utf8,' +
     //   encodeURIComponent(this.canvas.toSVG()));
@@ -1599,31 +1584,30 @@ export class AppComponent implements OnInit {
     link.click();
   };
 
-
   saveCanvasToJSON() {
     let json = JSON.stringify(this.canvas);
     localStorage.setItem('Kanvas', json);
-    console.log('json');
-    console.log(json);
+    // console.log('json');
+    // console.log(json);
 
   }
 
   loadCanvasFromJSON() {
     let CANVAS = localStorage.getItem('Kanvas');
-    console.log('CANVAS');
-    console.log(CANVAS);
+    // console.log('CANVAS');
+    // console.log(CANVAS);
 
     // and load everything from the same json
     this.canvas.loadFromJSON(CANVAS, () => {
-      console.log('CANVAS untar');
-      console.log(CANVAS);
+      // console.log('CANVAS untar');
+      // console.log(CANVAS);
 
       // making sure to render canvas at the end
       this.canvas.renderAll();
 
       // and checking if object's "name" is preserved
-      console.log('this.canvas.item(0).name');
-      console.log(this.canvas);
+      // console.log('this.canvas.item(0).name');
+      // console.log(this.canvas);
     });
 
   };

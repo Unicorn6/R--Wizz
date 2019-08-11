@@ -71,29 +71,39 @@
                 </div>
             </div> -->
 
-      <!-- Title & Lang-->
+      <!-- Title & Lang -->
       <div class="col-12 mt-2">
         <div class="form-row">
           <div class="form-group col-6 mb-2">
-            <h4>{{label.title}}</h4>
+            <h4 id="titleMain">{{label.title}}</h4>
           </div>
-          <div class="form-group col-6 mb-2">
+          <div class="form-group col-6 mb-2 text-center">
             <!-- <span>{{label.language}} : </span> -->
-            <button (click)="onTranslate()" class="rounded-circle btn btn-primary p-1"><img
+            <!-- <button (click)="onTranslate()" class="rounded-circle btn btn-primary p-1"><img
                 src="../assets/img/japan.svg" style="width: 35px;height: 35px;padding: 3px;"></button>
             <button (click)="onEnglish()" class="rounded-circle btn btn-primary p-1"><img
-                src="../assets/img/united-kingdom.svg" style="width: 35px;height: 35px;padding: 3px;"></button>
+                src="../assets/img/united-kingdom.svg" style="width: 35px;height: 35px;padding: 3px;"></button> -->
+
+            <select class="w-100 btn btn-primary pr-0 pl-2" [(ngModel)]="lang" (ngModelChange)="langChange()">
+              <option value="" selected hidden>{{label.language}}</option>
+              <option value="EN">English</option>
+              <option value="JP">日本人</option>
+              <option value="AR">عربى</option>
+              <option value="FR">Français</option>
+              <option value="ES">Español</option>
+            </select>
+
           </div>
         </div>
       </div>
 
-      <!-- Template-->
+      <!-- Choose Template-->
       <div class="col-12 mb-2 px-0 pl-1">
         <select [(ngModel)]="chosenMod" (ngModelChange)="modo()" id="selectid" class="w-100 btn btn-primary">
           <option value="" selected disabled hidden>{{label.choose}}</option>
-          <option value="nml" class="btn btn-secondary">{{label.nml}}</option>
-          <option value="ne" class="btn btn-secondary">{{label.ne}}</option>
-          <option value="nna" class="btn btn-secondary">{{label.nna}}</option>
+          <option value="nml">{{label.nml}}</option>
+          <option value="ne">{{label.ne}}</option>
+          <option value="nna">{{label.nna}}</option>
         </select>
       </div>
 
@@ -226,11 +236,17 @@
                 </div>
 
                 <!-- Modal footer -->
-                <div class="modal-footer" style="justify-content: space-between;">
-                  <button type="button" class="btn btn-danger float-right"
-                    (click)="getBarChart()">{{label.previewTitle}}</button>
-                  <button type="button" class="btn btn-danger" data-dismiss="modal"
-                    (click)="getImage('previewCanvas-barchart')">{{label.save}}</button>
+                <div class="modal-footer">
+                  <div class="form-row col-12">
+                    <div class="col-4 form-group">
+                      <button type="button" class="btn btn-danger float-right"
+                        (click)="getBarChart()">{{label.previewTitle}}</button>
+                    </div>
+                    <div class="col-8 form-group">
+                      <button type="button" class="btn btn-danger float-right" data-dismiss="modal"
+                        (click)="getImage('previewCanvas-barchart')">{{label.save}}</button>
+                    </div>
+                  </div>
                 </div>
 
               </div>
@@ -289,11 +305,17 @@
                 </div>
 
                 <!-- Modal footer -->
-                <div class="modal-footer" style="justify-content: space-between;">
-                  <button type="button" class="btn btn-danger float-right"
-                    (click)="getHorizontalBarChart()">{{label.previewTitle}}</button>
-                  <button type="button" class="btn btn-danger" data-dismiss="modal"
-                    (click)="getImage('previewCanvas-horizontalBarChart')">{{label.save}}</button>
+                <div class="modal-footer">
+                  <div class="form-row col-12">
+                    <div class="col-4 form-group">
+                      <button type="button" class="btn btn-danger float-right"
+                        (click)="getHorizontalBarChart()">{{label.previewTitle}}</button>
+                    </div>
+                    <div class="col-8 form-group">
+                      <button type="button" class="btn btn-danger float-right" data-dismiss="modal"
+                        (click)="getImage('previewCanvas-horizontalBarChart')">{{label.save}}</button>
+                    </div>
+                  </div>
                 </div>
 
               </div>
@@ -362,11 +384,17 @@
                 </div>
 
                 <!-- Modal footer -->
-                <div class="modal-footer" style="justify-content: space-between;">
-                  <button type="button" class="btn btn-danger float-right"
-                    (click)="getStackedBarChart()">{{label.previewTitle}}</button>
-                  <button type="button" class="btn btn-danger" data-dismiss="modal"
-                    (click)="getImage('previewCanvas-StackedBar')">{{label.save}}</button>
+                <div class="modal-footer">
+                  <div class="form-row col-12">
+                    <div class="col-4 form-group">
+                      <button type="button" class="btn btn-danger float-right"
+                        (click)="getStackedBarChart()">{{label.previewTitle}}</button>
+                    </div>
+                    <div class="col-8 form-group">
+                      <button type="button" class="btn btn-danger float-right" data-dismiss="modal"
+                        (click)="getImage('previewCanvas-StackedBar')">{{label.save}}</button>
+                    </div>
+                  </div>
                 </div>
 
               </div>
@@ -435,12 +463,17 @@
                 </div>
 
                 <!-- Modal footer -->
-                <div class="modal-footer" style="justify-content: space-between;">
-                  <button type="button" class="btn btn-danger float-right"
-                    (click)=" getGroupedBarChart()">{{label.previewTitle}}</button>
-
-                  <button type="button" class="btn btn-danger" data-dismiss="modal"
-                    (click)="getImage('previewCanvas-groupedBarChart')">{{label.save}}</button>
+                <div class="modal-footer">
+                  <div class="form-row col-12">
+                    <div class="col-4 form-group">
+                      <button type="button" class="btn btn-danger float-right"
+                        (click)="getGroupedBarChart()">{{label.previewTitle}}</button>
+                    </div>
+                    <div class="col-8 form-group">
+                      <button type="button" class="btn btn-danger float-right" data-dismiss="modal"
+                        (click)="getImage('previewCanvas-groupedBarChart')">{{label.save}}</button>
+                    </div>
+                  </div>
                 </div>
 
               </div>
@@ -509,11 +542,17 @@
                 </div>
 
                 <!-- Modal footer -->
-                <div class="modal-footer" style="justify-content: space-between;">
-                  <button type="button" class="btn btn-danger float-right"
-                    (click)="getAreaChart()">{{label.previewTitle}}</button>
-                  <button type="button" class="btn btn-danger" data-dismiss="modal"
-                    (click)="getImage('previewCanvas-areaChart')">{{label.save}}</button>
+                <div class="modal-footer">
+                  <div class="form-row col-12">
+                    <div class="col-4 form-group">
+                      <button type="button" class="btn btn-danger float-right"
+                        (click)="getAreaChart()">{{label.previewTitle}}</button>
+                    </div>
+                    <div class="col-8 form-group">
+                      <button type="button" class="btn btn-danger float-right" data-dismiss="modal"
+                        (click)="getImage('previewCanvas-areaChart')">{{label.save}}</button>
+                    </div>
+                  </div>
                 </div>
 
               </div>
@@ -581,11 +620,17 @@
                 </div>
 
                 <!-- Modal footer -->
-                <div class="modal-footer" style="justify-content: space-between;">
-                  <button type="button" class="btn btn-danger float-right"
-                    (click)="getMixedChart()">{{label.previewTitle}}</button>
-                  <button type="button" class="btn btn-danger" data-dismiss="modal"
-                    (click)="getImage('previewCanvas-mixedChart')">{{label.save}}</button>
+                <div class="modal-footer">
+                  <div class="form-row col-12">
+                    <div class="col-4 form-group">
+                      <button type="button" class="btn btn-danger float-right"
+                        (click)="getMixedChart()">{{label.previewTitle}}</button>
+                    </div>
+                    <div class="col-8 form-group">
+                      <button type="button" class="btn btn-danger float-right" data-dismiss="modal"
+                        (click)="getImage('previewCanvas-mixedChart')">{{label.save}}</button>
+                    </div>
+                  </div>
                 </div>
 
               </div>
@@ -634,8 +679,6 @@
                         <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="pieColor2"
                           [style.background]="pieColor2" [(ngModel)]="pieColor2" (colorPickerChange)="setFill()">
                       </div>
-                      <button type="button" class=" mt-4 btn btn-danger float-right"
-                        (click)="getPieChart()">{{label.previewTitle}}</button>
                     </div>
 
                     <div class="col-8 form-group pl-2 pr-4">
@@ -646,18 +689,24 @@
                 </div>
 
                 <!-- Modal footer -->
-                <div class="modal-footer" style="justify-content: space-between;">
-                  <button type="button" class="btn btn-danger float-right"
-                    (click)="getPieChart()">{{label.previewTitle}}</button>
-                  <button type="button" class="btn btn-danger" data-dismiss="modal"
-                    (click)="getImage('previewCanvas-piechart')">{{label.save}}</button>
+                <div class="modal-footer">
+                  <div class="form-row col-12">
+                    <div class="col-4 form-group">
+                      <button type="button" class="btn btn-danger float-right"
+                        (click)="getPieChart()">{{label.previewTitle}}</button>
+                    </div>
+                    <div class="col-8 form-group">
+                      <button type="button" class="btn btn-danger float-right" data-dismiss="modal"
+                        (click)="getImage('previewCanvas-piechart')">{{label.save}}</button>
+                    </div>
+                  </div>
                 </div>
 
               </div>
             </div>
           </div>
 
-          <!-----Table -->
+          <!-- Table -->
           <div class="modal" id="table">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -695,11 +744,17 @@
                 </div>
 
                 <!-- Modal footer -->
-                <div class="modal-footer" style="justify-content: space-between;">
-                  <button type="button" class="btn btn-danger float-right"
-                    (click)="getTable()">{{label.previewTitle}}</button>
-                  <button type="button" class="btn btn-danger" data-dismiss="modal"
-                    (click)="getImage('previewCanvas-table')">{{label.save}}</button>
+                <div class="modal-footer">
+                  <div class="form-row col-12">
+                    <div class="col-4 form-group">
+                      <button type="button" class="btn btn-danger float-right"
+                        (click)="getTable()">{{label.previewTitle}}</button>
+                    </div>
+                    <div class="col-8 form-group">
+                      <button type="button" class="btn btn-danger float-right" data-dismiss="modal"
+                        (click)="getImage('previewCanvas-table')">{{label.save}}</button>
+                    </div>
+                  </div>
                 </div>
 
               </div>
@@ -772,11 +827,17 @@
                 </div>
 
                 <!-- Modal footer -->
-                <div class="modal-footer" style="justify-content: space-between;">
-                  <button type="button" class="btn btn-danger float-right"
-                    (click)="getLineChart()">{{label.previewTitle}}</button>
-                  <button type="button" class="btn btn-danger" data-dismiss="modal"
-                    (click)="getImage('previewCanvas-linechart')">{{label.save}}</button>
+                <div class="modal-footer">
+                  <div class="form-row col-12">
+                    <div class="col-4 form-group">
+                      <button type="button" class="btn btn-danger float-right"
+                        (click)="getLineChart()">{{label.previewTitle}}</button>
+                    </div>
+                    <div class="col-8 form-group">
+                      <button type="button" class="btn btn-danger float-right" data-dismiss="modal"
+                        (click)="getImage('previewCanvas-linechart')">{{label.save}}</button>
+                    </div>
+                  </div>
                 </div>
 
               </div>
@@ -821,12 +882,19 @@
                 </div>
 
                 <!-- Modal footer -->
-                <div class="modal-footer" style="justify-content: space-between;">
-                  <button type="button" class="btn btn-danger float-right"
-                    (click)="getDate()">{{label.previewTitle}}</button>
-                  <button type="button" class="btn btn-danger" data-dismiss="modal"
-                    (click)="getImage('previewCanvas-date')">{{label.save}}</button>
+                <div class="modal-footer">
+                  <div class="form-row col-12">
+                    <div class="col-4 form-group">
+                      <button type="button" class="btn btn-danger float-right"
+                        (click)="getDate()">{{label.previewTitle}}</button>
+                    </div>
+                    <div class="col-8 form-group">
+                      <button type="button" class="btn btn-danger float-right" data-dismiss="modal"
+                        (click)="getImage('previewCanvas-date')">{{label.save}}</button>
+                    </div>
+                  </div>
                 </div>
+
               </div>
             </div>
           </div>
@@ -869,11 +937,17 @@
                 </div>
 
                 <!-- Modal footer -->
-                <div class="modal-footer" style="justify-content: space-between;">
-                  <button type="button" class="btn btn-danger float-right"
-                    (click)="getMap()">{{label.previewTitle}}</button>
-                  <button type="button" class="btn btn-danger" data-dismiss="modal"
-                    (click)="getImage('previewCanvas-map')">{{label.save}}</button>
+                <div class="modal-footer">
+                  <div class="form-row col-12">
+                    <div class="col-4 form-group">
+                      <button type="button" class="btn btn-danger float-right"
+                        (click)="getMap()">{{label.previewTitle}}</button>
+                    </div>
+                    <div class="col-8 form-group">
+                      <button type="button" class="btn btn-danger float-right" data-dismiss="modal"
+                        (click)="getImage('previewCanvas-map')">{{label.save}}</button>
+                    </div>
+                  </div>
                 </div>
 
               </div>
@@ -937,11 +1011,17 @@
                 </div>
 
                 <!-- Modal footer -->
-                <div class="modal-footer" style="justify-content: space-between;">
-                  <button type="button" class="btn btn-danger float-right"
-                    (click)="getDoughnutChart()">{{label.previewTitle}}</button>
-                  <button type="button" class="btn btn-danger" data-dismiss="modal"
-                    (click)="getImage('previewCanvas-doughnutchart')">{{label.save}}</button>
+                <div class="modal-footer">
+                  <div class="form-row col-12">
+                    <div class="col-4 form-group">
+                      <button type="button" class="btn btn-danger float-right"
+                        (click)="getDoughnutChart()">{{label.previewTitle}}</button>
+                    </div>
+                    <div class="col-8 form-group">
+                      <button type="button" class="btn btn-danger float-right" data-dismiss="modal"
+                        (click)="getImage('previewCanvas-doughnutchart')">{{label.save}}</button>
+                    </div>
+                  </div>
                 </div>
 
               </div>
@@ -982,11 +1062,17 @@
                 </div>
 
                 <!-- Modal footer -->
-                <div class="modal-footer" style="justify-content: space-between;">
-                  <button type="button" class="btn btn-danger float-right"
-                    (click)="getFilter()">{{label.previewTitle}}</button>
-                  <button type="button" class="btn btn-danger" data-dismiss="modal"
-                    (click)="getImage('previewCanvas-filter')">{{label.save}}</button>
+                <div class="modal-footer">
+                  <div class="form-row col-12">
+                    <div class="col-4 form-group">
+                      <button type="button" class="btn btn-danger float-right"
+                        (click)="getFilter()">{{label.previewTitle}}</button>
+                    </div>
+                    <div class="col-8 form-group">
+                      <button type="button" class="btn btn-danger float-right" data-dismiss="modal"
+                        (click)="getImage('previewCanvas-filter')">{{label.save}}</button>
+                    </div>
+                  </div>
                 </div>
 
               </div>
@@ -1016,40 +1102,32 @@
       <!-- Add shapes -->
       <div class="card">
         <div class="card-header p-1">{{label.figure}}</div>
-        <div class="card-body px-0 py-2" style="font-size:12px">
+        <div class="card-body py-2" style="font-size:12px; text-align-last: justify">
           <!-- <button type="button" class="btn btn-primary m-1"> -->
           <!-- <i class="fa fa-square-o" style="zoom:4" (click)="addFigure('square');"></i> -->
-          <img src="../assets/img/square.png" class="mx-1" style="width:44px;" (click)="addFigure('square');">
+          <img src="../assets/img/square.png" style="width:44px; cursor:pointer;" (click)="addFigure('square');">
           <!-- </button> -->
           <!-- <button type="button" class="btn btn-primary m-1" (click)="addFigure('triangle');">{{label.triangle}}</button> -->
-          <img src="../assets/img/triangle.png" class="mx-1" style="width:44px;" (click)="addFigure('triangle');">
+          <img src="../assets/img/triangle.png" style="width:44px; cursor:pointer;" (click)="addFigure('triangle');">
           <!-- <button type="button" class="btn btn-primary m-1"> -->
           <!-- <i class="fa fa-circle-o" (click)="addFigure('circle');" style="zoom:4"></i> -->
-          <img src="../assets/img/circle.png" class="mx-1" style="width:44px;" (click)="addFigure('circle');">
+          <img src="../assets/img/circle.png" style="width:44px; cursor:pointer;" (click)="addFigure('circle');">
           <!-- </button> -->
           <!-- <button type="button" class="btn btn-primary m-1"
             (click)="addFigure('rectangle');">{{label.rectangle}}</button> -->
-          <img src="../assets/img/rectangle2.png" class="mx-1" style="width:44px;" (click)="addFigure('rectangle');">
+          <img src="../assets/img/rectangle2.png" style="width:44px; cursor:pointer;" (click)="addFigure('rectangle');">
         </div>
       </div>
 
     </div>
 
     <!-- Canvas -->
-    <div class="col-lg-6 col-md-12 order-md-3 order-lg-2 my-1">
+    <!-- <div class="col-lg-6 col-md-12 order-md-3 order-lg-2 my-1"> -->
+    <div class="col-lg-6 order-lg-2 order-md-2">
       <canvas id="canvas"></canvas>
     </div>
 
-    <!-- Canvas -->
-    <!-- <div class="col-lg-6 col-md-12 order-md-3 order-lg-2 my-1">
-      <div class="card" style="height: 100%;">
-        <div style="display: block">
-          <canvas id="canvas" style="height:100%; width: 100%;"></canvas>
-        </div>
-      </div>
-    </div> -->
-
-    <div class="col-lg-3 col-md-6 order-md-2 order-lg-3 pl-1 pr-0" style="max-width: 22%;">
+    <div class="col-lg-3 col-md-6 order-md-3 order-lg-3 pl-1 pr-0" style="max-width: 22%;">
       <!-- Actions-->
       <div class="col-12 text-center py-2 px-0 pr-1">
         <button data-toggle="tooltip" data-placement="bottom" title="Export to image" type="button"
