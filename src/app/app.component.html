@@ -1085,13 +1085,19 @@
       <!-- Upload Image -->
       <div class="card mb-2">
         <div class="card-header p-1">{{label.upload}}</div>
-        <div class="card-body text-center py-2 px-0">
-          <img id="testImage" *ngIf="url" class="images-item-upload" [src]="url" (click)="addImageOnCanvas(url);">
-          <input type="file" (change)="readUrl($event);" class="col-12 mb-2">
-          <div class="btn-group btn-group-justified" role="group" aria-label="...">
-            <div class="btn-group" role="group">
-              <button type="button" class="btn btn-outline-danger btn-sm" (click)="removeWhite(url);">
-                <i class="fa fa-times mr-1" aria-hidden="true"></i>{{label.remove}}</button>
+        <div class="card-body text-center py-1 px-0">
+          <input type="file" (change)="readUrl($event);" class="col-12 mb-1">
+          <div class="form-row col-12">
+            <div class="form-group col-6">
+              <div class="btn-group  float-left btn-group-justified" role="group" aria-label="...">
+                <div class="btn-group" role="group">
+                  <button type="button" class="btn btn-outline-danger btn-sm" (click)="removeWhite(url);">
+                    <i class="fa fa-times mr-1" aria-hidden="true"></i>{{label.remove}}</button>
+                </div>
+              </div>
+            </div>
+            <div class="form-group col-6 p-0 m-0">
+              <img id="testImage" *ngIf="url" class="images-item-upload" [src]="url" (click)="addImageOnCanvas(url);">
             </div>
           </div>
         </div>

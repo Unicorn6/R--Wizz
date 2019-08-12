@@ -61,7 +61,7 @@ export class LabelFrench {
     confirm: string;
 
     constructor() {
-        this.title = "Jarwiz";
+        this.title = "JarWiz";
         this.export = "Exportation";
         this.clean = "Nettoyer";
         this.region = "Région";

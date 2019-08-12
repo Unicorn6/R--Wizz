@@ -60,7 +60,7 @@ export class LabelEsp {
     confirm: string;
 
     constructor() {
-        this.title = "Jarwiz";
+        this.title = "JarWiz";
         this.export = "Exportar";
         this.clean = "Limpiar";
         this.region = "Región"
