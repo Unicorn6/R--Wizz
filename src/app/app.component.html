@@ -128,23 +128,23 @@
       </div>
 
       <!-- Add Charts -->
-      <div class="card mb-2" style="overflow: auto; max-height: calc(100vh - 550px);">
+      <div class="card mb-2">
         <div class="card-header p-1">{{label.chart}}</div>
-        <div class="card-body p-1">
+        <div class="card-body p-1 addCharts">
           <a data-toggle="modal" data-target="#barChart" class="btn p-0 m-1"> <i class="fa fa-bar-chart zoomImg"
               aria-hidden="true"></i>
             <caption class="p-0">{{label.bar}}</caption>
           </a>
           <a data-toggle="modal" data-target="#horizontalBarChart" class="btn p-0 m-1"> <img
-              src="../assets/img/horizontal-bars-chart-svgrepo-com.svg" style="width: 35px;">
+              src="../assets/img/horizontal-bars-chart-svgrepo-com.svg" class="addChartsIcon">
             <caption class="p-0">{{label.horizontal}}</caption>
           </a>
           <a data-toggle="modal" data-target="#stackedBarChart" class="btn p-0 m-1"> <img
               src="../assets/img/chart-column-stacked-icon-iconexperience-professional-icons-o-pertaining-to-stacked-bar-chart-icon.png"
-              style="width: 35px;">
+              class="addChartsIcon">
             <caption class="p-0">{{label.stacked}}</caption>
           </a>
-          <a data-toggle="modal" data-target="#groupedBarChart" class="btn p-0 m-1"> <img style="width: 35px;"
+          <a data-toggle="modal" data-target="#groupedBarChart" class="btn p-0 m-1"> <img class="addChartsIcon"
               src="../assets/img/stock-vector-vector-illustration-of-statistics-grouped-bar-chart-icon-premium-quality-web-icon-453734359.jpg">
             <caption class="p-0">{{label.grouped}}</caption>
           </a>
@@ -153,7 +153,7 @@
             <caption class="p-0">{{label.area}}</caption>
           </a>
           <a data-toggle="modal" data-target="#mixedChart" class="btn p-0 m-2"><img
-              src="../assets/img/icons8-combo-chart-50.png" style="width:35px;" class="mr-1">
+              src="../assets/img/icons8-combo-chart-50.png" class="addChartsIcon mr-1">
             <caption class="p-0">{{label.mixed}}</caption>
           </a>
           <a data-toggle="modal" data-target="#table" class="btn p-0 m-2"> <i class="fa fa-table zoomImg mr-1"
@@ -176,8 +176,8 @@
               aria-hidden="true"></i>
             <caption class="p-0">{{label.line}}</caption>
           </a>
-          <a data-toggle="modal" data-target="#doughnutChart" class="btn p-0 m-1"> <img
-              src="../assets/img/chart-donut.svg" style="zoom:0.08;" class="mr-1">
+          <a data-toggle="modal" data-target="#doughnutChart" class="btn p-0 m-1">
+            <img src="../assets/img/chart-donut.svg" class="addChartsIcon mr-1">
             <caption class="p-0">{{label.doughnut}}</caption>
           </a>
           <a data-toggle="modal" data-target="#map" class="btn p-0 m-1"> <i class="fa fa-map-marker zoomImg mx-2"
@@ -199,7 +199,7 @@
                 <!-- Modal body -->
                 <div class="modal-body pt-0">
                   <div class="form-row">
-                    <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
+                    <div class="col-4 form-group pl-2 pr-4 attributeBody modalBorder">
                       <h4>{{label.select}}</h4>
 
                       <label>{{label.previewTitle}}</label>
@@ -228,9 +228,9 @@
                         (click)="getBarChart()">{{label.previewTitle}}</button> -->
                     </div>
 
-                    <div class="col-8 form-group pl-2 pr-4" style="max-height: calc(100vh - 245px);">
+                    <div class="col-8 form-group pl-2 pr-4 modalPreview">
                       <h4>{{label.previewTitle}}</h4>
-                      <canvas id="previewCanvas-barchart" style="width:100%;height:85%"></canvas>
+                      <canvas id="previewCanvas-barchart" class="canvasPreview"></canvas>
                     </div>
                   </div>
                 </div>
@@ -267,7 +267,7 @@
                 <!-- Modal body -->
                 <div class="modal-body pt-0">
                   <div class="form-row">
-                    <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
+                    <div class="col-4 form-group pl-2 pr-4 attributeBody modalBorder">
                       <h4>{{label.select}}</h4>
 
                       <label>{{label.titleText}}</label>
@@ -299,7 +299,7 @@
 
                     <div class="col-8 form-group pl-2 pr-4">
                       <h4>{{label.previewTitle}}</h4>
-                      <canvas id="previewCanvas-horizontalBarChart" style="width:100%;height:85%"></canvas>
+                      <canvas id="previewCanvas-horizontalBarChart" class="canvasPreview"></canvas>
                     </div>
                   </div>
                 </div>
@@ -336,7 +336,7 @@
                 <!-- Modal body -->
                 <div class="modal-body pt-0">
                   <div class="form-row">
-                    <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
+                    <div class="col-4 form-group pl-2 pr-4 attributeBody modalBorder">
                       <h4>{{label.select}}</h4>
 
                       <label>{{label.titleText}}</label>
@@ -378,7 +378,7 @@
 
                     <div class="col-8 form-group pl-2 pr-4">
                       <h4>{{label.previewTitle}}</h4>
-                      <canvas id="previewCanvas-StackedBar" style="width:100%;height:85%"></canvas>
+                      <canvas id="previewCanvas-StackedBar" class="canvasPreview"></canvas>
                     </div>
                   </div>
                 </div>
@@ -415,7 +415,7 @@
                 <!-- Modal body -->
                 <div class="modal-body pt-0">
                   <div class="form-row">
-                    <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
+                    <div class="col-4 form-group pl-2 pr-4 attributeBody modalBorder">
                       <h4>{{label.select}}</h4>
 
                       <label>{{label.titleText}}</label>
@@ -457,7 +457,7 @@
 
                     <div class="col-8 form-group pl-2 pr-4">
                       <h4>{{label.previewTitle}}</h4>
-                      <canvas id="previewCanvas-groupedBarChart" style="width:100%;height:85%"></canvas>
+                      <canvas id="previewCanvas-groupedBarChart" class="canvasPreview"></canvas>
                     </div>
                   </div>
                 </div>
@@ -494,7 +494,7 @@
                 <!-- Modal body -->
                 <div class="modal-body pt-0">
                   <div class="form-row">
-                    <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
+                    <div class="col-4 form-group pl-2 pr-4 attributeBody modalBorder">
                       <h4>{{label.select}}</h4>
 
                       <label>{{label.titleText}}</label>
@@ -536,7 +536,7 @@
 
                     <div class="col-8 form-group pl-2 pr-4">
                       <h4>{{label.previewTitle}}</h4>
-                      <canvas id="previewCanvas-areaChart" style="width:100%;height:85%"></canvas>
+                      <canvas id="previewCanvas-areaChart" class="canvasPreview"></canvas>
                     </div>
                   </div>
                 </div>
@@ -572,7 +572,7 @@
 
                 <div class="modal-body pt-0">
                   <div class="form-row">
-                    <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
+                    <div class="col-4 form-group pl-2 pr-4 attributeBody modalBorder">
                       <h4>{{label.select}}</h4>
 
                       <label>{{label.titleText}}</label>
@@ -614,7 +614,7 @@
 
                     <div class="col-8 form-group pl-2 pr-4">
                       <h4>{{label.previewTitle}}</h4>
-                      <canvas id="previewCanvas-mixedChart" style="width:100%;height:85%"></canvas>
+                      <canvas id="previewCanvas-mixedChart" class="canvasPreview"></canvas>
                     </div>
                   </div>
                 </div>
@@ -651,7 +651,7 @@
                 <!-- Modal body -->
                 <div class="modal-body pt-0">
                   <div class="form-row">
-                    <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
+                    <div class="col-4 form-group pl-2 pr-4 attributeBody modalBorder">
                       <h4>{{label.select}}</h4>
 
                       <label>{{label.titleText}}</label>
@@ -683,7 +683,7 @@
 
                     <div class="col-8 form-group pl-2 pr-4">
                       <h4>{{label.previewTitle}}</h4>
-                      <canvas id="previewCanvas-piechart" style="width:100%;height:85%"></canvas>
+                      <canvas id="previewCanvas-piechart" class="canvasPreview"></canvas>
                     </div>
                   </div>
                 </div>
@@ -720,7 +720,7 @@
                 <!-- Modal body -->
                 <div class="modal-body pt-0">
                   <div class="form-row">
-                    <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
+                    <div class="col-4 form-group pl-2 pr-4 attributeBody modalBorder">
                       <h4>{{label.select}}</h4>
 
                       <label>{{label.titleText}}</label>
@@ -738,7 +738,7 @@
 
                     <div class="col-8 form-group pl-2 pr-4">
                       <h4>{{label.previewTitle}}</h4>
-                      <canvas id="previewCanvas-table" style="width:100%;height:85%"></canvas>
+                      <canvas id="previewCanvas-table" class="canvasPreview"></canvas>
                     </div>
                   </div>
                 </div>
@@ -775,7 +775,7 @@
                 <!-- Modal body -->
                 <div class="modal-body pt-0">
                   <div class="form-row">
-                    <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
+                    <div class="col-4 form-group pl-2 pr-4 attributeBody modalBorder">
                       <h4>{{label.select}}</h4>
 
                       <label>{{label.titleText}}</label>
@@ -821,7 +821,7 @@
 
                     <div class="col-8 form-group pl-2 pr-4">
                       <h4>{{label.previewTitle}}</h4>
-                      <canvas id="previewCanvas-linechart" style="width:100%;height:85%"></canvas>
+                      <canvas id="previewCanvas-linechart" class="canvasPreview"></canvas>
                     </div>
                   </div>
                 </div>
@@ -858,7 +858,7 @@
                 <!-- Modal body -->
                 <div class="modal-body pt-0">
                   <div class="form-row">
-                    <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
+                    <div class="col-4 form-group pl-2 pr-4 attributeBody modalBorder">
                       <h4>{{label.select}}</h4>
 
                       <label>{{label.start}}</label>
@@ -876,7 +876,7 @@
 
                     <div class="col-8 form-group pl-2 pr-4">
                       <h4>{{label.previewTitle}}</h4>
-                      <canvas id="previewCanvas-date" style="width:100%;height:85%"></canvas>
+                      <canvas id="previewCanvas-date" class="canvasPreview"></canvas>
                     </div>
                   </div>
                 </div>
@@ -913,7 +913,7 @@
                 <!-- Modal body -->
                 <div class="modal-body">
                   <div class="form-row">
-                    <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
+                    <div class="col-4 form-group pl-2 pr-4 attributeBody modalBorder">
                       <h4>{{label.select}}</h4>
 
 
@@ -931,7 +931,7 @@
 
                     <div class="col-8 form-group pl-2 pr-4">
                       <h4>{{label.previewTitle}}</h4>
-                      <canvas id="previewCanvas-map" style="width:100%;height:85%"></canvas>
+                      <canvas id="previewCanvas-map" class="canvasPreview"></canvas>
                     </div>
                   </div>
                 </div>
@@ -968,7 +968,7 @@
                 <!-- Modal body -->
                 <div class="modal-body pt-0">
                   <div class="form-row">
-                    <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
+                    <div class="col-4 form-group pl-2 pr-4 attributeBody modalBorder">
                       <h4>{{label.select}}</h4>
 
                       <label>{{label.titleText}}</label>
@@ -1005,7 +1005,7 @@
 
                     <div class="col-8 form-group pl-2 pr-4">
                       <h4>{{label.previewTitle}}</h4>
-                      <canvas id="previewCanvas-doughnutchart" style="width:100%;height:85%"></canvas>
+                      <canvas id="previewCanvas-doughnutchart" class="canvasPreview"></canvas>
                     </div>
                   </div>
                 </div>
@@ -1042,7 +1042,7 @@
                 <!-- Modal body -->
                 <div class="modal-body pt-0">
                   <div class="form-row">
-                    <div class="col-4 form-group pl-2 pr-4 attributeBody" style="border-right: 1px dotted lightgray;">
+                    <div class="col-4 form-group pl-2 pr-4 attributeBody modalBorder">
                       <h4>{{label.select}}</h4>
 
                       <label>{{label.titleText}}</label>
@@ -1056,7 +1056,7 @@
 
                     <div class="col-8 form-group pl-2 pr-4">
                       <h4>{{label.previewTitle}}</h4>
-                      <canvas id="previewCanvas-filter" style="width:100%;height:85%"></canvas>
+                      <canvas id="previewCanvas-filter" class="canvasPreview"></canvas>
                     </div>
                   </div>
                 </div>
@@ -1100,21 +1100,20 @@
       <!-- Add shapes -->
       <div class="card">
         <div class="card-header p-1">{{label.figure}}</div>
-        <div class="card-body py-2 px-0 px-xl-2" style="font-size:12px; text-align-last: justify">
+        <div class="card-body py-2 px-0 px-xl-2 addShapes">
           <!-- <button type="button" class="btn btn-primary m-1"> -->
           <!-- <i class="fa fa-square-o" style="zoom:4" (click)="addFigure('square');"></i> -->
-          <img src="../assets/img/square.png" style="width:1.5rem; cursor:pointer;" (click)="addFigure('square');">
+          <img src="../assets/img/square.png" class="addShapeSize" (click)="addFigure('square');">
           <!-- </button> -->
           <!-- <button type="button" class="btn btn-primary m-1" (click)="addFigure('triangle');">{{label.triangle}}</button> -->
-          <img src="../assets/img/triangle.png" style="width:1.5rem; cursor:pointer;" (click)="addFigure('triangle');">
+          <img src="../assets/img/triangle.png" class="addShapeSize" (click)="addFigure('triangle');">
           <!-- <button type="button" class="btn btn-primary m-1"> -->
           <!-- <i class="fa fa-circle-o" (click)="addFigure('circle');" style="zoom:4"></i> -->
-          <img src="../assets/img/circle.png" style="width:1.5rem; cursor:pointer;" (click)="addFigure('circle');">
+          <img src="../assets/img/circle.png" class="addShapeSize" (click)="addFigure('circle');">
           <!-- </button> -->
           <!-- <button type="button" class="btn btn-primary m-1"
             (click)="addFigure('rectangle');">{{label.rectangle}}</button> -->
-          <img src="../assets/img/rectangle2.png" style="width:1.5rem; cursor:pointer;"
-            (click)="addFigure('rectangle');">
+          <img src="../assets/img/rectangle2.png" class="addShapeSize" (click)="addFigure('rectangle');">
         </div>
       </div>
 
@@ -1169,7 +1168,7 @@
       <!-- Custom -->
       <div class="card mb-1">
         <div class="card-header p-1">{{label.custom}}</div>
-        <div class="card-body py-1 px-2" style="max-height: 190px;overflow: auto;">
+        <div class="card-body py-1 px-2 custom">
           <div class="custom-item" *ngIf="selected  && selected.type == 'group'">Group Selected</div>
           <div class="custom-item" *ngIf="!selected">{{label.items}}</div>
           <div class="custom-item" *ngIf="selected && selected.type != 'group'">
@@ -1289,8 +1288,7 @@
       <!-- Add Images -->
       <div class="card mb-1">
         <div class="card-header p-1">{{label.image}}</div>
-        <div class="card-body py-1" style="max-height: calc(100vh - 465px); overflow:auto;cursor: pointer;"
-          id="imagePreview">
+        <div class="card-body py-1 addImage" id="imagePreview">
         </div>
       </div>
 

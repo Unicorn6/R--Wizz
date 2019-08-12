@@ -144,10 +144,10 @@ export class AppComponent implements OnInit {
     //   console.log(data);
     // });
 
-    this.userService.getIpAddress().subscribe(data => {
-      this.clientIp = data;
-      console.log(data);
-    });
+    // this.userService.getIpAddress().subscribe(data => {
+    //   this.clientIp = data;
+    //   console.log(data);
+    // });
 
     this.imageNumber = 0;
     // this.getContents();
@@ -1203,7 +1203,7 @@ export class AppComponent implements OnInit {
         hasRotatingPoint: true,
         peloas: 12
       });
-      image.setWidth(window.innerWidth / 5.3);
+      image.setWidth(window.innerWidth / 4.8);
       image.setHeight(window.innerHeight / 5);
       image.set
       // console.log(this);

@@ -1,3 +1,51 @@
+.addImage {
+  max-height: calc(100vh - 465px);
+  overflow: auto;
+  cursor: pointer;
+}
+
+.custom {
+  max-height: calc(100vh - 570px);
+  overflow: auto;
+  /* max-height: 190px; */
+}
+
+.addShapes {
+  font-size: 12px;
+  text-align-last: justify
+}
+
+.addShapeSize {
+  width: 1.5rem;
+  cursor: pointer;
+}
+
+.addCharts {
+  overflow: auto;
+  max-height: calc(100vh - 600px);
+}
+
+.addChartsIcon {
+  width: 35px;
+}
+
+/* .addChartsSize {
+  zoom: 0.08;
+} */
+
+.modalBorder {
+  border-right: 1px dotted lightgray;
+}
+
+.canvasPreview {
+  width: 100%;
+  height: 85%
+}
+
+.modalPreview {
+  max-height: calc(100vh - 245px);
+}
+
 #canvas {
   border: 2px dashed #cccccc;
 }
