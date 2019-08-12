@@ -1,13 +1,14 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 
 import 'fabric';
 import { Labels } from '../models/label';
 import { LabelJap } from '../models/labelJap';
 import { IpinfoService } from './ipinfo.service';
-import { HttpHeaders } from '@angular/common/http';
-import { HttpClient } from 'selenium-webdriver/http';
 import { IP } from './ip';
+import { LabelEsp } from '../models/labelEsp';
+import { LabelFrench } from '../models/labelFrench';
+import { LabelArab } from '../models/labelArab';
 
 declare const fabric: any;
 
@@ -1133,15 +1134,16 @@ export class AppComponent implements OnInit {
         break;
       }
       case "AR": {
-        this.label = new Labels();
+        this.label = new LabelArab();
         break;
       }
       case "FR": {
-        this.label = new Labels();
+        this.label = new LabelFrench();
         break;
       }
       case "ESP": {
-        this.label = new Labels();
+        this.label = new LabelEsp();
+        document.getElementById("titleMain").className = "titleEng";
         break;
       }
     }

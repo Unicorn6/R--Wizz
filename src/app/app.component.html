@@ -90,7 +90,7 @@
               <option value="JP">日本人</option>
               <option value="AR">عربى</option>
               <option value="FR">Français</option>
-              <option value="ES">spañol</option>
+              <option value="ESP">Español</option>
             </select>
 
           </div>
@@ -128,7 +128,7 @@
       </div>
 
       <!-- Add Charts -->
-      <div class="card mb-2" style="overflow: auto; max-height: calc(100vh - 500px);">
+      <div class="card mb-2" style="overflow: auto; max-height: calc(100vh - 550px);">
         <div class="card-header p-1">{{label.chart}}</div>
         <div class="card-body p-1">
           <a data-toggle="modal" data-target="#barChart" class="btn p-0 m-1"> <i class="fa fa-bar-chart zoomImg"
@@ -1086,10 +1086,8 @@
       <div class="card mb-2">
         <div class="card-header p-1">{{label.upload}}</div>
         <div class="card-body text-center py-2 px-0">
-          <!-- <img id="testImage" *ngIf="url" class="images-item-upload" [src]="url" (click)="addImageOnCanvas(url);"> -->
+          <img id="testImage" *ngIf="url" class="images-item-upload" [src]="url" (click)="addImageOnCanvas(url);">
           <input type="file" (change)="readUrl($event);" class="col-12 mb-2">
-          <!-- <br />
-          <br /> -->
           <div class="btn-group btn-group-justified" role="group" aria-label="...">
             <div class="btn-group" role="group">
               <button type="button" class="btn btn-outline-danger btn-sm" (click)="removeWhite(url);">

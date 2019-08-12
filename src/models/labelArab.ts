@@ -1,57 +1,123 @@
-"تصدير"
-"نظيفة"
-"منطقة"
-"اختيار القالب"
-"إضافة نص"
-"إضافة مخطط"
-"إضافة الصور"
-"تحميل الصور"
-"إزالة"
-"أضف شخصية"
-"خيارات"
-"العادة"
-"لم يتم تحديد عناصر"
-"مستطيل"
-"ميدان"
-"مثلث"
-"دائرة"
-"شريط"
-"خريطة"
-"عارضة أفقية"
-"بار مكدس"
-"بار مجمّع"
-"منطقة"
-"مختلط"
-"الطاولة"
-"منقي"
-"مرشح التاريخ"
-"فطيرة"
-"خط"
-"تبرع"
-"تحديد السمات"
-"معاينة"
-"تسمية المحور س"
-"تسمية محور y"
-"اللون"
-"حفظ"
-"عنوان"
-"نيسان موتور ليمتد"
-"نيسان أمريكا الشمالية"
-"نيسان أوروبا"
-"الأسطورة 1"
-"الأسطورة 2"
-"اللون 1"
-"اللون 2"
-"بيانات وهمية"
-"تاريخ البدء"
-"تاريخ الانتهاء"
-"هوية شخصية"
-"التعتيم"
-"ملء"
-"خط العائلة"
-"محاذاة النص"
-"حجم الخط"
-"تباعد الأحرف"
-"ارتفاع خط"
-"قلم المدقة"
-"لغة"
+export class LabelArab {
+    title: string;
+    export: string;
+    clean: string;
+    region: string;
+    choose: string;
+    text: string;
+    chart: string;
+    image: string;
+    upload: string;
+    remove: string;
+    figure: string;
+    options: string;
+    custom: string;
+    items: string;
+    rectangle: string;
+    square: string;
+    triangle: string;
+    circle: string;
+    bar: string;
+    map: string;
+    horizontal: string;
+    stacked: string;
+    grouped: string;
+    area: string;
+    mixed: string;
+    table: string;
+    filter: string;
+    date: string;
+    pie: string;
+    line: string;
+    doughnut: string;
+    select: string;
+    previewTitle: string;
+    xAxisTitle: string;
+    yAxisTitle: string;
+    color: string;
+    save: string;
+    titleText: string;
+    nml: string;
+    ne: string;
+    nna: string;
+    legend1: string;
+    legend2: string;
+    color1: string;
+    color2: string;
+    dummy: string;
+    start: string;
+    end: string;
+    id: string;
+    opacity: string;
+    fill: string;
+    fontFamily: string;
+    textAlign: string;
+    fontSize: string;
+    char: string;
+    lineHeight: string;
+    style: string;
+    language: string;
+    confirm: string;
+
+    constructor() {
+        this.title = "Jarwiz";
+        this.export = "تصدير";
+        this.clean = "نظيفة";
+        this.region = "منطقة";
+        this.choose = "اختيار القالب";
+        this.text = "إضافة نص";
+        this.chart = "إضافة مخطط";
+        this.image = "إضافة الصور";
+        this.upload = "تحميل الصور";
+        this.remove = "إزالة";
+        this.figure = "أضف شخصية";
+        this.options = "خيارات";
+        this.custom = "العادة";
+        this.items = "لم يتم تحديد عناصر";
+        this.rectangle = "مستطيل";
+        this.square = "ميدان";
+        this.triangle = "مثلث";
+        this.circle = "مستطيل";
+        this.bar = "ميدان";
+        this.map = "خريطة";
+        this.horizontal = "عارضة أفقية";
+        this.stacked = "بار مكدس";
+        this.grouped = "بار مجمّع";
+        this.area = "منطقة";
+        this.mixed = "مختلط";
+        this.table = "الطاولة";
+        this.filter = "منقي";
+        this.date = "مرشح التاريخ";
+        this.pie = "فطيرة";
+        this.line = "خط";
+        this.doughnut = "تبرع";
+        this.select = "تحديد السمات";
+        this.previewTitle = "معاينة";
+        this.xAxisTitle = "تسمية المحور س";
+        this.yAxisTitle = "تسمية محور y";
+        this.color = "اللون";
+        this.save = "حفظ";
+        this.titleText = "عنوان";
+        this.nml = "نيسان موتور ليمتد";
+        this.nna = "نيسان أمريكا الشمالية";
+        this.ne = "نيسان أوروبا";
+        this.legend1 = "الأسطورة 1";
+        this.legend2 = "الأسطورة 2";
+        this.color1 = "اللون 1";
+        this.color2 = "اللون 2";
+        this.dummy = "بيانات وهمية";
+        this.start = "تاريخ البدء";
+        this.end = "تاريخ الانتهاء";
+        this.id = "هوية شخصية";
+        this.opacity = "التعتيم";
+        this.fill = "ملء";
+        this.fontFamily = "خط العائلة";
+        this.textAlign = "محاذاة النص";
+        this.fontSize = "حجم الخط";
+        this.char = "تباعد الأحرف";
+        this.lineHeight = "ارتفاع خط";
+        this.style = "قلم المدقة";
+        this.language = "لغة";
+        this.confirm = "هل أنت واثق ؟";
+    }
+}

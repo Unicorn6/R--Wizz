@@ -2,6 +2,10 @@
   border: 2px dashed #cccccc;
 }
 
+::ng-deep .images-item-upload {
+  width: 10% !important;
+}
+
 .titleJap {
   font-size: 0.9rem;
 }
@@ -16,17 +20,17 @@ caption {
 
 ::ng-deep .canvas-container {
   width: 100% !important;
-  height: 100% !important;
+  height: 99vh !important;
 }
 
 ::ng-deep .lower-canvas {
   width: 100% !important;
-  height: 100% !important;
+  height: 99vh !important;
 }
 
 ::ng-deep .upper-canvas {
   width: 100% !important;
-  height: 100% !important;
+  height: 99vh !important;
 }
 
 .col-lg-3 {
