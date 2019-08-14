@@ -22,30 +22,40 @@ export class IpinfoService {
   };
 
   results: any;
+  responseData: any;
+  data: any;
+  ipinfo: any = "http://ip-api.com/json";
 
   constructor(private http: HttpClient) { }
 
-  // getIpAddress() {
-  //   return this.http
-  //     .get('http://freegeoip.net/json/?callback', this.options)
-  //     .map(response => response || {})
-  //     .catch(this.handleError);
-  // }
+  public async ipInfo() {
+    // try {
+    const result = await new Promise((resolve, reject) => {
+      this.http.get(this.ipinfo).subscribe(res => {
+        resolve(res);
+      }, (err) => {
+        reject(err);
+      });
+    });
+    this.responseData = result;
+    // console.table(this.responseData);
 
-  getIpAddress(): Observable<IP> {
-    return this.http
-      .get<IP>("https://freegeoip.net/json/?callback", this.options).pipe(
-        map(response => response || {}),
-        catchError(this.handleError)
-      );
+    // }
+    // this.data.postDataX(this.responseData, 'visitors').then((results) => {
+    //   this.responseData = results;
+    // }, (err) => {
+    //   console.log(err);
+    // });
+    // }
+    // catch (err_1) {
+    //   console.log(err_1);
+    // }
+
+    // var mainContainer = document.getElementById("myData");
+    // for (var i = 0; i < this.responseData.length; i++) {
+    // var div = document.createElement("div");
+    // div.innerHTML = this.responseData.as + ' ' + this.responseData.isp + ' ' + this.responseData.lat + ' ' + this.responseData.lon + ' ' + this.responseData.city + ' ' + this.responseData.country + this.responseData.timezone + ' ' + this.responseData.regionName;
+    // mainContainer.appendChild(div);
+
   }
-
-  private handleError(error: HttpErrorResponse):
-    Observable<any> {
-    //Log error in the browser console
-    console.error('observable error: ', error);
-
-    return Observable.throw(error);
-  }
-
 }

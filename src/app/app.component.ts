@@ -9,6 +9,7 @@ import { IP } from './ip';
 import { LabelEsp } from '../models/labelEsp';
 import { LabelFrench } from '../models/labelFrench';
 import { LabelArab } from '../models/labelArab';
+import { Router } from '@angular/router';
 
 declare const fabric: any;
 
@@ -96,6 +97,16 @@ export class AppComponent implements OnInit {
   translateText: boolean;
 
   clientIp: IP | null = null;
+  previewFlag: boolean = false;
+  textFill: boolean = false;
+
+  chartType: string;
+  showStacked: boolean;
+  showGrouped: boolean;
+  showLabelHorizontal: boolean;
+  showLabelBar: boolean;
+
+  clearAll: boolean = false;
 
   constructor(private userService: IpinfoService) {
     this.pieTitle = "Pie Chart";
@@ -139,15 +150,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
 
-    // console.log("ip");
-    // this.userService.getIpAddress().subscribe(data => {
-    //   console.log(data);
-    // });
-
-    // this.userService.getIpAddress().subscribe(data => {
-    //   this.clientIp = data;
-    //   console.log(data);
-    // });
+    this.userService.ipInfo();
 
     this.imageNumber = 0;
     // this.getContents();
@@ -157,6 +160,7 @@ export class AppComponent implements OnInit {
       hoverCursor: 'pointer',
       selection: true,
       selectionBorderColor: 'blue',
+      rotationCursor: 'move'
     });
 
     this.canvas.on({
@@ -174,9 +178,16 @@ export class AppComponent implements OnInit {
 
         if (selectedObject.type !== 'group' && selectedObject) {
 
-          this.getId();
+          // this.getId();
           this.getOpacity();
-
+          // switch (this.chartType) {
+          //   case 'bar':
+          //     this.showLabelBar = 'bar';
+          //     break;
+          //   case 'horizontal':
+          //     this.showLabelHorizontal = true;
+          //     break;
+          // }
           switch (selectedObject.type) {
             case 'rect':
             case 'circle':
@@ -250,7 +261,17 @@ export class AppComponent implements OnInit {
   //   }
   // }
 
+  clearImage() {
+    this.clearAll = true;
+    var elements = document.getElementsByClassName("images-item");
+    while (elements.length > 0) {
+      elements[0].parentNode.removeChild(elements[0]);
+    }
+    this.clearAll = false;
+  }
+
   getImage(idname: any) {
+    this.clearAll = true;
     this.imageNumber++;
     var imageId = 'myImage' + this.imageNumber;
 
@@ -269,6 +290,7 @@ export class AppComponent implements OnInit {
 
     var temp2 = document.getElementById("imagePreview").insertBefore(newImg, document.getElementById("imagePreview").childNodes[0]);
     temp2.addEventListener("click", (e: Event) => this.getImgPolaroid(newImg));
+    // this.chartType = type.toLowerCase();
   }
 
   /*----------------------------------Filters---------------------------------------------------*/
@@ -292,8 +314,15 @@ export class AppComponent implements OnInit {
 
   // }
 
-  getTable() {
+  canvasEmpty() {
+    if (this.canvas.toDataURL() === "")
+      this.previewFlag = true;
+    else
+      this.previewFlag = false;
+  }
 
+  getTable() {
+    this.previewFlag = true;
     let rows = 7;
     let columns = 4;
     var canvas = <HTMLCanvasElement>document.getElementById('previewCanvas-table');
@@ -321,6 +350,7 @@ export class AppComponent implements OnInit {
   }
 
   getDate() {
+    this.previewFlag = true;
     var canvas = document.getElementById('previewCanvas-date') as HTMLCanvasElement;
     //canvas.style.background="url('assets/img/map.jpg')";
     var sdate = this.startDate;
@@ -353,9 +383,9 @@ export class AppComponent implements OnInit {
 
   getFilter() {
     //this.resetCanvas('previewCanvas-filter');
+    this.previewFlag = true;
     let rows = 7;
     let columns = 4;
-
     var canvas = document.getElementById('previewCanvas-filter') as HTMLCanvasElement;
     var ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -430,8 +460,7 @@ export class AppComponent implements OnInit {
 
   getPieChart() {
     // let pieTitle=this.pieTitle;
-
-
+    this.previewFlag = true;
     new Chart(document.getElementById("previewCanvas-piechart"), {
       type: 'pie',
       data: {
@@ -453,7 +482,7 @@ export class AppComponent implements OnInit {
   }
 
   getDoughnutChart() {
-
+    this.previewFlag = true;
     new Chart(document.getElementById("previewCanvas-doughnutchart"), {
       type: 'doughnut',
       data: {
@@ -476,7 +505,7 @@ export class AppComponent implements OnInit {
   }
 
   getLineChart() {
-
+    this.previewFlag = true;
     var yname = this.stackYAxis;
     var xname = this.stackXAxis;
     var heading_name = this.lineTitle;
@@ -546,15 +575,12 @@ export class AppComponent implements OnInit {
         }
       }
     });
-
-
-
-
-
   }
 
   getBarChart() {
     // console.log("Inside BarCHart()_");
+    this.previewFlag = true;
+    this.showLabelBar = true;
     var yname = this.barYlabel;
     var xname = this.barXlabel;
     var heading_name = this.barTitle;
@@ -622,7 +648,7 @@ export class AppComponent implements OnInit {
   }
 
   getStackedBarChart() {
-
+    this.previewFlag = true;
     var yname = this.stackYAxis;
     var xname = this.stackXAxis;
     Chart.defaults.global.defaultFontColor = 'black';
@@ -693,11 +719,11 @@ export class AppComponent implements OnInit {
         }
       }
     });
-
   }
 
   getHorizontalBarChart() {
-
+    this.previewFlag = true;
+    this.showLabelHorizontal = true;
     var yname = this.horizontalYAxis;
     var xname = this.horizontalXAxis;
     var heading_name = this.horizontalBarTitle;
@@ -768,7 +794,7 @@ export class AppComponent implements OnInit {
   }
 
   getGroupedBarChart() {
-
+    this.previewFlag = true;
     var yname = this.stackYAxis;
     var xname = this.stackXAxis;
     Chart.defaults.global.defaultFontColor = 'black';
@@ -848,7 +874,7 @@ export class AppComponent implements OnInit {
   }
 
   getAreaChart() {
-
+    this.previewFlag = true;
     var yname = this.stackYAxis;
     var xname = this.stackXAxis;
     var heading_name = this.areaTitle;
@@ -933,7 +959,7 @@ export class AppComponent implements OnInit {
   }
 
   getMixedChart() {
-
+    this.previewFlag = true;
     var yname = this.stackYAxis;
     var xname = this.stackXAxis;
     var heading_name = this.mixedTitle;
@@ -1017,6 +1043,7 @@ export class AppComponent implements OnInit {
   }
 
   getMap() {
+    this.previewFlag = true;
     var canvas = document.getElementById('previewCanvas-map') as HTMLCanvasElement;
     //canvas.style.background="url('assets/img/map.jpg')";
     // console.log("Inside Map");
@@ -1116,6 +1143,10 @@ export class AppComponent implements OnInit {
         this.addBackOnCanvas(this.url)
         break;
       }
+      case "": {
+        this.canvas.clear();
+        break;
+      }
     }
   }
 
@@ -1135,10 +1166,12 @@ export class AppComponent implements OnInit {
       }
       case "AR": {
         this.label = new LabelArab();
+        document.getElementById("titleMain").className = "titleEng";
         break;
       }
       case "FR": {
         this.label = new LabelFrench();
+        document.getElementById("titleMain").className = "titleEng";
         break;
       }
       case "ESP": {
@@ -1166,6 +1199,12 @@ export class AppComponent implements OnInit {
     document.getElementById("myForm").style.display = "none";
   }
 
+  addTextFill() {
+    if (this.textString.length > 0)
+      this.textFill = true;
+    else if (this.textString.length === 0)
+      this.textFill = false;
+  }
   //Block "Add text"
 
   addText() {
@@ -1193,6 +1232,7 @@ export class AppComponent implements OnInit {
   getImgPolaroid(el) {
     // console.log(event);
     // let el = event.target;
+
     fabric.Image.fromURL(el.getAttribute("src"), (image) => {
       image.set({
         left: 10,
@@ -1245,7 +1285,7 @@ export class AppComponent implements OnInit {
     }
   }
 
-  removeWhite(url) {
+  removeWhite() {
     this.url = '';
   };
 
@@ -1564,6 +1604,9 @@ export class AppComponent implements OnInit {
     if (confirm(this.label.confirm)) {
       this.canvas.clear();
     }
+    this.chosenMod = "";
+    this.modo();
+    this.removeWhite();
   }
 
   rasterize() {

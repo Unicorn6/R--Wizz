@@ -5,20 +5,20 @@ import { ColorPickerModule } from 'ngx-color-picker';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { IpinfoService } from './ipinfo.service';
+import { AdminComponent } from './admin/admin.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ColorPickerModule,
-    HttpClientModule
-    // MatLabel,
-    // MatSelectModule,
-    // MatFormFieldModule,
-    // BrowserAnimationsModule
+    HttpClientModule,
+    RouterModule
   ],
   providers: [IpinfoService],
   bootstrap: [AppComponent]
