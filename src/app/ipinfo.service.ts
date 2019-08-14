@@ -24,7 +24,7 @@ export class IpinfoService {
   results: any;
   responseData: any;
   data: any;
-  ipinfo: any = "http://ip-api.com/json";
+  ipinfo: any = "https://ip-api.com/json";
 
   constructor(private http: HttpClient) { }
 

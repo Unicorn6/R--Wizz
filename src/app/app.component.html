@@ -71,7 +71,7 @@
         </div>
         <div class="card-body p-0">
           <div class="input-group">
-            <input type="text" class="form-control" [(ngModel)]="textString" (ngModelChange)="addTextFill($event)">
+            <input type="text" class="form-control" [(ngModel)]="textString" (ngModelChange)="addTextFill()">
             <div class="input-group-append">
               <span class="input-group-text">
                 <button id="add-text" [disabled]="!textFill" data-toggle="tooltip" data-placement="bottom"
@@ -202,7 +202,7 @@
                     </div>
                     <div class="col-8 form-group">
                       <button type="button" [disabled]="!previewFlag" class="btn btn-danger float-right"
-                        data-dismiss="modal" (click)="getImage('previewCanvas-barchart','bar')">{{label.save}}</button>
+                        data-dismiss="modal" (click)="getImage('previewCanvas-barchart')">{{label.save}}</button>
                     </div>
                   </div>
                 </div>
@@ -266,13 +266,13 @@
                 <div class="modal-footer">
                   <div class="form-row col-12">
                     <div class="col-4 form-group">
-                      <button type="button" class="btn btn-danger float-right" (ngModelChange)="previewCanvas()"
+                      <button type="button" class="btn btn-danger float-right"
                         (click)="getHorizontalBarChart()">{{label.previewTitle}}</button>
                     </div>
                     <div class="col-8 form-group">
                       <button type="button" [disabled]="!previewFlag" class="btn btn-danger float-right"
                         data-dismiss="modal"
-                        (click)="getImage('previewCanvas-horizontalBarChart','horizontal')">{{label.save}}</button>
+                        (click)="getImage('previewCanvas-horizontalBarChart')">{{label.save}}</button>
                     </div>
                   </div>
                 </div>
@@ -346,7 +346,7 @@
                 <div class="modal-footer">
                   <div class="form-row col-12">
                     <div class="col-4 form-group">
-                      <button type="button" class="btn btn-danger float-right" (ngModelChange)="previewCanvas()"
+                      <button type="button" class="btn btn-danger float-right"
                         (click)="getStackedBarChart()">{{label.previewTitle}}</button>
                     </div>
                     <div class="col-8 form-group">
@@ -1043,24 +1043,26 @@
 
       <!-- Upload Image -->
       <div class="card mb-2">
-        <div class="card-header p-1">{{label.upload}}
-          <div class="float-right">
-            <label class="m-0 ml-2">
-              <i class="fa fa-cloud-upload pointer" data-toggle="tooltip" data-placement="bottom"
-                title={{label.upload}}></i>
-              <input type="file" (change)="readUrl($event);" class="col-12 mb-1 d-none">
-            </label>
-            <i class="fa fa-trash mx-2 pointer" aria-hidden="true" (click)="removeWhite(url);" data-toggle="tooltip"
-              data-placement="bottom" title={{label.remove}}></i>
-            <!-- <div class="btn-group btn-group-justified" role="group" aria-label="...">
-            <div class="btn-group" role="group">
-              <button type="button" class="btn btn-outline-danger btn-sm" (click)="removeWhite(url);">
-                <i class="fa fa-times mr-1" aria-hidden="true"></i>{{label.remove}}</button>
+        <div class="card-header p-1">
+          <div class="form-row col-12 justify-content-between px-1">
+            <div class="form-group col-6 mb-0 align-self-center">
+              {{label.upload}}
             </div>
-          </div> -->
+            <div class="form-group col-3 mb-0">
+              <label class="btn btn-primary mb-0 w-100" data-toggle="tooltip" data-placement="bottom" title={{label.upload}}>
+                <i class="fa fa-cloud-upload pointer"></i>
+                <input type="file" (change)="readUrl($event);" class="col-12 mb-1 d-none">
+              </label>
+            </div>
+            <div class="form-group col-3 mb-0" *ngIf="showRemove">
+              <button class="btn btn-outline-danger w-100" (click)="removeWhite();" data-toggle="tooltip"
+                data-placement="bottom">
+                <i class="fa fa-trash pointer" aria-hidden="true" title={{label.remove}}></i>
+              </button>
+            </div>
           </div>
         </div>
-        <div class="card-body text-center py-1 px-0">
+        <div class="card-body text-center p-1" *ngIf="showRemove">
           <div class="col-12 align-self-center">
             <img id="testImage" *ngIf="url" class="images-item-upload" [src]="url" (click)="addImageOnCanvas(url);">
           </div>
@@ -1114,7 +1116,7 @@
       <!-- Options -->
       <div class="card mb-1">
         <div class="card-header p-1">{{label.options}}</div>
-        <div class="card-body text-center py-2 px-0">
+        <div class="card-body text-center py-2 px-0 pointerIcon">
           <div class="" role="group" aria-label="...">
             <button data-toggle="tooltip" data-placement="bottom" title="Delete element" type="button"
               class="btn btn-outline-danger" [disabled]="!selected" (click)="removeSelected();">
@@ -1141,8 +1143,8 @@
       </div>
 
       <!-- Custom -->
-      <div class="card mb-1">
-        <div class="card-header p-1">{{label.custom}}</div>
+      <div class="card mb-1" *ngIf="selected">
+        <div class=" card-header p-1">{{label.custom}}</div>
         <div class="card-body py-1 px-2 custom">
           <!-- <div *ngIf="chartType=='bar' && selected">
             <label>{{label.previewTitle}}</label>
@@ -1185,7 +1187,6 @@
             
           </div> -->
           <div class="custom-item" *ngIf="selected  && selected.type == 'group'">Group Selected</div>
-          <div class="custom-item" *ngIf="!selected">{{label.items}}</div>
           <!-- <div class="custom-item" *ngIf="selected && selected.type != 'group'">
             <div class="custom-item-title">{{label.id}}</div>
             <div class="custom-item-body">
@@ -1303,7 +1304,8 @@
       <!-- Add Images -->
       <div class="card mb-1">
         <div class="card-header p-1">{{label.image}}
-          <button *ngIf="clearAll" class="btn btn-outline-danger float-right textSize p-1" (click)="clearImage()">Clear
+          <button *ngIf="clearAll" class="btn btn-danger float-right textSize p-1" (click)="clearImage()"><i
+              class="fa fa-ban mr-1" aria-hidden="true"></i>Clear
             All</button>
         </div>
         <div class="card-body py-1 addImage" id="imagePreview">

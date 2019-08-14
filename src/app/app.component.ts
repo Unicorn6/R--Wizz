@@ -100,13 +100,14 @@ export class AppComponent implements OnInit {
   previewFlag: boolean = false;
   textFill: boolean = false;
 
-  chartType: string;
-  showStacked: boolean;
-  showGrouped: boolean;
-  showLabelHorizontal: boolean;
-  showLabelBar: boolean;
+  // chartType: string;
+  // showStacked: boolean;
+  // showGrouped: boolean;
+  // showLabelHorizontal: boolean;
+  // showLabelBar: boolean;
 
   clearAll: boolean = false;
+  showRemove: boolean = false;
 
   constructor(private userService: IpinfoService) {
     this.pieTitle = "Pie Chart";
@@ -150,7 +151,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
 
-    this.userService.ipInfo();
+    // this.userService.ipInfo();
 
     this.imageNumber = 0;
     // this.getContents();
@@ -1283,10 +1284,12 @@ export class AppComponent implements OnInit {
       }
       reader.readAsDataURL(event.target.files[0]);
     }
+    this.showRemove = true;
   }
 
   removeWhite() {
     this.url = '';
+    this.showRemove = false;
   };
 
   //Block "Add figure"
