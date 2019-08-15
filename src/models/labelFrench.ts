@@ -59,6 +59,7 @@ export class LabelFrench {
     style: string;
     language: string;
     confirm: string;
+    clearAll: string;
 
     constructor() {
         this.title = "JarWiz";
@@ -120,5 +121,6 @@ export class LabelFrench {
         this.style = "Style";
         this.language = "La langue";
         this.confirm = "Êtes-vous sûr ?";
+        this.clearAll = "Tout Effacer";
     }
 }

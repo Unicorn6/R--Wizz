@@ -59,6 +59,7 @@ export class Labels {
     style: string;
     language: string;
     confirm: string;
+    clearAll: string;
 
     constructor() {
         this.title = "JarWiz";
@@ -121,5 +122,6 @@ export class Labels {
         this.style = "Style";
         this.language = "Language";
         this.confirm = "Are you sure ?";
+        this.clearAll = "Clear All"
     }
 }

@@ -58,9 +58,10 @@ export class LabelArab {
     style: string;
     language: string;
     confirm: string;
+    clearAll: string;
 
     constructor() {
-        this.title = "Jarwiz";
+        this.title = "JarWiz";
         this.export = "تصدير";
         this.clean = "نظيفة";
         this.region = "منطقة";
@@ -119,5 +120,6 @@ export class LabelArab {
         this.style = "قلم المدقة";
         this.language = "لغة";
         this.confirm = "هل أنت واثق ؟";
+        this.clearAll = "امسح الكل";
     }
 }

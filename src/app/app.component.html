@@ -1,7 +1,7 @@
 <div class="container">
 
   <div class="row justify-content-between">
-    <div class="col-lg-3 col-md-6 order-md-1 order-lg-1 pl-0 pr-1">
+    <div class="col-lg-2 col-md-6 order-md-1 order-lg-1 px-0">
       <!-- <div class="card">
                 <div class="card-header">Size</div>
                 <div class="card-body">
@@ -29,19 +29,19 @@
             </div> -->
 
       <!-- Title & Lang -->
-      <div class="col-12 mt-2">
+      <div class="col-12 mt-2 pr-0">
         <div class="form-row">
           <div class="form-group col-6 mb-2">
             <h4 id="titleMain">{{label.title}}</h4>
           </div>
-          <div class="form-group col-6 mb-2 text-center">
+          <div class="form-group col-6 mb-2 px-0 text-center">
             <!-- <span>{{label.language}} : </span> -->
             <!-- <button (click)="onTranslate()" class="rounded-circle btn btn-primary p-1"><img
                 src="../assets/img/japan.svg" style="width: 35px;height: 35px;padding: 3px;"></button>
             <button (click)="onEnglish()" class="rounded-circle btn btn-primary p-1"><img
                 src="../assets/img/united-kingdom.svg" style="width: 35px;height: 35px;padding: 3px;"></button> -->
 
-            <select class="w-100 btn btn-primary pr-0 pl-2" [(ngModel)]="lang" (ngModelChange)="langChange()">
+            <select class="w-100 btn btn-primary px-0" [(ngModel)]="lang" (ngModelChange)="langChange()">
               <option value="" selected hidden>{{label.language}}</option>
               <option value="EN">English</option>
               <option value="JP">日本人</option>
@@ -75,7 +75,7 @@
             <div class="input-group-append">
               <span class="input-group-text">
                 <button id="add-text" [disabled]="!textFill" data-toggle="tooltip" data-placement="bottom"
-                  title="Add text" class="btn btn-primary pointerIcon" (click)="addText()">
+                  title={{label.text}} class="btn btn-primary pointerIcon" (click)="addText()">
                   <i class="fa fa-plus" aria-hidden="true"></i>
                 </button>
               </span>
@@ -1044,20 +1044,21 @@
       <!-- Upload Image -->
       <div class="card mb-2">
         <div class="card-header p-1">
-          <div class="form-row col-12 justify-content-between px-1">
-            <div class="form-group col-6 mb-0 align-self-center">
+          <div class="form-row justify-content-between px-1">
+            <div class="form-group col-6 mb-0 px-0 align-self-center uploadSize">
               {{label.upload}}
             </div>
             <div class="form-group col-3 mb-0">
-              <label class="btn btn-primary mb-0 w-100" data-toggle="tooltip" data-placement="bottom" title={{label.upload}}>
+              <label class="btn btn-primary mb-0 w-100 p-1" data-toggle="tooltip" data-placement="bottom"
+                title={{label.upload}}>
                 <i class="fa fa-cloud-upload pointer"></i>
                 <input type="file" (change)="readUrl($event);" class="col-12 mb-1 d-none">
               </label>
             </div>
             <div class="form-group col-3 mb-0" *ngIf="showRemove">
-              <button class="btn btn-outline-danger w-100" (click)="removeWhite();" data-toggle="tooltip"
-                data-placement="bottom">
-                <i class="fa fa-trash pointer" aria-hidden="true" title={{label.remove}}></i>
+              <button class="btn btn-outline-danger w-100 p-1" (click)="removeWhite();" title={{label.remove}}
+                data-toggle="tooltip" data-placement="bottom">
+                <i class="fa fa-trash pointer" aria-hidden="true"></i>
               </button>
             </div>
           </div>
@@ -1097,18 +1098,18 @@
 
     <!-- Canvas -->
     <!-- <div class="col-lg-6 col-md-12 order-md-3 order-lg-2 my-1"> -->
-    <div class="col-lg-6 order-lg-2 order-md-2 px-0">
+    <div class="col-lg-7 order-lg-2 order-md-2 px-0">
       <canvas id="canvas"></canvas>
       <canvas id="blank" style='display:none'></canvas>
     </div>
 
-    <div class="col-lg-3 col-md-6 order-md-3 order-lg-3 pl-1 pr-0">
+    <div class="col-lg-3 col-md-6 order-md-3 order-lg-3 px-0">
       <!-- Actions-->
       <div class="col-12 text-center py-2 px-0 pr-1">
-        <button data-toggle="tooltip" data-placement="bottom" title="Export to image" type="button"
+        <button data-toggle="tooltip" data-placement="bottom" title={{label.export}} type="button"
           class="btn btn-primary" (click)="rasterize();">
           <i class="fa fa-download" aria-hidden="true"></i> {{label.export}}</button>
-        <button data-toggle="tooltip" data-placement="bottom" title="Clean Canvas" type="button" class="btn btn-danger"
+        <button data-toggle="tooltip" data-placement="bottom" title={{label.clean}} type="button" class="btn btn-danger"
           (click)="confirmClear();">
           <i class="fa fa-ban" aria-hidden="true"></i> {{label.clean}}</button>
       </div>
@@ -1116,26 +1117,27 @@
       <!-- Options -->
       <div class="card mb-1">
         <div class="card-header p-1">{{label.options}}</div>
-        <div class="card-body text-center py-2 px-0 pointerIcon">
+        <div class="card-body text-center py-2 px-0">
           <div class="" role="group" aria-label="...">
             <button data-toggle="tooltip" data-placement="bottom" title="Delete element" type="button"
-              class="btn btn-outline-danger" [disabled]="!selected" (click)="removeSelected();">
+              class="btn btn-outline-danger pointerIcon" [disabled]="!selected" (click)="removeSelected();">
               <i class="fa fa-trash" aria-hidden="true"></i>
             </button>
             <button data-toggle="tooltip" data-placement="bottom" title="Send to back" type="button"
-              class="btn btn-outline-primary" [disabled]="!selected" (click)="sendToBack();">
+              class="btn btn-outline-primary pointerIcon" [disabled]="!selected" (click)="sendToBack();">
               <i class="fa fa-level-down" aria-hidden="true"></i>
             </button>
             <button data-toggle="tooltip" data-placement="bottom" title="Send to front" type="button"
-              class="btn btn-outline-primary" [disabled]="!selected" (click)="bringToFront();">
+              class="btn btn-outline-primary pointerIcon" [disabled]="!selected" (click)="bringToFront();">
               <i class="fa fa-level-up" aria-hidden="true"></i>
             </button>
             <button data-toggle="tooltip" data-placement="bottom" title="Clone" type="button"
-              class="btn btn-outline-primary" [disabled]="!selected || selected.type == 'group'" (click)="clone();">
+              class="btn btn-outline-primary pointerIcon" [disabled]="!selected || selected.type == 'group'"
+              (click)="clone();">
               <i class="fa fa-clone" aria-hidden="true"></i>
             </button>
             <button data-toggle="tooltip" data-placement="bottom" title="Unselect" type="button"
-              class="btn btn-outline-primary" [disabled]="!selected" (click)="cleanSelect()">
+              class="btn btn-outline-primary pointerIcon" [disabled]="!selected" (click)="cleanSelect()">
               <i class="fa fa-remove" aria-hidden="true"></i>
             </button>
           </div>
@@ -1305,8 +1307,7 @@
       <div class="card mb-1">
         <div class="card-header p-1">{{label.image}}
           <button *ngIf="clearAll" class="btn btn-danger float-right textSize p-1" (click)="clearImage()"><i
-              class="fa fa-ban mr-1" aria-hidden="true"></i>Clear
-            All</button>
+              class="fa fa-ban mr-1" aria-hidden="true"></i>{{label.clearAll}}</button>
         </div>
         <div class="card-body py-1 addImage" id="imagePreview">
         </div>

@@ -581,7 +581,7 @@ export class AppComponent implements OnInit {
   getBarChart() {
     // console.log("Inside BarCHart()_");
     this.previewFlag = true;
-    this.showLabelBar = true;
+    // this.showLabelBar = true;
     var yname = this.barYlabel;
     var xname = this.barXlabel;
     var heading_name = this.barTitle;
@@ -724,7 +724,7 @@ export class AppComponent implements OnInit {
 
   getHorizontalBarChart() {
     this.previewFlag = true;
-    this.showLabelHorizontal = true;
+    // this.showLabelHorizontal = true;
     var yname = this.horizontalYAxis;
     var xname = this.horizontalXAxis;
     var heading_name = this.horizontalBarTitle;

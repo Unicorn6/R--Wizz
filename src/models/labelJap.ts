@@ -59,6 +59,7 @@ export class LabelJap {
     style: string;
     language: string;
     confirm: string;
+    clearAll: string;
 
     constructor() {
         this.title = "テキストを追加";
@@ -121,5 +122,6 @@ export class LabelJap {
         this.style = "スタイル";
         this.language = "言語";
         this.confirm = "本気ですか";
+        this.clearAll = "すべてクリア";
     }
 }
